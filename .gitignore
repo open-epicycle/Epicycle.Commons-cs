@@ -160,3 +160,4 @@ $RECYCLE.BIN/
 externals/NuGet/
 projects/TestResult.xml
 projects/Tests.VisualState.xml
+projects/Playground/
