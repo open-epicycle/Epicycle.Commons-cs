@@ -55,6 +55,11 @@ namespace Epicycle.Commons.Reporting
             ReportInner(name, value);
         }
 
+        public IDisposable Time(string name)
+        {
+            return new Stopwatch(this, name);
+        }
+
         private void ReportInner(string name, object value)
         {
             if(_entries == null)
@@ -102,6 +107,31 @@ namespace Epicycle.Commons.Reporting
         private void WriteValue(StringBuilder result, string name, object value)
         {
             result.Append(String.Format("{0}: {1}\n", name, value.ToString()));
+        }
+
+        private sealed class Stopwatch : IDisposable
+        {
+            private IReport _report;
+            private string _name;
+            private System.Diagnostics.Stopwatch _stopwatch;
+
+            public Stopwatch(IReport report, string name)
+            {
+                _report = report;
+                _name = name;
+
+                _stopwatch = new System.Diagnostics.Stopwatch();
+                _stopwatch.Start();
+            }
+
+            public void Dispose()
+            {
+                _stopwatch.Stop();
+
+                var dt_sec = ((double)_stopwatch.ElapsedTicks) / System.Diagnostics.Stopwatch.Frequency;
+
+                _report.Report(_name, dt_sec);
+            }
         }
     }
 }

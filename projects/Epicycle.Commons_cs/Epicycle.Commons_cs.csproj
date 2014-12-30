@@ -61,6 +61,7 @@
     <Compile Include="FileSystem\CommonFileSystem.cs" />
     <Compile Include="FileSystem\DirectoryExpectedException.cs" />
     <Compile Include="FileSystem\FileExpectedException.cs" />
+    <Compile Include="FileSystem\FileSystemPathUtils.cs" />
     <Compile Include="FileSystem\IFileSystemExtensions.cs" />
     <Compile Include="FileSystem\FileSystemPath.cs" />
     <Compile Include="FileSystem\FileSystemPathAlreadyExistsException.cs" />
@@ -75,6 +76,7 @@
     <Compile Include="InternalException.cs" />
     <Compile Include="BasePeriodicThread.cs" />
     <Compile Include="PeriodicThread.cs" />
+    <Compile Include="Reporting\ReportsManager.cs" />
     <Compile Include="Singleton.cs" />
     <Compile Include="Unsafe\PinnedByteBuffer.cs" />
     <Compile Include="Unsafe\PinnedFloatBuffer.cs" />

@@ -1,4 +1,6 @@
-﻿namespace Epicycle.Commons.Reporting
+﻿using System;
+
+namespace Epicycle.Commons.Reporting
 {
     public interface IReport
     {
@@ -9,5 +11,6 @@
         void Report(string name, double value);
         void Report(string name, string value);
         void Report(string name, object value);
+        IDisposable Time(string name);
     }
 }
