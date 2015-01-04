@@ -53,12 +53,22 @@ namespace Epicycle.Commons.Reporting
             }
         }
 
-        public void ReportParameter(string name, int value)
+        public void Report(string name, int value)
         {
-            ReportParameter(name, (double)value);
+            Report(name, (double)value);
         }
 
-        public void ReportParameter(string name, double value)
+        public void Report(string name, long value)
+        {
+            Report(name, (double)value);
+        }
+
+        public void Report(string name, float value)
+        {
+            Report(name, (double)value);
+        }
+
+        public void Report(string name, double value)
         {
             lock (_lock)
             {
@@ -77,7 +87,7 @@ namespace Epicycle.Commons.Reporting
 
         public IDisposable Time(string name)
         {
-            return new Stopwatch(this, name);
+            return new ReportingStopwatch(this, name);
         }
 
         private object GetValue(string name)
@@ -256,31 +266,6 @@ namespace Epicycle.Commons.Reporting
                 {
                     report.Report(_name + "_MAX", max);
                 }
-            }
-        }
-
-        private sealed class Stopwatch : IDisposable
-        {
-            private IStatisticsReporter _statisticsReporter;
-            private string _name;
-            private System.Diagnostics.Stopwatch _stopwatch;
-
-            public Stopwatch(IStatisticsReporter statisticsReporter, string name)
-            {
-                _statisticsReporter = statisticsReporter;
-                _name = name;
-
-                _stopwatch = new System.Diagnostics.Stopwatch();
-                _stopwatch.Start();
-            }
-
-            public void Dispose()
-            {
-                _stopwatch.Stop();
-
-                var dt_sec = ((double)_stopwatch.ElapsedTicks) / System.Diagnostics.Stopwatch.Frequency;
-
-                _statisticsReporter.ReportParameter(_name, dt_sec);
             }
         }
     }

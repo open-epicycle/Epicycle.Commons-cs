@@ -76,6 +76,8 @@
     <Compile Include="InternalException.cs" />
     <Compile Include="BasePeriodicThread.cs" />
     <Compile Include="PeriodicThread.cs" />
+    <Compile Include="Reporting\INumericReport.cs" />
+    <Compile Include="Reporting\ReportingStopwatch.cs" />
     <Compile Include="Reporting\ReportsManager.cs" />
     <Compile Include="Singleton.cs" />
     <Compile Include="Unsafe\PinnedByteBuffer.cs" />
