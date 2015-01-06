@@ -16,7 +16,7 @@
 // For more information check https://github.com/open-epicycle/Epicycle.Commons-cs
 // ]]]]
 
-#if NET35
+#if NET35 || NET40
 
 namespace System.Collections.Generic
 {
