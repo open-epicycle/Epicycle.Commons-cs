@@ -1,1 +1,6 @@
-guid: 0f188da8-adbc-4026-844b-acac280f3164
+project_guid: 71DCD2FC-E933-4C17-A406-E4C55FAF9B2C
+assemblyinfo_guid: 0f188da8-adbc-4026-844b-acac280f3164
+
+external_libs:
+ - NUnit
+ - Moq
