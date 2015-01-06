@@ -16,10 +16,6 @@
 // For more information check https://github.com/open-epicycle/Epicycle.Commons-cs
 // ]]]]
 
-using System;
-using System.Collections.Generic;
-using System.Linq;
-
 using NUnit.Framework;
 
 namespace Epicycle.Commons
