@@ -1,0 +1,117 @@
+﻿<?xml version="1.0" encoding="utf-8"?>
+<Project ToolsVersion="12.0" DefaultTargets="Build" xmlns="http://schemas.microsoft.com/developer/msbuild/2003">
+  <Import Project="$(MSBuildExtensionsPath)\$(MSBuildToolsVersion)\Microsoft.Common.props" Condition="Exists('$(MSBuildExtensionsPath)\$(MSBuildToolsVersion)\Microsoft.Common.props')" />
+  <PropertyGroup>
+    <Configuration Condition=" '$(Configuration)' == '' ">Debug</Configuration>
+    <Platform Condition=" '$(Platform)' == '' ">AnyCPU</Platform>
+    <ProjectGuid>{E4A1724E-C625-48F9-A222-9445AF10CD9C}</ProjectGuid>
+    <OutputType>Library</OutputType>
+    <AppDesignerFolder>Properties</AppDesignerFolder>
+    <RootNamespace>Epicycle.Commons</RootNamespace>
+    <AssemblyName>Epicycle.Commons_cs</AssemblyName>
+    <TargetFrameworkVersion>v3.5</TargetFrameworkVersion>
+    <FileAlignment>512</FileAlignment>
+    <TargetFrameworkProfile />
+  </PropertyGroup>
+  <PropertyGroup Condition="'$(Configuration)|$(Platform)' == 'Debug|AnyCPU'">
+    <DebugSymbols>true</DebugSymbols>
+    <OutputPath>..\..\bin\net35\Debug\</OutputPath>
+    <DefineConstants>DEBUG;TRACE;NET35</DefineConstants>
+    <AllowUnsafeBlocks>true</AllowUnsafeBlocks>
+    <DebugType>full</DebugType>
+    <PlatformTarget>AnyCPU</PlatformTarget>
+    <ErrorReport>prompt</ErrorReport>
+    <CodeAnalysisRuleSet>ManagedMinimumRules.ruleset</CodeAnalysisRuleSet>
+  </PropertyGroup>
+  <PropertyGroup Condition="'$(Configuration)|$(Platform)' == 'Release|AnyCPU'">
+    <OutputPath>..\..\bin\net35\Release\</OutputPath>
+    <DefineConstants>TRACE;NET35</DefineConstants>
+    <AllowUnsafeBlocks>true</AllowUnsafeBlocks>
+    <Optimize>true</Optimize>
+    <DebugType>pdbonly</DebugType>
+    <PlatformTarget>AnyCPU</PlatformTarget>
+    <ErrorReport>prompt</ErrorReport>
+    <CodeAnalysisRuleSet>ManagedMinimumRules.ruleset</CodeAnalysisRuleSet>
+  </PropertyGroup>
+  <ItemGroup>
+    <Reference Include="System" />
+    <Reference Include="System.Core" />
+    <Reference Include="System.Xml.Linq" />
+    <Reference Include="System.Data.DataSetExtensions" />
+    <Reference Include="Microsoft.CSharp" />
+    <Reference Include="System.Data" />
+    <Reference Include="System.Xml" />
+    <Reference Include="YamlDotNet">
+      <HintPath>..\..\externals\NuGet\YamlDotNet.3.0.0\lib\net35\YamlDotNet.dll</HintPath>
+    </Reference>
+  </ItemGroup>
+  <ItemGroup>
+    <Compile Include="ArgAssert.cs" />
+    <Compile Include="BasePeriodicThread.cs" />
+    <Compile Include="BasicMath.cs" />
+    <Compile Include="Collections\CollectionUtils.cs" />
+    <Compile Include="Collections\EmptyList.cs" />
+    <Compile Include="Collections\EnumerationUtils.cs" />
+    <Compile Include="Collections\FiniteFunctionGraph.cs" />
+    <Compile Include="Collections\InjectionEnumerator.cs" />
+    <Compile Include="DecimalUnitsFormatting.cs" />
+    <Compile Include="FileSystem\CommonFileSystem.cs" />
+    <Compile Include="FileSystem\DirectoryExpectedException.cs" />
+    <Compile Include="FileSystem\FileExpectedException.cs" />
+    <Compile Include="FileSystem\FileSystemPath.cs" />
+    <Compile Include="FileSystem\FileSystemPathAlreadyExistsException.cs" />
+    <Compile Include="FileSystem\FileSystemPathDoesNotExistException.cs" />
+    <Compile Include="FileSystem\FileSystemPathException.cs" />
+    <Compile Include="FileSystem\FileSystemPathExtensions.cs" />
+    <Compile Include="FileSystem\FileSystemPathUtils.cs" />
+    <Compile Include="FileSystem\IFileSystem.cs" />
+    <Compile Include="FileSystem\IFileSystemExtensions.cs" />
+    <Compile Include="FileSystem\StandardFileSystem.cs" />
+    <Compile Include="FileSystemBasedObjects\DirectoryBasedObject.cs" />
+    <Compile Include="FileSystemBasedObjects\DirectoryBasedObjectWithConfiguration.cs" />
+    <Compile Include="FileSystemBasedObjects\FileBasedObject.cs" />
+    <Compile Include="FileSystemBasedObjects\FileSystemBasedObject.cs" />
+    <Compile Include="FileSystemBasedObjects\FileSystemPathBasedObject.cs" />
+    <Compile Include="FileSystemBasedObjects\MultiFile.cs" />
+    <Compile Include="Hysteresis.cs" />
+    <Compile Include="InternalException.cs" />
+    <Compile Include="PeriodicThread.cs" />
+    <Compile Include="Properties\AssemblyInfo.cs" />
+    <Compile Include="Reporting\INumericReport.cs" />
+    <Compile Include="Reporting\IReport.cs" />
+    <Compile Include="Reporting\IStatisticsReporter.cs" />
+    <Compile Include="Reporting\PeriodicReport.cs" />
+    <Compile Include="Reporting\ReportingStopwatch.cs" />
+    <Compile Include="Reporting\ReportsManager.cs" />
+    <Compile Include="Reporting\SimpleReport.cs" />
+    <Compile Include="Reporting\StatisticsReporter.cs" />
+    <Compile Include="Singleton.cs" />
+    <Compile Include="StringUtils.cs" />
+    <Compile Include="Time\IClock.cs" />
+    <Compile Include="Time\SystemClock.cs" />
+    <Compile Include="Time\TimeUtils.cs" />
+    <Compile Include="TimeFormatting.cs" />
+    <Compile Include="Unsafe\PinnedByteBuffer.cs" />
+    <Compile Include="Unsafe\PinnedFloatBuffer.cs" />
+    <Compile Include="Unsafe\PinnedObject.cs" />
+    <Compile Include="YamlUtils.cs" />
+    <Compile Include="_System\Collections\Generic\IReadOnlyCollection.cs" />
+    <Compile Include="_System\Collections\Generic\IReadOnlyList.cs" />
+    <Compile Include="_System\Numerics\Complex.cs" />
+    <Compile Include="_System\Tuple.cs" />
+  </ItemGroup>
+  <ItemGroup>
+    <None Include="packages.config" />
+  </ItemGroup>
+  <ItemGroup>
+
+  </ItemGroup>
+  <Import Project="$(MSBuildToolsPath)\Microsoft.CSharp.targets" />
+  <!-- To modify your build process, add your task inside one of the targets below and uncomment it. 
+       Other similar extension points exist, see Microsoft.Common.targets.
+  <Target Name="BeforeBuild">
+  </Target>
+  <Target Name="AfterBuild">
+  </Target>
+  -->
+</Project>

@@ -15,7 +15,7 @@
   </PropertyGroup>
   <PropertyGroup Condition="'$(Configuration)|$(Platform)' == 'Debug|AnyCPU'">
     <DebugSymbols>true</DebugSymbols>
-    <OutputPath>..\..\bin\win\Debug\</OutputPath>
+    <OutputPath>..\..\bin\net45\Debug\</OutputPath>
     <DefineConstants>DEBUG;TRACE;NET45</DefineConstants>
     <AllowUnsafeBlocks>true</AllowUnsafeBlocks>
     <DebugType>full</DebugType>
@@ -24,7 +24,7 @@
     <CodeAnalysisRuleSet>ManagedMinimumRules.ruleset</CodeAnalysisRuleSet>
   </PropertyGroup>
   <PropertyGroup Condition="'$(Configuration)|$(Platform)' == 'Release|AnyCPU'">
-    <OutputPath>..\..\bin\win\Release\</OutputPath>
+    <OutputPath>..\..\bin\net45\Release\</OutputPath>
     <DefineConstants>TRACE;NET45</DefineConstants>
     <AllowUnsafeBlocks>true</AllowUnsafeBlocks>
     <Optimize>true</Optimize>
@@ -76,7 +76,7 @@
     <None Include="packages.config" />
   </ItemGroup>
   <ItemGroup>
-    <ProjectReference Include="..\Epicycle.Commons_cs\Epicycle.Commons_cs.csproj">
+    <ProjectReference Include="..\Epicycle.Commons_cs\Epicycle.Commons_cs.net45.csproj">
       <Project>{e4a1724e-c625-48f9-a222-9445af10cd9c}</Project>
       <Name>Epicycle.Commons_cs</Name>
     </ProjectReference>

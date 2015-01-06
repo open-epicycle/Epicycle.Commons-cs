@@ -1,0 +1,92 @@
+﻿<?xml version="1.0" encoding="utf-8"?>
+<Project ToolsVersion="12.0" DefaultTargets="Build" xmlns="http://schemas.microsoft.com/developer/msbuild/2003">
+  <Import Project="$(MSBuildExtensionsPath)\$(MSBuildToolsVersion)\Microsoft.Common.props" Condition="Exists('$(MSBuildExtensionsPath)\$(MSBuildToolsVersion)\Microsoft.Common.props')" />
+  <PropertyGroup>
+    <Configuration Condition=" '$(Configuration)' == '' ">Debug</Configuration>
+    <Platform Condition=" '$(Platform)' == '' ">AnyCPU</Platform>
+    <ProjectGuid>{71DCD2FC-E933-4C17-A406-E4C55FAF9B2C}</ProjectGuid>
+    <OutputType>Library</OutputType>
+    <AppDesignerFolder>Properties</AppDesignerFolder>
+    <RootNamespace>Epicycle.Commons</RootNamespace>
+    <AssemblyName>Epicycle.Commons_cs-Test</AssemblyName>
+    <TargetFrameworkVersion>v3.5</TargetFrameworkVersion>
+    <FileAlignment>512</FileAlignment>
+    <TargetFrameworkProfile />
+  </PropertyGroup>
+  <PropertyGroup Condition="'$(Configuration)|$(Platform)' == 'Debug|AnyCPU'">
+    <DebugSymbols>true</DebugSymbols>
+    <OutputPath>..\..\bin\net35\Debug\</OutputPath>
+    <DefineConstants>DEBUG;TRACE;NET35</DefineConstants>
+    <AllowUnsafeBlocks>true</AllowUnsafeBlocks>
+    <DebugType>full</DebugType>
+    <PlatformTarget>AnyCPU</PlatformTarget>
+    <ErrorReport>prompt</ErrorReport>
+    <CodeAnalysisRuleSet>ManagedMinimumRules.ruleset</CodeAnalysisRuleSet>
+  </PropertyGroup>
+  <PropertyGroup Condition="'$(Configuration)|$(Platform)' == 'Release|AnyCPU'">
+    <OutputPath>..\..\bin\net35\Release\</OutputPath>
+    <DefineConstants>TRACE;NET35</DefineConstants>
+    <AllowUnsafeBlocks>true</AllowUnsafeBlocks>
+    <Optimize>true</Optimize>
+    <DebugType>pdbonly</DebugType>
+    <PlatformTarget>AnyCPU</PlatformTarget>
+    <ErrorReport>prompt</ErrorReport>
+    <CodeAnalysisRuleSet>ManagedMinimumRules.ruleset</CodeAnalysisRuleSet>
+  </PropertyGroup>
+  <ItemGroup>
+    <Reference Include="System" />
+    <Reference Include="System.Core" />
+    <Reference Include="System.Xml.Linq" />
+    <Reference Include="System.Data.DataSetExtensions" />
+    <Reference Include="Microsoft.CSharp" />
+    <Reference Include="System.Data" />
+    <Reference Include="System.Xml" />
+    <Reference Include="Moq">
+      <HintPath>..\..\externals\NuGet\Moq.4.2.1312.1622\lib\net35\Moq.dll</HintPath>
+    </Reference>
+    <Reference Include="nunit.framework">
+      <HintPath>..\..\externals\NuGet\NUnit.2.6.3\lib\nunit.framework.dll</HintPath>
+    </Reference>
+    <Reference Include="YamlDotNet">
+      <HintPath>..\..\externals\NuGet\YamlDotNet.3.0.0\lib\net35\YamlDotNet.dll</HintPath>
+    </Reference>
+  </ItemGroup>
+  <ItemGroup>
+    <Compile Include="ArgAssertTest.cs" />
+    <Compile Include="CollectionUtilsTest.cs" />
+    <Compile Include="EnumerationUtilsTest.cs" />
+    <Compile Include="FileSystem\CommonFileSystemTest.cs" />
+    <Compile Include="FileSystem\FileSystemPathExtensionsTest.cs" />
+    <Compile Include="FileSystem\FileSystemPathTest.cs" />
+    <Compile Include="FileSystem\IFileSystemExtensionsTest.cs" />
+    <Compile Include="FileSystem\IFileSystemTestUtils.cs" />
+    <Compile Include="FileSystemBasedObjects\DirectoryBasedObjectTest.cs" />
+    <Compile Include="FileSystemBasedObjects\DirectoryBasedObjectWithConfigurationTest.cs" />
+    <Compile Include="FileSystemBasedObjects\FileBasedObjectTest.cs" />
+    <Compile Include="FileSystemBasedObjects\FileSystemBasedObjectTest.cs" />
+    <Compile Include="FileSystemBasedObjects\FileSystemPathBasedObjectTest.cs" />
+    <Compile Include="FileSystemBasedObjects\MultiFileTest.cs" />
+    <Compile Include="HysteresisTest.cs" />
+    <Compile Include="InjectionEnumerationTest.cs" />
+    <Compile Include="Properties\AssemblyInfo.cs" />
+    <Compile Include="StringUtilsTest.cs" />
+    <Compile Include="YamlUtilsTest.cs" />
+  </ItemGroup>
+  <ItemGroup>
+    <None Include="packages.config" />
+  </ItemGroup>
+  <ItemGroup>
+    <ProjectReference Include="..\Epicycle.Commons_cs\Epicycle.Commons_cs.net35.csproj">
+      <Project>{e4a1724e-c625-48f9-a222-9445af10cd9c}</Project>
+      <Name>Epicycle.Commons_cs</Name>
+    </ProjectReference>
+  </ItemGroup>
+  <Import Project="$(MSBuildToolsPath)\Microsoft.CSharp.targets" />
+  <!-- To modify your build process, add your task inside one of the targets below and uncomment it. 
+       Other similar extension points exist, see Microsoft.Common.targets.
+  <Target Name="BeforeBuild">
+  </Target>
+  <Target Name="AfterBuild">
+  </Target>
+  -->
+</Project>
