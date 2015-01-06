@@ -16,6 +16,8 @@
 // For more information check https://github.com/open-epicycle/Epicycle.Commons-cs
 // ]]]]
 
+#if NET35
+
 using System;
 using System.Collections.Generic;
 using System.Linq;
@@ -73,3 +75,5 @@ namespace System.Numerics
         }
     }
 }
+
+#endif

@@ -16,6 +16,8 @@
 // For more information check https://github.com/open-epicycle/Epicycle.Commons-cs
 // ]]]]
 
+#if NET35
+
 namespace System.Collections.Generic
 {
     public interface IReadOnlyList<T> : IReadOnlyCollection<T>
@@ -23,3 +25,5 @@ namespace System.Collections.Generic
         T this[int index] { get; }
     }
 }
+
+#endif

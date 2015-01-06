@@ -16,6 +16,8 @@
 // For more information check https://github.com/open-epicycle/Epicycle.Commons-cs
 // ]]]]
 
+#if NET35
+
 namespace System
 {
     public static class Tuple
@@ -48,3 +50,5 @@ namespace System
         }
     }
 }
+
+#endif
