@@ -24,8 +24,9 @@ Apache License 2.0 (http://www.apache.org/licenses/LICENSE-2.0)
 
 ## Release Notes
 ### Version 0.1 
-* **Version 0.1.3** [CURRENT]
+* **Version 0.1.3** [IN DEVELOPMENT]
  * Fixing the build for .NET 3.5 and .NET 4.0
+ * Creating a dedicated project (Epicycle.Commons.TestUtils_cs) for UT utilities
  * Adding emulated System.Collections.ObjectModel.ReadOnlyCollection for .NET 3.5 and .NET 4.0
  * Adding AsReadOnlyList to CollectionUtils
 * **Version 0.1.2** [2015-01-07]
