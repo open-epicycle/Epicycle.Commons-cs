@@ -18,7 +18,7 @@
     <dependencies>
       <dependency id="NUnit" version="2.6.4" />
       <dependency id="Moq" version="4.2.1409.1722" />
-      <dependency id="YamlDotNet" version="3.0.0" />
+      <dependency id="YamlDotNet" version="3.5.0" />
     </dependencies>
   </metadata>
 </package>

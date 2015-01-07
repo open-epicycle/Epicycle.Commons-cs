@@ -11,4 +11,4 @@ release_notes:
 nuget_dependencies:
  - NUnit.2.6.4
  - Moq.4.2.1409.1722
- - YamlDotNet.3.0.0
+ - YamlDotNet.3.5.0
