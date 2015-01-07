@@ -1,14 +1,22 @@
 title: Epicycle.Commons (.NET)
 url: https://github.com/open-epicycle/Epicycle.Commons-cs
-description: Epicycle's .NET commons library. Contains various utilities, file system abstraction, reporting and more
+summary: Epicycle .NET commons library. Contains various utilities, file system abstraction, reporting and more. Used by other Epicycle packages.
+
 organization: Epicycle
 tags: epicycle lib library utils utilities misc
 copyright: Copyright 2015 Epicycle
 license_url: http://www.apache.org/licenses/LICENSE-2.0
 
-release_notes: 
+release_notes: https://github.com/open-epicycle/Epicycle.Commons-cs/blob/ver-$version$/README.md
 
 nuget_dependencies:
  - NUnit.2.6.4
  - Moq.4.2.1409.1722
  - YamlDotNet.3.5.0
+
+description: |
+   Epicycle .NET commons library. Contains various utilities, file system abstraction, reporting and more. Used by other Epicycle packages.
+   
+   * Details & release notes: https://github.com/open-epicycle/Epicycle.Commons-cs/blob/ver-$version$/README.md
+   * Sources: https://github.com/open-epicycle/Epicycle.Commons-cs/tree/ver-$version$
+   * Git repository: https://github.com/open-epicycle/Epicycle.Commons-cs
