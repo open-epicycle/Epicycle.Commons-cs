@@ -82,7 +82,7 @@ namespace Epicycle.Commons.FileSystem
         /// Converts string to path.
         /// </summary>
         /// <param name="pathString">The string to build the path from.</param>
-        public static implicit operator FileSystemPath(string pathString)
+        public static explicit operator FileSystemPath(string pathString)
         {
             if (pathString == null)
             {
