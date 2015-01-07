@@ -18,11 +18,23 @@
 
 using System;
 using System.Collections.Generic;
+#if NET35 || NET40
+using System.Collections.ObjectModel;
+#endif
 
 namespace Epicycle.Commons.Collections
 {
     public static class CollectionUtils
     {
+        public static IReadOnlyList<T> AsReadOnlyList<T>(this List<T> @this)
+        {
+#if NET35 || NET40
+            return new ReadOnlyCollection<T>(@this);
+#else
+            return @this;
+#endif
+        }
+
         public static T Last<T>(this IReadOnlyList<T> @this)
         {
             return @this[@this.Count - 1];
