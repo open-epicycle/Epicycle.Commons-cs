@@ -17,6 +17,7 @@
 // ]]]]
 
 using Epicycle.Commons.FileSystem;
+using Epicycle.Commons.TestUtils.FileSystem;
 using Moq;
 using NUnit.Framework;
 using System.Linq;

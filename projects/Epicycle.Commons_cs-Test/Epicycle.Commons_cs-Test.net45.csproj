@@ -61,7 +61,6 @@
     <Compile Include="FileSystem\FileSystemPathExtensionsTest.cs" />
     <Compile Include="FileSystem\FileSystemPathTest.cs" />
     <Compile Include="FileSystem\IFileSystemExtensionsTest.cs" />
-    <Compile Include="FileSystem\IFileSystemTestUtils.cs" />
     <Compile Include="FileSystemBasedObjects\DirectoryBasedObjectTest.cs" />
     <Compile Include="FileSystemBasedObjects\DirectoryBasedObjectWithConfigurationTest.cs" />
     <Compile Include="FileSystemBasedObjects\FileBasedObjectTest.cs" />
@@ -78,6 +77,10 @@
     <None Include="packages.config" />
   </ItemGroup>
   <ItemGroup>
+    <ProjectReference Include="..\Epicycle.Commons.TestUtils_cs\Epicycle.Commons.TestUtils_cs.net45.csproj">
+      <Project>{178e17df-6622-49ec-b9d8-aa844654506c}</Project>
+      <Name>Epicycle.Commons.TestUtils_cs</Name>
+    </ProjectReference>
     <ProjectReference Include="..\Epicycle.Commons_cs\Epicycle.Commons_cs.net45.csproj">
       <Project>{e4a1724e-c625-48f9-a222-9445af10cd9c}</Project>
       <Name>Epicycle.Commons_cs</Name>

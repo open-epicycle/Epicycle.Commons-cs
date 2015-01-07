@@ -17,6 +17,7 @@
 // ]]]]
 
 using Epicycle.Commons.FileSystem;
+using Epicycle.Commons.TestUtils.FileSystem;
 using NUnit.Framework;
 
 namespace Epicycle.Commons.FileSystemBasedObjects
