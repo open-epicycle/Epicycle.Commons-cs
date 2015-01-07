@@ -1,4 +1,4 @@
-# Epicycle.Commons-cs 0.1.3.0
+# Epicycle.Commons-cs 0.1.4.0 [NOT RELEASED]
 Epicycle .NET Commons Library.
 
 ***Note***: *This library is in it's 0.X version, that means that it's still in active development and backward compatibility is not guaranteed!*
@@ -24,6 +24,9 @@ Apache License 2.0 (http://www.apache.org/licenses/LICENSE-2.0)
 
 ## Release Notes
 ### Version 0.1 
+
+* **Version 0.1.4** [NOT RELEASED]
+ * FileSystemPath: explicit conversion from string
 
 * **Version 0.1.3** [2015-01-07]
  * Fixing the build for .NET 3.5 and .NET 4.0
