@@ -9,6 +9,6 @@ license_url: http://www.apache.org/licenses/LICENSE-2.0
 release_notes: 
 
 nuget_dependencies:
- - NUnit.2.6.3
+ - NUnit.2.6.4
  - Moq.4.2.1312.1622
  - YamlDotNet.3.0.0
