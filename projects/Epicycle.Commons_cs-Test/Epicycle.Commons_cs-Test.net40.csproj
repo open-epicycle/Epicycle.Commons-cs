@@ -9,36 +9,33 @@
     <AppDesignerFolder>Properties</AppDesignerFolder>
     <RootNamespace>Epicycle.Commons</RootNamespace>
     <AssemblyName>Epicycle.Commons_cs-Test</AssemblyName>
-    <TargetFrameworkVersion>v4.5</TargetFrameworkVersion>
+    <TargetFrameworkVersion>v4.0</TargetFrameworkVersion>
     <FileAlignment>512</FileAlignment>
+    <TargetFrameworkProfile />
   </PropertyGroup>
   <PropertyGroup Condition="'$(Configuration)|$(Platform)' == 'Debug|AnyCPU'">
     <DebugSymbols>true</DebugSymbols>
-    <OutputPath>..\..\bin\win\Debug\</OutputPath>
-    <DefineConstants>DEBUG;TRACE</DefineConstants>
+    <OutputPath>..\..\bin\net40\Debug\</OutputPath>
+    <DefineConstants>DEBUG;TRACE;NET40</DefineConstants>
     <AllowUnsafeBlocks>true</AllowUnsafeBlocks>
     <DebugType>full</DebugType>
     <PlatformTarget>AnyCPU</PlatformTarget>
     <ErrorReport>prompt</ErrorReport>
     <CodeAnalysisRuleSet>ManagedMinimumRules.ruleset</CodeAnalysisRuleSet>
+    <DocumentationFile>..\..\bin\net40\Debug\Epicycle.Commons_cs-Test.xml</DocumentationFile>
   </PropertyGroup>
   <PropertyGroup Condition="'$(Configuration)|$(Platform)' == 'Release|AnyCPU'">
-    <OutputPath>..\..\bin\win\Release\</OutputPath>
-    <DefineConstants>TRACE</DefineConstants>
+    <OutputPath>..\..\bin\net40\Release\</OutputPath>
+    <DefineConstants>TRACE;NET40</DefineConstants>
     <AllowUnsafeBlocks>true</AllowUnsafeBlocks>
     <Optimize>true</Optimize>
     <DebugType>pdbonly</DebugType>
     <PlatformTarget>AnyCPU</PlatformTarget>
     <ErrorReport>prompt</ErrorReport>
     <CodeAnalysisRuleSet>ManagedMinimumRules.ruleset</CodeAnalysisRuleSet>
+    <DocumentationFile>..\..\bin\net40\Debug\Epicycle.Commons_cs-Test.xml</DocumentationFile>
   </PropertyGroup>
   <ItemGroup>
-    <Reference Include="Moq">
-      <HintPath>..\..\externals\NuGet\Moq.4.2.1312.1622\lib\net40\Moq.dll</HintPath>
-    </Reference>
-    <Reference Include="nunit.framework">
-      <HintPath>..\..\externals\NuGet\NUnit.2.6.3\lib\nunit.framework.dll</HintPath>
-    </Reference>
     <Reference Include="System" />
     <Reference Include="System.Core" />
     <Reference Include="System.Xml.Linq" />
@@ -46,25 +43,31 @@
     <Reference Include="Microsoft.CSharp" />
     <Reference Include="System.Data" />
     <Reference Include="System.Xml" />
+    <Reference Include="Moq">
+      <HintPath>..\..\externals\NuGet\Moq.4.2.1409.1722\lib\net40\Moq.dll</HintPath>
+    </Reference>
+    <Reference Include="nunit.framework">
+      <HintPath>..\..\externals\NuGet\NUnit.2.6.4\lib\nunit.framework.dll</HintPath>
+    </Reference>
     <Reference Include="YamlDotNet">
-      <HintPath>..\..\externals\NuGet\YamlDotNet.3.0.0\lib\net35\YamlDotNet.dll</HintPath>
+      <HintPath>..\..\externals\NuGet\YamlDotNet.3.5.0\lib\net35\YamlDotNet.dll</HintPath>
     </Reference>
   </ItemGroup>
   <ItemGroup>
     <Compile Include="ArgAssertTest.cs" />
     <Compile Include="CollectionUtilsTest.cs" />
     <Compile Include="EnumerationUtilsTest.cs" />
+    <Compile Include="FileSystem\CommonFileSystemTest.cs" />
+    <Compile Include="FileSystem\FileSystemPathExtensionsTest.cs" />
+    <Compile Include="FileSystem\FileSystemPathTest.cs" />
+    <Compile Include="FileSystem\IFileSystemExtensionsTest.cs" />
+    <Compile Include="FileSystem\IFileSystemTestUtils.cs" />
     <Compile Include="FileSystemBasedObjects\DirectoryBasedObjectTest.cs" />
     <Compile Include="FileSystemBasedObjects\DirectoryBasedObjectWithConfigurationTest.cs" />
     <Compile Include="FileSystemBasedObjects\FileBasedObjectTest.cs" />
     <Compile Include="FileSystemBasedObjects\FileSystemBasedObjectTest.cs" />
     <Compile Include="FileSystemBasedObjects\FileSystemPathBasedObjectTest.cs" />
     <Compile Include="FileSystemBasedObjects\MultiFileTest.cs" />
-    <Compile Include="FileSystem\CommonFileSystemTest.cs" />
-    <Compile Include="FileSystem\FileSystemPathExtensionsTest.cs" />
-    <Compile Include="FileSystem\FileSystemPathTest.cs" />
-    <Compile Include="FileSystem\IFileSystemTestUtils.cs" />
-    <Compile Include="FileSystem\IFileSystemExtensionsTest.cs" />
     <Compile Include="HysteresisTest.cs" />
     <Compile Include="InjectionEnumerationTest.cs" />
     <Compile Include="Properties\AssemblyInfo.cs" />
@@ -75,7 +78,7 @@
     <None Include="packages.config" />
   </ItemGroup>
   <ItemGroup>
-    <ProjectReference Include="..\Epicycle.Commons_cs\Epicycle.Commons_cs.csproj">
+    <ProjectReference Include="..\Epicycle.Commons_cs\Epicycle.Commons_cs.net40.csproj">
       <Project>{e4a1724e-c625-48f9-a222-9445af10cd9c}</Project>
       <Name>Epicycle.Commons_cs</Name>
     </ProjectReference>
