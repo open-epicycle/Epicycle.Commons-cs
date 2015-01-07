@@ -99,6 +99,7 @@
     <Compile Include="YamlUtils.cs" />
     <Compile Include="_System\Collections\Generic\IReadOnlyCollection.cs" />
     <Compile Include="_System\Collections\Generic\IReadOnlyList.cs" />
+    <Compile Include="_System\Collections\ObjectModel\ReadOnlyCollection.cs" />
     <Compile Include="_System\Numerics\Complex.cs" />
     <Compile Include="_System\Tuple.cs" />
   </ItemGroup>
