@@ -3,7 +3,7 @@ using System.Collections.Generic;
 using System.IO;
 using System.Linq;
 
-// Authors: untrots
+// Authors: untrots, squark
 
 namespace Epicycle.Commons.FileSystem
 {
@@ -60,6 +60,20 @@ namespace Epicycle.Commons.FileSystem
             _pathString = CanonizePath(pathString);
         }
 
+        /// <summary>
+        /// Converts string to path.
+        /// </summary>
+        /// <param name="pathString">The string to build the path from.</param>
+        public static implicit operator FileSystemPath(string pathString)
+        {
+            if (pathString == null)
+            {
+                return null;
+            }
+
+            return new FileSystemPath(pathString);
+        }
+
         #region String represintation
 
         /// <summary>
@@ -81,7 +95,6 @@ namespace Epicycle.Commons.FileSystem
         }
 
         #endregion
-
 
         #region Path properties
 
