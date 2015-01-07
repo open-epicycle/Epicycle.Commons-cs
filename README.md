@@ -1,4 +1,4 @@
-# Epicycle.Commons-cs
+# Epicycle.Commons-cs 0.1.3 [IN DEVELOPMENT]
 Epicycle .NET Commons Library.
 
 ***Note***: *This library is in it's 0.X version, that means that it's still in active development and backward compatibility is not guaranteed!*
