@@ -157,9 +157,9 @@ $RECYCLE.BIN/
 
 
 #########
+*.VisualState.xml
 externals/lib/
 externals/NuGet/
 projects/TestResult.xml
-projects/Tests.VisualState.xml
 projects/Playground/
 NuGetPackage
