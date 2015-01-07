@@ -9,8 +9,13 @@
     <licenseUrl>http://www.apache.org/licenses/LICENSE-2.0</licenseUrl>
     <projectUrl>https://github.com/open-epicycle/Epicycle.Commons-cs</projectUrl>
     <requireLicenseAcceptance>false</requireLicenseAcceptance>
-    <description>Epicycle's .NET commons library. Contains various utilities, file system abstraction, reporting and more</description>
-    <releaseNotes>None</releaseNotes>
+    <description>Epicycle .NET commons library. Contains various utilities, file system abstraction, reporting and more. Used by other Epicycle packages.
+
+* Details & release notes: https://github.com/open-epicycle/Epicycle.Commons-cs/blob/ver-$version$/README.md
+* Sources: https://github.com/open-epicycle/Epicycle.Commons-cs/tree/ver-$version$
+* Git repository: https://github.com/open-epicycle/Epicycle.Commons-cs</description>
+    <summary>Epicycle .NET commons library. Contains various utilities, file system abstraction, reporting and more. Used by other Epicycle packages.</summary>
+    <releaseNotes>https://github.com/open-epicycle/Epicycle.Commons-cs/blob/ver-$version$/README.md</releaseNotes>
     <copyright>Copyright 2015 Epicycle</copyright>
     <language />
     <tags>epicycle lib library utils utilities misc</tags>
