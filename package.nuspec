@@ -16,8 +16,8 @@
     <tags>epicycle lib library utils utilities misc</tags>
 
     <dependencies>
-      <dependency id="NUnit" version="2.6.3" />
-      <dependency id="Moq" version="4.2.1312.1622" />
+      <dependency id="NUnit" version="2.6.4" />
+      <dependency id="Moq" version="4.2.1409.1722" />
       <dependency id="YamlDotNet" version="3.0.0" />
     </dependencies>
   </metadata>
