@@ -16,10 +16,11 @@
 // For more information check https://github.com/open-epicycle/Epicycle.Commons-cs
 // ]]]]
 
+using Epicycle.Commons.FileSystem;
 using Moq;
 using System.Linq;
 
-namespace Epicycle.Commons.FileSystem
+namespace Epicycle.Commons.TestUtils.FileSystem
 {
     public static class IFileSystemTestUtils
     {

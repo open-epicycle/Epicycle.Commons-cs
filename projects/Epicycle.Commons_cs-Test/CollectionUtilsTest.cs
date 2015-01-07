@@ -35,7 +35,7 @@ namespace Epicycle.Commons.Collections
             var actualInside = new List<int>();
             var actualOutside = new List<int>();
 
-            list.SieveByIndex(indices, actualInside, actualOutside);
+            list.AsReadOnlyList().SieveByIndex(indices, actualInside, actualOutside);
 
             var expectedInside = indices.Select(i => list[i]).ToList();
             var expectedOutside = new List<int> { 4, 16, 32, 128, 256 };
@@ -45,7 +45,7 @@ namespace Epicycle.Commons.Collections
 
             actualOutside.Clear();
 
-            list.SieveByIndex(indices, actualOutside);
+            list.AsReadOnlyList().SieveByIndex(indices, actualOutside);
 
             Expect(actualOutside, Is.EquivalentTo(expectedOutside));
         }
