@@ -11,7 +11,7 @@
     <requireLicenseAcceptance>false</requireLicenseAcceptance>
     <description>Epicycle .NET commons library. Contains various utilities, file system abstraction, reporting and more. Used by other Epicycle packages.
 
-* Details & release notes: https://github.com/open-epicycle/Epicycle.Commons-cs/blob/ver-$version$/README.md
+* Details &amp; release notes: https://github.com/open-epicycle/Epicycle.Commons-cs/blob/ver-$version$/README.md
 * Sources: https://github.com/open-epicycle/Epicycle.Commons-cs/tree/ver-$version$
 * Git repository: https://github.com/open-epicycle/Epicycle.Commons-cs</description>
     <summary>Epicycle .NET commons library. Contains various utilities, file system abstraction, reporting and more. Used by other Epicycle packages.</summary>
