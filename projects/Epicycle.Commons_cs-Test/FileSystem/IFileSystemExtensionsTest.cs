@@ -16,6 +16,7 @@
 // For more information check https://github.com/open-epicycle/Epicycle.Commons-cs
 // ]]]]
 
+using Epicycle.Commons.TestUtils.FileSystem;
 using Moq;
 using NUnit.Framework;
 using System.Collections.Generic;
