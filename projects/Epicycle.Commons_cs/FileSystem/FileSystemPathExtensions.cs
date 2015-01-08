@@ -32,6 +32,7 @@ namespace Epicycle.Commons.FileSystem
         /// Returns the extension of the last part of the path. The extension is a string that follows the last
         /// instance of the '.' character in the part (unless it is the first character of the part).
         /// </summary>
+        /// <param name="path">The extended object</param>
         /// <returns>The extension. If there is no extension an empty string is returned.</returns>
         public static string GetExtension(this FileSystemPath path)
         {
@@ -50,6 +51,7 @@ namespace Epicycle.Commons.FileSystem
         /// <summary>
         /// Checks if the path has one of the provided extensions. The test ignores the cases of the path and the extensions.
         /// </summary>
+        /// <param name="path">The extended object</param>
         /// <param name="extensions">The extension list to test agains. Must not be null or contain nulls.</param>
         /// <returns>True if the path's extension is one of the provided extensions.</returns>
         public static bool IsExtension(this FileSystemPath path, params string[] extensions)
@@ -63,6 +65,7 @@ namespace Epicycle.Commons.FileSystem
         /// Returns the last part of the path without the extension. The extension is a string that follows the last
         /// instance of the '.' character in the part (unless it is the first character of the part).
         /// </summary>
+        /// <param name="path">The extended object</param>
         /// <returns>The last part without the extension.</returns>
         public static string GetLastPartWithoutExtension(this FileSystemPath path)
         {
@@ -79,7 +82,7 @@ namespace Epicycle.Commons.FileSystem
         }
 
         /// <summary>
-        /// Finds the extension separator (the last
+        /// Finds the extension separator
         /// </summary>
         private static int FindExtensionSeparatorPosition(string pathPart)
         {
