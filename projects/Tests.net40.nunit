@@ -1,8 +1,7 @@
-﻿<NUnitProject>
-  <Settings activeconfig="Debug" processModel="Default" domainUsage="Default" />
-  <Config name="Debug" binpathtype="Auto">
+<NUnitProject>
+  <Settings activeconfig="All" processModel="Default" domainUsage="Default" />
+  <Config name="All" binpathtype="Auto">
     <assembly path="..\bin\net40\Debug\Epicycle.Commons_cs-Test.dll" />
     <assembly path="..\bin\net40\Release\Epicycle.Commons_cs-Test.dll" />
   </Config>
-  <Config name="Release" binpathtype="Auto" />
 </NUnitProject>
