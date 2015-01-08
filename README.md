@@ -9,18 +9,19 @@ Epicycle .NET Commons Library.
 * All Epicycle Git repositories: https://github.com/open-epicycle
 
 ## Main features
- * File system abstraction *(Epicycle.Commons.FileSystem)*
- * A simple framework for objects that are based on the file system *(Epicycle.Commons.FileSystemBasedObjects)*
- * Hierarchical reporting infrastructure *(Epicycle.Commons.Reporting)*
- * Unsafe buffers *(Epicycle.Commons.Unsafe)*
- * Various collection utilities *(Epicycle.Commons.Collections)*
- * Time related utilities *(Epicycle.Commons.Time)*
- * Various utilities and extensions (e.g. assertions, math, strings, formatting, threading, YAML)
- * Specific **.NET 4.5** classes emulation for older frameworks (**.NET 3.5** and **.NET 4.0**)
- * Support of **.NET 3.5** and **.NET 4.0** and **.NET 4.5**
+* File system abstraction *(Epicycle.Commons.FileSystem)*
+* A simple framework for objects that are based on the file system *(Epicycle.Commons.FileSystemBasedObjects)*
+* Hierarchical reporting infrastructure *(Epicycle.Commons.Reporting)*
+* Unsafe buffers *(Epicycle.Commons.Unsafe)*
+* Various collection utilities *(Epicycle.Commons.Collections)*
+* Time related utilities *(Epicycle.Commons.Time)*
+* Various utilities and extensions (e.g. assertions, math, strings, formatting, threading, YAML)
+* Specific **.NET 4.5** classes emulation for older frameworks (**.NET 3.5** and **.NET 4.0**)
+* Supported frameworks: **.NET 3.5**, **.NET 4.0**, **.NET 4.5**
 
-## License
+## License and Copyright
 Apache License 2.0 (http://www.apache.org/licenses/LICENSE-2.0)
+Copyright 2015 Epicycle (http://epicycle.org)
 
 ## Release Notes
 ### Version 0.1 
@@ -28,21 +29,21 @@ Apache License 2.0 (http://www.apache.org/licenses/LICENSE-2.0)
 * **Version 0.1.5** [NOT RELEASED]
 
 * **Version 0.1.4** [2015-01-08]
- * The emulated System.Collections.ObjectModel.ReadOnlyCollection was replaced by a much thinner ReadOnlyListWrapper
- * FileSystemPath: explicit conversion from string
- * Bringing warnings to zero
+  * The emulated System.Collections.ObjectModel.ReadOnlyCollection was replaced by a much thinner ReadOnlyListWrapper
+  * FileSystemPath: explicit conversion from string
+  * Bringing warnings to zero
 
 * **Version 0.1.3** [2015-01-07]
- * Fixing the build for .NET 3.5 and .NET 4.0
- * Creating a dedicated project (Epicycle.Commons.TestUtils_cs) for UT utilities
- * Adding emulated System.Collections.ObjectModel.ReadOnlyCollection for .NET 3.5 and .NET 4.0
- * Adding AsReadOnlyList to CollectionUtils
+  * Fixing the build for .NET 3.5 and .NET 4.0
+  * Creating a dedicated project (Epicycle.Commons.TestUtils_cs) for UT utilities
+  * Adding emulated System.Collections.ObjectModel.ReadOnlyCollection for .NET 3.5 and .NET 4.0
+  * Adding AsReadOnlyList to CollectionUtils
 
 * **Version 0.1.2** [2015-01-07]
- * Upgrading libraries
+  * Upgrading libraries
 
 * **Version 0.1.1** [2015-01-06]
- * Adding NuGet dependencies
+  * Adding NuGet dependencies
 
 * **Version 0.1.0** [2015-01-06]
- * Initial upload
+  * Initial upload
