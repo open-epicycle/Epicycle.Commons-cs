@@ -1,4 +1,4 @@
-# Epicycle.Commons-cs 0.1.4.0
+# Epicycle.Commons-cs 0.1.5.0 [NOT RELEASED]
 Epicycle .NET Commons Library.
 
 ***Note***: *This library is in it's 0.X version, that means that it's still in active development and backward compatibility is not guaranteed!*
@@ -24,6 +24,8 @@ Apache License 2.0 (http://www.apache.org/licenses/LICENSE-2.0)
 
 ## Release Notes
 ### Version 0.1 
+
+* **Version 0.1.5** [NOT RELEASED]
 
 * **Version 0.1.4** [2015-01-08]
  * The emulated System.Collections.ObjectModel.ReadOnlyCollection was replaced by a much thinner ReadOnlyListWrapper
