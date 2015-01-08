@@ -29,7 +29,7 @@ namespace Epicycle.Commons.Collections
         public static IReadOnlyList<T> AsReadOnlyList<T>(this List<T> @this)
         {
 #if NET35 || NET40
-            return new ReadOnlyCollection<T>(@this);
+            return new ReadOnlyListWrapper<T>(@this);
 #else
             return @this;
 #endif

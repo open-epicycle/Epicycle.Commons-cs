@@ -58,6 +58,7 @@
     <Compile Include="Collections\EnumerationUtils.cs" />
     <Compile Include="Collections\FiniteFunctionGraph.cs" />
     <Compile Include="Collections\InjectionEnumerator.cs" />
+    <Compile Include="Collections\ReadOnlyListWrapper.cs" />
     <Compile Include="DecimalUnitsFormatting.cs" />
     <Compile Include="FileSystem\CommonFileSystem.cs" />
     <Compile Include="FileSystem\DirectoryExpectedException.cs" />
@@ -101,7 +102,6 @@
     <Compile Include="YamlUtils.cs" />
     <Compile Include="_System\Collections\Generic\IReadOnlyCollection.cs" />
     <Compile Include="_System\Collections\Generic\IReadOnlyList.cs" />
-    <Compile Include="_System\Collections\ObjectModel\ReadOnlyCollection.cs" />
     <Compile Include="_System\Numerics\Complex.cs" />
     <Compile Include="_System\Tuple.cs" />
   </ItemGroup>
