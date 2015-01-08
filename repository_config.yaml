@@ -9,6 +9,11 @@ license_url: http://www.apache.org/licenses/LICENSE-2.0
 
 release_notes: https://github.com/open-epicycle/Epicycle.Commons-cs/blob/ver-$version$/README.md
 
+dotnet_frameworks:
+ - net35
+ - net40
+ - net45
+
 nuget_dependencies:
  - NUnit.2.6.4
  - Moq.4.2.1409.1722
