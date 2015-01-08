@@ -26,7 +26,9 @@ Apache License 2.0 (http://www.apache.org/licenses/LICENSE-2.0)
 ### Version 0.1 
 
 * **Version 0.1.4** [NOT RELEASED]
+ * The emulated System.Collections.ObjectModel.ReadOnlyCollection was replaced by a much thinner ReadOnlyListWrapper
  * FileSystemPath: explicit conversion from string
+ * Bringing warnings to zero
 
 * **Version 0.1.3** [2015-01-07]
  * Fixing the build for .NET 3.5 and .NET 4.0

@@ -32,7 +32,7 @@ namespace Epicycle.Commons.FileSystemBasedObjects
         /// </summary>
         /// <param name="fileSystem">The file system to use. Must not be null.</param>
         /// <param name="path">The path the object is based on. Must not be null.</param>
-        /// <param name="shouldAutoCreateEmptyDirectory">If true and the path does not exist then a new empty directory will be (recursevly) created</param>
+        /// <param name="autoCreateEmptyDirectory">If true and the path does not exist then a new empty directory will be (recursevly) created</param>
         /// <exception cref="FileSystemPathDoesNotExistException">Thrown if the path points to a non-existing directory and autoCreateEmptyDirectory is false.</exception>
         /// <exception cref="DirectoryExpectedException">In case the path points to a non-directory file system entity.</exception>
         public DirectoryBasedObject(IFileSystem fileSystem, FileSystemPath path, bool autoCreateEmptyDirectory)

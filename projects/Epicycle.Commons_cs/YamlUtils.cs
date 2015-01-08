@@ -66,6 +66,7 @@ namespace Epicycle.Commons
         /// An extension to IFileSystem types that reads and deserializes YAML data from a file. The default encoding (UTF-8) is used.
         /// </summary>
         /// <typeparam name="Type">The type of the serialized object</typeparam>
+        /// <param name="fileSystem">The extended object</param>
         /// <param name="path">The path to the YAML file. The file must exist.</param>
         /// <returns>The deserialized object</returns>
         /// <exception cref="FileSystemPathDoesNotExistException">Thrown if the path does not exists.</exception>
@@ -80,6 +81,7 @@ namespace Epicycle.Commons
         /// If the file does not exist or does not contain the object then the object is constructed using the default constructor.
         /// </summary>
         /// <typeparam name="Type">The type of the serialized object</typeparam>
+        /// <param name="fileSystem">The extended object</param>
         /// <param name="path">The path to the YAML file. The file may not exist.</param>
         /// <returns>The deserialized object or the constructed object (in case of no data). Never null.</returns>
         /// <exception cref="FileExpectedException">Thrown if the path does not point to a file.</exception>
@@ -98,6 +100,7 @@ namespace Epicycle.Commons
         /// <summary>
         /// An extension to IFileSystem types that serializes an object and writes it to a file. The default encoding (UTF-8) is used.
         /// </summary>
+        /// <param name="fileSystem">The extended object</param>
         /// <param name="path">The path to the file to write. If exists, it must point to a file.</param>
         /// <param name="objectToSerialize">The object to serialize</param>
         /// <exception cref="FileExpectedException">Thrown if the path does not point to a file.</exception>
