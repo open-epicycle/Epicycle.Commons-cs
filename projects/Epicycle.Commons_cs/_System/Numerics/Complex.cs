@@ -73,6 +73,16 @@ namespace System.Numerics
 
             return new Complex(real, imaginary);
         }
+
+        public static Complex operator *(Complex left, double right)
+        {
+            return new Complex(left.Real * right, left.Imaginary * right);
+        }
+
+        public static Complex operator *(double left, Complex right)
+        {
+            return right * left;
+        }
     }
 }
 
