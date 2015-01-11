@@ -18,10 +18,11 @@
 
 #if NET35
 
+// TODO: Test ToString with formattings
+
 namespace System.Numerics
 {
     // compatible with .NET 4.5 (excluding BigInteger casting)
-
     public struct Complex : IEquatable<Complex>, IFormattable
     {
         private static readonly string FormatString = "({0}, {1})";
