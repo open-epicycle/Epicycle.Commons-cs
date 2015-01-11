@@ -3,3 +3,4 @@ assemblyinfo_guid: def9a2d5-e7c7-42cc-bd61-d4fc6517c8fb
 
 external_libs:
  - YamlDotNet
+ - System.Numerics
