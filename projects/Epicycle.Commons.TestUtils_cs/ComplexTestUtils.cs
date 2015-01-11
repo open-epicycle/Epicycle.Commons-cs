@@ -16,6 +16,7 @@
 // For more information check https://github.com/open-epicycle/Epicycle.Commons-cs
 // ]]]]
 
+using NUnit.Framework;
 using System.Numerics;
 
 namespace Epicycle.Commons.TestUtils
@@ -25,6 +26,16 @@ namespace Epicycle.Commons.TestUtils
         public static bool AreEqual(Complex c1, Complex c2, double eplsilon = NumericTestUtils.Epsilon)
         {
             return NumericTestUtils.AreEqual(c1.Real, c2.Real) && NumericTestUtils.AreEqual(c1.Imaginary, c2.Imaginary);
+        }
+
+        public static void AssertAreEqual(Complex expected, Complex complex)
+        {
+            Assert.That(ComplexTestUtils.AreEqual(complex, expected));
+        }
+
+        public static void AssertAreEqual(double expectedReal, double expectedImaginary, Complex complex)
+        {
+            AssertAreEqual(new Complex(expectedReal, expectedImaginary), complex);
         }
     }
 }

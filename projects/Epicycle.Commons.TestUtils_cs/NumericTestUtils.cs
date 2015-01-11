@@ -16,17 +16,23 @@
 // For more information check https://github.com/open-epicycle/Epicycle.Commons-cs
 // ]]]]
 
+using NUnit.Framework;
 using System;
 
 namespace Epicycle.Commons.TestUtils
 {
     public static class NumericTestUtils
     {
-        public const double Epsilon = 0.00001;
+        public const double Epsilon = 0.001;
 
         public static bool AreEqual(double a, double b, double epsilon = Epsilon)
         {
             return Math.Abs(a - b) < epsilon;
+        }
+
+        public static void AssertAreEqual(double expected, double number)
+        {
+            Assert.That(AreEqual(expected, number));
         }
     }
 }
