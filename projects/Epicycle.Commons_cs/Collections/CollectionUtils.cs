@@ -26,10 +26,15 @@ namespace Epicycle.Commons.Collections
 {
     public static class CollectionUtils
     {
+        public static IReadOnlyList<T> AsReadOnlyList<T>(this IList<T> @this)
+        {
+            return new ReadOnlyListWrapper<T>(@this);
+        }
+
         public static IReadOnlyList<T> AsReadOnlyList<T>(this List<T> @this)
         {
 #if NET35 || NET40
-            return new ReadOnlyListWrapper<T>(@this);
+            return AsReadOnlyList<T>((IList<T>)@this);
 #else
             return @this;
 #endif
