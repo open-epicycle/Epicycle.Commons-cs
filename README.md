@@ -28,7 +28,8 @@ Copyright 2015 Epicycle (http://epicycle.org)
 
 * **Version 0.1.5** [NOT RELEASED]
   * Adding dependency to TaskParallelLibrary for .NET 3.5 compatibility
-  * Full implementation of System.Numerics.Complex for .NET 3.5
+  * Almost full implementation of System.Tuple .NET 3.5
+  * Almost full implementation of System.Numerics.Complex for .NET 3.5
 
 * **Version 0.1.4** [2015-01-08]
   * The emulated System.Collections.ObjectModel.ReadOnlyCollection was replaced by a much thinner ReadOnlyListWrapper
