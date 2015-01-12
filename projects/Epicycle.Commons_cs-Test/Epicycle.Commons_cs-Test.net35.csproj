@@ -62,7 +62,7 @@
     <Compile Include="ArgAssertTest.cs" />
     <Compile Include="Collections\CollectionUtilsTest.cs" />
     <Compile Include="Collections\EmptyListTest.cs" />
-    <Compile Include="EnumerationUtilsTest.cs" />
+    <Compile Include="Collections\EnumerationUtilsTest.cs" />
     <Compile Include="FileSystem\CommonFileSystemTest.cs" />
     <Compile Include="FileSystem\FileSystemPathExtensionsTest.cs" />
     <Compile Include="FileSystem\FileSystemPathTest.cs" />
