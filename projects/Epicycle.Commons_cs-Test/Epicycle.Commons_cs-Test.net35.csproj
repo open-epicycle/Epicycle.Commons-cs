@@ -61,6 +61,7 @@
   <ItemGroup>
     <Compile Include="ArgAssertTest.cs" />
     <Compile Include="CollectionUtilsTest.cs" />
+    <Compile Include="Collections\EmptyListTest.cs" />
     <Compile Include="EnumerationUtilsTest.cs" />
     <Compile Include="FileSystem\CommonFileSystemTest.cs" />
     <Compile Include="FileSystem\FileSystemPathExtensionsTest.cs" />
