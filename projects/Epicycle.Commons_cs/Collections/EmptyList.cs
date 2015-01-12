@@ -20,8 +20,15 @@ using System.Collections.Generic;
 
 namespace Epicycle.Commons.Collections
 {
+    /// <summary>
+    /// Contains an empty list of type T.
+    /// </summary>
+    /// <typeparam name="T">The empty list's elemets type.</typeparam>
     public static class EmptyList<T>
     {
+        /// <summary>
+        /// Empty read-only list.
+        /// </summary>
         public static readonly IReadOnlyList<T> Instance = new T[0];
     }
 }
