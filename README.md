@@ -27,6 +27,7 @@ Copyright 2015 Epicycle (http://epicycle.org)
 ### Version 0.1 
 
 * **Version 0.1.5** [NOT RELEASED]
+  * Full implementation of System.Numerics.Complex for .NET 3.5
 
 * **Version 0.1.4** [2015-01-08]
   * The emulated System.Collections.ObjectModel.ReadOnlyCollection was replaced by a much thinner ReadOnlyListWrapper
