@@ -322,9 +322,15 @@ namespace System.Numerics
         }
 
         [Test]
-        public void Pow_returns_correct_result()
+        public void Pow_scalar_power_returns_correct_result()
         {
             ComplexTestUtils.AssertAreEqual(-0.026858, 0.297861, Complex.Pow(_c1, -1.5));
+        }
+
+        [Test]
+        public void Pow_complex_power_returns_correct_result()
+        {
+            ComplexTestUtils.AssertAreEqual(10.3054309, 7.989778, Complex.Pow(_c1, _c2));
         }
 
         [Test]

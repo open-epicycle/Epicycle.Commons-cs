@@ -318,7 +318,10 @@ namespace System.Numerics
             return Complex.FromPolarCoordinates(Math.Pow(value.Magnitude, power), value.Phase * power);
         }
 
-        // TODO: public static Complex Pow(Complex value, Complex power)
+        public static Complex Pow(Complex value, Complex power)
+        {
+            return Exp(power * Log(value));
+        }
 
         public static Complex Reciprocal(Complex value)
         {
