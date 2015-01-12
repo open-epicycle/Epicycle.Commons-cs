@@ -21,10 +21,15 @@ using System.Collections.Generic;
 
 namespace Epicycle.Commons.Collections
 {
+    // TODO: Docs
+
     public sealed class FiniteFunctionGraph<T1, T2> : IEnumerable<Tuple<T1, T2>>
     {
         public FiniteFunctionGraph(IReadOnlyList<T1> domain, IReadOnlyList<T2> codomain, IReadOnlyList<int> function)
         {
+            ArgAssert.NotNull(domain, "domain");
+            ArgAssert.NotNull(codomain, "codomain");
+            ArgAssert.NotNull(function, "function");
             ArgAssert.Equals(domain.Count, function.Count);
 
             _domain = domain;

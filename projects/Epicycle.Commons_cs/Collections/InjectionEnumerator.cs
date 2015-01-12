@@ -21,6 +21,9 @@ using System.Collections.Generic;
 
 namespace Epicycle.Commons.Collections
 {
+    // TODO: Full tests
+    // TODO: Docs
+
     public sealed class InjectionEnumerator
     {
         public InjectionEnumerator(int domainCount, int codomainCount)
@@ -87,6 +90,8 @@ namespace Epicycle.Commons.Collections
 
         public void GetCurrent(IList<int> injection)
         {
+            ArgAssert.NotNull(injection, "injection");
+
             if (_reset || _counters[0] >= _codomainCount)
             {
                 throw new InvalidOperationException();

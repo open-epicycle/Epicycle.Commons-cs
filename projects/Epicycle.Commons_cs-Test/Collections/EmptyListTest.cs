@@ -16,43 +16,19 @@
 // For more information check https://github.com/open-epicycle/Epicycle.Commons-cs
 // ]]]]
 
-using System.Collections;
-using System.Collections.Generic;
+using NUnit.Framework;
 
 namespace Epicycle.Commons.Collections
 {
-    // TODO: Docs
-
-    public class ReadOnlyListWrapper<T> : 
-        IReadOnlyList<T>
+    [TestFixture]
+    public class EmptyListTest
     {
-        private readonly IList<T> _list;
-
-        public ReadOnlyListWrapper(IList<T> list)
+        [Test]
+        public void Instance_return_empty_list()
         {
-            ArgAssert.NotNull(list, "list");
+            var list = EmptyList<string>.Instance;
 
-            _list = list;
-        }
-
-        public int Count
-        {
-            get { return _list.Count; }
-        }
-
-        public T this[int index]
-        {
-            get { return _list[index]; }
-        }
-
-        public IEnumerator<T> GetEnumerator()
-        {
-            return _list.GetEnumerator();
-        }
-
-        IEnumerator IEnumerable.GetEnumerator()
-        {
-            return ((IEnumerable)_list).GetEnumerator();
+            Assert.AreEqual(0, list.Count);
         }
     }
 }

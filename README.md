@@ -30,6 +30,8 @@ Copyright 2015 Epicycle (http://epicycle.org)
   * Adding dependency to TaskParallelLibrary for .NET 3.5 compatibility
   * Almost full implementation of System.Tuple .NET 3.5
   * Almost full implementation of System.Numerics.Complex for .NET 3.5
+  * Epicycle.Commons.Collections.CollectionUtils: AsReadOnlyList can now receive IList.
+  * Epicycle.Commons.Collections: Better test coverage and input validation
 
 * **Version 0.1.4** [2015-01-08]
   * The emulated System.Collections.ObjectModel.ReadOnlyCollection was replaced by a much thinner ReadOnlyListWrapper
