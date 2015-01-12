@@ -18,9 +18,6 @@
 
 using System;
 using System.Collections.Generic;
-#if NET35 || NET40
-using System.Collections.ObjectModel;
-#endif
 
 namespace Epicycle.Commons.Collections
 {
