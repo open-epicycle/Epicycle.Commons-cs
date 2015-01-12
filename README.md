@@ -1,4 +1,4 @@
-# Epicycle.Commons-cs 0.1.5.0 [NOT RELEASED]
+# Epicycle.Commons-cs 0.1.5.0
 Epicycle .NET Commons Library.
 
 ***Note***: *This library is in it's 0.X version, that means that it's still in active development and backward compatibility is not guaranteed!*
@@ -26,12 +26,15 @@ Copyright 2015 Epicycle (http://epicycle.org)
 ## Release Notes
 ### Version 0.1 
 
-* **Version 0.1.5** [NOT RELEASED]
-  * Adding dependency to TaskParallelLibrary for .NET 3.5 compatibility
-  * Almost full implementation of System.Tuple .NET 3.5
-  * Almost full implementation of System.Numerics.Complex for .NET 3.5
-  * Epicycle.Commons.Collections.CollectionUtils: AsReadOnlyList can now receive IEnumerable and IList.
-  * Epicycle.Commons.Collections: Better test coverage and input validation
+* **Version 0.1.5** [2015-01-12]
+  * .NET 3.5 Compatibility:
+    * Adding dependency on TaskParallelLibrary
+    * Almost full implementation of System.Tuple
+    * Almost full implementation of System.Numerics.Complex
+  * Epicycle.Commons.Collections:
+	* CollectionUtils.AsReadOnlyList can now work with IEnumerable and IList.
+    * Better input validation
+	* Better test coverage
 
 * **Version 0.1.4** [2015-01-08]
   * The emulated System.Collections.ObjectModel.ReadOnlyCollection was replaced by a much thinner ReadOnlyListWrapper
