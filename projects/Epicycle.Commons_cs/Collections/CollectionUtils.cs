@@ -18,6 +18,7 @@
 
 using System;
 using System.Collections.Generic;
+using System.Linq;
 
 namespace Epicycle.Commons.Collections
 {
@@ -25,6 +26,13 @@ namespace Epicycle.Commons.Collections
 
     public static class CollectionUtils
     {
+        public static IReadOnlyList<T> AsReadOnlyList<T>(this IEnumerable<T> @this)
+        {
+            ArgAssert.NotNull(@this, "this");
+
+            return AsReadOnlyList(@this.ToList());
+        }
+
         public static IReadOnlyList<T> AsReadOnlyList<T>(this IList<T> @this)
         {
             ArgAssert.NotNull(@this, "this");

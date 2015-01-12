@@ -52,6 +52,12 @@ namespace Epicycle.Commons.Collections
         }
 
         [Test]
+        public void AsReadOnlyList_IEnumerable_resulting_list_is_the_same()
+        {
+            AssertListEquals(_list, ((IEnumerable<int>)_list).AsReadOnlyList());
+        }
+
+        [Test]
         public void AsReadOnlyList_IList_resulting_list_is_the_same()
         {
             AssertListEquals(_list, ((IList<int>)_list).AsReadOnlyList());
