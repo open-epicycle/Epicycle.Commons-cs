@@ -15,9 +15,10 @@ dotnet_frameworks:
  - net45
 
 nuget_dependencies:
+ - TaskParallelLibrary.1.0.2856.0
+ - YamlDotNet.3.5.0
  - NUnit.2.6.4
  - Moq.4.2.1409.1722
- - YamlDotNet.3.5.0
 
 description: |
    Epicycle .NET commons library. Contains various utilities, file system abstraction, reporting and more. Used by other Epicycle packages.

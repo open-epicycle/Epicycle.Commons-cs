@@ -51,6 +51,9 @@
     <Reference Include="nunit.framework">
       <HintPath>..\..\externals\NuGet\NUnit.2.6.4\lib\nunit.framework.dll</HintPath>
     </Reference>
+    <Reference Include="System.Threading">
+      <HintPath>..\..\externals\NuGet\TaskParallelLibrary.1.0.2856.0\lib\Net35\System.Threading.dll</HintPath>
+    </Reference>
     <Reference Include="YamlDotNet">
       <HintPath>..\..\externals\NuGet\YamlDotNet.3.5.0\lib\net35\YamlDotNet.dll</HintPath>
     </Reference>
