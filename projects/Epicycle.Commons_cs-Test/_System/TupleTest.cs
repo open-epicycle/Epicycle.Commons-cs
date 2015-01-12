@@ -27,6 +27,12 @@ namespace System
     [TestFixture]
     public class TupleTest
     {
+        private Tuple<int> _tuple1;
+        private Tuple<int> _tuple1alt;
+        private Tuple<int> _tuple1dif1;
+        private Tuple<int> _tuple1less1;
+        private Tuple<int> _tuple1great1;
+
         private Tuple<int, string> _tuple2;
         private Tuple<int, string> _tuple2alt;
         private Tuple<int, string> _tuple2dif1;
@@ -39,17 +45,29 @@ namespace System
         [SetUp]
         public void SetuUp()
         {
-            _tuple2 = Tuple.Create(1, "m");
-            _tuple2alt = Tuple.Create(1, "m");
-            _tuple2dif1 = Tuple.Create(2, "m");
-            _tuple2dif2 = Tuple.Create(1, "X");
-            _tuple2less1 = Tuple.Create(0, "m");
-            _tuple2less2 = Tuple.Create(1, "a");
+            _tuple1 = Tuple.Create(1);
+            _tuple1alt = Tuple.Create(1);
+            _tuple1dif1 = Tuple.Create(2);
+            _tuple1less1 = Tuple.Create(0);
+            _tuple1great1 = Tuple.Create(2);
+
+            _tuple2       = Tuple.Create(1, "m");
+            _tuple2alt    = Tuple.Create(1, "m");
+            _tuple2dif1   = Tuple.Create(2, "m");
+            _tuple2dif2   = Tuple.Create(1, "X");
+            _tuple2less1  = Tuple.Create(0, "m");
+            _tuple2less2  = Tuple.Create(1, "a");
             _tuple2great1 = Tuple.Create(2, "m");
             _tuple2great2 = Tuple.Create(1, "z");
         }
 
         #region Create
+
+        [Test]
+        public void Create1_creates_tuple_with_correct_items()
+        {
+            Assert.That(_tuple1.Item1, Is.EqualTo(1));
+        }
 
         [Test]
         public void Create2_creates_tuple_with_correct_items()
@@ -61,6 +79,42 @@ namespace System
         #endregion
 
         #region Equals & GetHashCode
+
+        #region Tuple1
+
+        [Test]
+        public void Equals1_not_equals_to_null()
+        {
+            Assert.That(_tuple1.Equals(null), Is.False);
+        }
+
+        [Test]
+        public void Equals1_not_equals_to_other_type()
+        {
+            Assert.That(_tuple1.Equals(123), Is.False);
+        }
+
+        [Test]
+        public void Equals1_not_equals_to_different_tuple()
+        {
+            Assert.That(_tuple1.Equals(_tuple1dif1), Is.False);
+        }
+
+        [Test]
+        public void Equals1_equals_to_similar_tuple()
+        {
+            Assert.That(_tuple1.Equals(_tuple1alt), Is.True);
+        }
+
+        [Test]
+        public void GetHashCode1_hash_code_of_similar_tuples_is_the_smae()
+        {
+            Assert.That(_tuple1.GetHashCode(), Is.EqualTo(_tuple1alt.GetHashCode()));
+        }
+
+        #endregion
+
+        #region Tuple2
 
         [Test]
         public void Equals2_not_equals_to_null()
@@ -77,7 +131,7 @@ namespace System
         [Test]
         public void Equals2_not_equals_to_different_tuple()
         {
-            Assert.That(_tuple2.Equals(_tuple2dif2), Is.False);
+            Assert.That(_tuple2.Equals(_tuple2dif1), Is.False);
             Assert.That(_tuple2.Equals(_tuple2dif2), Is.False);
         }
 
@@ -95,7 +149,15 @@ namespace System
 
         #endregion
 
+        #endregion
+
         #region ToString
+
+        [Test]
+        public void ToString1_produces_correct_string()
+        {
+            Assert.That(_tuple1.ToString(), Is.EqualTo("(1)"));
+        }
 
         [Test]
         public void ToString2_produces_correct_string()
@@ -106,6 +168,49 @@ namespace System
         #endregion
 
         #region IComparable.CompareTo
+
+        #region Tuple1
+
+        [Test]
+        [ExpectedException(typeof(ArgumentException))]
+        public void IComparable_CompareTo1_wrong_type_throws_ArgumentException()
+        {
+            ((IComparable)_tuple1).CompareTo(123);
+        }
+
+        [Test]
+        public void IComparable_CompareTo1_not_null_greater_than_null()
+        {
+            Assert.That(((IComparable)_tuple1).CompareTo(null), Is.GreaterThan(0));
+        }
+
+        [Test]
+        public void IComparable_CompareTo1_lexicographic_comparison_greater_than()
+        {
+            Assert.That(((IComparable)_tuple1).CompareTo(_tuple1less1), Is.GreaterThan(0));
+        }
+
+        [Test]
+        public void IComparable_CompareTo1_lexicographic_comparison_less_than()
+        {
+            Assert.That(((IComparable)_tuple1).CompareTo(_tuple1great1), Is.LessThan(0));
+        }
+
+        [Test]
+        public void IComparable_CompareTo1_tuple_is_equal_to_itself()
+        {
+            Assert.That(((IComparable)_tuple1).CompareTo(_tuple1), Is.EqualTo(0));
+        }
+
+        [Test]
+        public void IComparable_CompareTo1_similar_tupples_are_equal()
+        {
+            Assert.That(((IComparable)_tuple1).CompareTo(_tuple1alt), Is.EqualTo(0));
+        }
+
+        #endregion
+
+        #region Tuple2
 
         [Test]
         [ExpectedException(typeof(ArgumentException))]
@@ -145,6 +250,8 @@ namespace System
         {
             Assert.That(((IComparable)_tuple2).CompareTo(_tuple2alt), Is.EqualTo(0));
         }
+
+        #endregion
 
         #endregion
     }

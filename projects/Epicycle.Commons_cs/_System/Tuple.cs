@@ -21,12 +21,80 @@
 namespace System
 {
     // TODO: Tuples should implement IStructuralEquatable, IStructuralComparable
+    // TODO: Tuples should implement int IStructuralComparable.CompareTo(Object other, IComparer comparer)
+    // TODO: Tuples should implement bool IStructuralEquatable.Equals(Object other, IEqualityComparer comparer)
+    // TODO: Tuples should implement int IStructuralEquatable.GetHashCode(IEqualityComparer comparer)
 
     public static class Tuple
     {
+        public static Tuple<T1> Create<T1>(T1 item1)
+        {
+            return new Tuple<T1>(item1);
+        }
+
         public static Tuple<T1, T2> Create<T1, T2>(T1 item1, T2 item2)
         {
             return new Tuple<T1, T2>(item1, item2);
+        }
+    }
+
+    public class Tuple<T1> : IComparable
+    {
+        private readonly T1 _item1;
+
+        public Tuple(T1 item1)
+        {
+            _item1 = item1;
+        }
+
+        public T1 Item1
+        {
+            get { return _item1; }
+        }
+
+        public override bool Equals(Object obj)
+        {
+            if (obj == null || !(obj is Tuple<T1>))
+            {
+                return false;
+            }
+
+            var other = (Tuple<T1>)obj;
+
+            return Item1.Equals(other.Item1);
+        }
+
+        public override int GetHashCode()
+        {
+            return Item1.GetHashCode();
+        }
+
+        public override string ToString()
+        {
+            return string.Format("({0})", Item1);
+        }
+
+        int IComparable.CompareTo(Object obj)
+        {
+            if (obj == (object)this)
+            {
+                return 0;
+            }
+
+            if (obj == null)
+            {
+                return 1;
+            }
+
+            if (!(obj is Tuple<T1>))
+            {
+                throw new ArgumentException(string.Format("obj is of the wrong type: {0}!", obj.GetType()));
+            }
+
+            var other = (Tuple<T1>)obj;
+
+
+            return ((IComparable)Item1).CompareTo(other.Item1);
         }
     }
 
@@ -100,10 +168,6 @@ namespace System
 
             return result;
         }
-
-        // TODO: int IStructuralComparable.CompareTo(Object other, IComparer comparer)
-        // TODO: bool IStructuralEquatable.Equals(Object other, IEqualityComparer comparer)
-        // TODO: int IStructuralEquatable.GetHashCode(IEqualityComparer comparer)
     }
 }
 
