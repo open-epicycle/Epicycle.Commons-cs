@@ -21,6 +21,9 @@ using System.Collections.Generic;
 
 namespace Epicycle.Commons.Collections
 {
+    // TODO: Full tests
+    // TODO: Docs
+
     public sealed class InjectionEnumerator
     {
         public InjectionEnumerator(int domainCount, int codomainCount)

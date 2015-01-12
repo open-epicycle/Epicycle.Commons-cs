@@ -21,6 +21,8 @@ using System.Collections.Generic;
 
 namespace Epicycle.Commons.Collections
 {
+    // TODO: Docs
+
     public static class CollectionUtils
     {
         public static IReadOnlyList<T> AsReadOnlyList<T>(this IList<T> @this)

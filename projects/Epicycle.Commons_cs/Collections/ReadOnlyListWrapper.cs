@@ -21,6 +21,8 @@ using System.Collections.Generic;
 
 namespace Epicycle.Commons.Collections
 {
+    // TODO: Docs
+
     public class ReadOnlyListWrapper<T> : 
         IReadOnlyList<T>
     {
