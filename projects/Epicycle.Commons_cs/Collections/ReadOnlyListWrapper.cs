@@ -30,6 +30,8 @@ namespace Epicycle.Commons.Collections
 
         public ReadOnlyListWrapper(IList<T> list)
         {
+            ArgAssert.NotNull(list, "list");
+
             _list = list;
         }
 

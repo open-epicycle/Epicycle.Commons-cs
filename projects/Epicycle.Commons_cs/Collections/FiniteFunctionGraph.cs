@@ -27,6 +27,9 @@ namespace Epicycle.Commons.Collections
     {
         public FiniteFunctionGraph(IReadOnlyList<T1> domain, IReadOnlyList<T2> codomain, IReadOnlyList<int> function)
         {
+            ArgAssert.NotNull(domain, "domain");
+            ArgAssert.NotNull(codomain, "codomain");
+            ArgAssert.NotNull(function, "function");
             ArgAssert.Equals(domain.Count, function.Count);
 
             _domain = domain;

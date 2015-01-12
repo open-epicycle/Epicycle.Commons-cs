@@ -27,11 +27,15 @@ namespace Epicycle.Commons.Collections
     {
         public static IReadOnlyList<T> AsReadOnlyList<T>(this IList<T> @this)
         {
+            ArgAssert.NotNull(@this, "this");
+
             return new ReadOnlyListWrapper<T>(@this);
         }
 
         public static IReadOnlyList<T> AsReadOnlyList<T>(this List<T> @this)
         {
+            ArgAssert.NotNull(@this, "this");
+
 #if NET35 || NET40
             return AsReadOnlyList<T>((IList<T>)@this);
 #else
@@ -41,21 +45,29 @@ namespace Epicycle.Commons.Collections
 
         public static T Last<T>(this IReadOnlyList<T> @this)
         {
+            ArgAssert.NotNull(@this, "this");
+
             return @this[@this.Count - 1];
         }
 
         public static void RemoveLast<T>(this IList<T> @this)
         {
+            ArgAssert.NotNull(@this, "this");
+
             @this.RemoveAt(@this.Count - 1);
         }
 
         public static T ElementAtCyclic<T>(this IReadOnlyList<T> @this, int i)
         {
+            ArgAssert.NotNull(@this, "this");
+
             return @this[i.Mod(@this.Count)];
         }
 
         public static IReadOnlyList<T> AsSingleton<T>(this T @this)
         {
+            ArgAssert.NotNull(@this, "this");
+
             return new SingletonList<T>(@this);
         }
 
@@ -99,6 +111,8 @@ namespace Epicycle.Commons.Collections
 
         public static IList<T> Reverse<T>(this IReadOnlyList<T> @this)
         {
+            ArgAssert.NotNull(@this, "this");
+
             var answer = new List<T>(@this.Count);
 
             for (var j = @this.Count - 1; j >= 0; j--)
@@ -111,6 +125,8 @@ namespace Epicycle.Commons.Collections
 
         public static IReadOnlyList<T> AsReverse<T>(this IReadOnlyList<T> @this)
         {
+            ArgAssert.NotNull(@this, "this");
+
             return new ReverseList<T>(@this);
         }
 
@@ -149,6 +165,8 @@ namespace Epicycle.Commons.Collections
 
         public static IReadOnlyList<T> AsCyclicPermutation<T>(this IReadOnlyList<T> @this, int shift)
         {
+            ArgAssert.NotNull(@this, "this");
+
             return new CyclicPermutedList<T>(@this, shift);
         }
 
@@ -198,6 +216,11 @@ namespace Epicycle.Commons.Collections
         // indices are assumed to be sorted
         public static void SieveByIndex<T>(this IReadOnlyList<T> @this, IEnumerable<int> indices, ICollection<T> inside, ICollection<T> outside)
         {
+            ArgAssert.NotNull(@this, "this");
+            ArgAssert.NotNull(indices, "indices");
+            ArgAssert.NotNull(inside, "inside");
+            ArgAssert.NotNull(outside, "outside");
+
             var idxEnum = indices.GetEnumerator();
             var validIndex = idxEnum.MoveNext();
 
@@ -218,6 +241,11 @@ namespace Epicycle.Commons.Collections
         // indices are assumed to be sorted
         public static void SieveByIndex<T>(this IReadOnlyList<T> @this, IEnumerable<int> indices, ICollection<T> outside)
         {
+            ArgAssert.NotNull(@this, "this");
+            ArgAssert.NotNull(@this, "this");
+            ArgAssert.NotNull(indices, "indices");
+            ArgAssert.NotNull(outside, "outside");
+
             var idxEnum = indices.GetEnumerator();
             var validIndex = idxEnum.MoveNext();
 
