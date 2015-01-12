@@ -64,6 +64,7 @@
     <Compile Include="Collections\EmptyListTest.cs" />
     <Compile Include="Collections\EnumerationUtilsTest.cs" />
     <Compile Include="Collections\FiniteFunctionGraphTest.cs" />
+    <Compile Include="Collections\ReadOnlyListWrapperTest.cs" />
     <Compile Include="FileSystem\CommonFileSystemTest.cs" />
     <Compile Include="FileSystem\FileSystemPathExtensionsTest.cs" />
     <Compile Include="FileSystem\FileSystemPathTest.cs" />
