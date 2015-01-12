@@ -20,6 +20,7 @@
 
 namespace System.Collections.Generic
 {
+    // compatible with .NET 4.5 (excluding BigInteger casting)
     public interface IReadOnlyList<T> : IReadOnlyCollection<T>
     {
         T this[int index] { get; }

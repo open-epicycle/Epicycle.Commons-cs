@@ -75,6 +75,7 @@
     <Compile Include="StringUtilsTest.cs" />
     <Compile Include="YamlUtilsTest.cs" />
     <Compile Include="_System\Numerics\ComplexTest.cs" />
+    <Compile Include="_System\TupleTest.cs" />
   </ItemGroup>
   <ItemGroup>
     <None Include="packages.config" />
