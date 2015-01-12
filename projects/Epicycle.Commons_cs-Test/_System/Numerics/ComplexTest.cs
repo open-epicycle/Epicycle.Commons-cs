@@ -16,12 +16,8 @@
 // For more information check https://github.com/open-epicycle/Epicycle.Commons-cs
 // ]]]]
 
-using System;
-using System.Collections.Generic;
-using System.Linq;
-using System.Text;
-using NUnit.Framework;
 using Epicycle.Commons.TestUtils;
+using NUnit.Framework;
 
 namespace System.Numerics
 {

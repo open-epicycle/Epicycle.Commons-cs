@@ -16,8 +16,8 @@
 // For more information check https://github.com/open-epicycle/Epicycle.Commons-cs
 // ]]]]
 
-using System.Collections.Generic;
 using System.Collections;
+using System.Collections.Generic;
 
 namespace Epicycle.Commons.Collections
 {
