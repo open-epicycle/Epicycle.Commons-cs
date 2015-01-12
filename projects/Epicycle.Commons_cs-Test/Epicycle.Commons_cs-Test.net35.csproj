@@ -74,6 +74,7 @@
     <Compile Include="Properties\AssemblyInfo.cs" />
     <Compile Include="StringUtilsTest.cs" />
     <Compile Include="YamlUtilsTest.cs" />
+    <Compile Include="_System\Numerics\ComplexTest.cs" />
   </ItemGroup>
   <ItemGroup>
     <None Include="packages.config" />
