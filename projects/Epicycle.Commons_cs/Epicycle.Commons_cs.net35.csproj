@@ -62,6 +62,7 @@
     <Compile Include="Collections\FiniteFunctionGraph.cs" />
     <Compile Include="Collections\InjectionEnumerator.cs" />
     <Compile Include="Collections\ReadOnlyListWrapper.cs" />
+    <Compile Include="Csv\CsvConfiguration.cs" />
     <Compile Include="Csv\CsvData.cs" />
     <Compile Include="Csv\CsvParser.cs" />
     <Compile Include="Csv\CsvUtils.cs" />
