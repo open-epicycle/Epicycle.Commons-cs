@@ -22,7 +22,14 @@ namespace Epicycle.Commons.Csv
 {
     public interface ICsvData
     {
+        void ConfigureFromFirstRow();
+
+        CsvConfiguration Configuration { get; set; }
+
         IEnumerable<ICsvRow> Rows { get; }
         ICsvRow GetRow(int index);
+
+        IEnumerable<ICsvRow> DataRows { get; }
+        ICsvRow GetDataRow(int index);
     }
 }

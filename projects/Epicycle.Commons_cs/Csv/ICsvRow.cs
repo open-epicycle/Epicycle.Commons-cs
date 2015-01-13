@@ -22,5 +22,7 @@ namespace Epicycle.Commons.Csv
 {
     public interface ICsvRow : IEnumerable<string>
     {
+        string this[int index] { get; set; }
+        string this[string columnName] { get; set; }
     }
 }
