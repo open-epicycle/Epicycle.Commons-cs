@@ -24,5 +24,8 @@ namespace Epicycle.Commons.Csv
     {
         string this[int index] { get; set; }
         string this[string columnName] { get; set; }
+
+        T Get<T>(int index);
+        T Get<T>(string columnName);
     }
 }

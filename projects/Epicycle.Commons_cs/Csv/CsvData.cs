@@ -127,8 +127,18 @@ namespace Epicycle.Commons.Csv
 
             public string this[string columnName]
             {
-                get { return _cells[GetIndex(columnName)]; }
-                set { _cells[GetIndex(columnName)] = value; }
+                get { return this[GetIndex(columnName)]; }
+                set { this[GetIndex(columnName)] = value; }
+            }
+
+            public T Get<T>(int index)
+            {
+                return StringUtils.ParseString<T>(this[index]);
+            }
+
+            public T Get<T>(string columnName)
+            {
+                return Get<T>(GetIndex(columnName));
             }
 
             private int GetIndex(string columnName)
