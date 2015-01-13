@@ -25,6 +25,60 @@ namespace Epicycle.Commons
     public class StringUtilsTest
     {
         [Test]
+        public void ParseParseString_String_returns_same_string()
+        {
+            var str = "booga!";
+            Assert.That(StringUtils.ParseString<string>(str), Is.EqualTo(str));
+        }
+
+        [Test]
+        public void ParseParseString_Int_returns_correct_value()
+        {
+            var str = "123";
+            var expected = 123;
+
+            Assert.That(StringUtils.ParseString<int>(str), Is.EqualTo(expected));
+        }
+        
+        [Test]
+        public void ParseParseString_Long_returns_correct_value()
+        {
+            var str = "123456789012345";
+            var expected = 123456789012345L;
+
+            Assert.That(StringUtils.ParseString<long>(str), Is.EqualTo(expected));
+        }
+
+        [Test]
+        public void ParseParseString_Float_returns_correct_value()
+        {
+            var str = "1.0E-02";
+            var expected = 0.01f;
+
+            Assert.That(StringUtils.ParseString<float>(str), Is.EqualTo(expected));
+        }
+
+        [Test]
+        public void ParseParseString_Double_returns_correct_value()
+        {
+            var str = "1.0E-02";
+            var expected = 0.01;
+
+            Assert.That(StringUtils.ParseString<double>(str), Is.EqualTo(expected));
+        }
+        
+        [Test]
+        public void ParseParseString_Bool_returns_correct_value()
+        {
+            Assert.That(StringUtils.ParseString<bool>("true"), Is.True);
+            Assert.That(StringUtils.ParseString<bool>("True"), Is.True);
+            Assert.That(StringUtils.ParseString<bool>("TRUE"), Is.True);
+            Assert.That(StringUtils.ParseString<bool>("false"), Is.False);
+            Assert.That(StringUtils.ParseString<bool>("False"), Is.False);
+            Assert.That(StringUtils.ParseString<bool>("FALSE"), Is.False);
+        }
+
+        [Test]
         public void SimpleWordWrap_empty_string_yields_empty_line()
         {
             AssertSimpleWordWrap("", 5, "");
