@@ -9,8 +9,6 @@ Project("{FAE04EC0-301F-11D3-BF4B-00C04F79EFBC}") = "Epicycle.Commons_cs-Test.ne
 EndProject
 Project("{FAE04EC0-301F-11D3-BF4B-00C04F79EFBC}") = "Epicycle.Commons.TestUtils_cs.net35", "Epicycle.Commons.TestUtils_cs\Epicycle.Commons.TestUtils_cs.net35.csproj", "{178E17DF-6622-49EC-B9D8-AA844654506C}"
 EndProject
-Project("{FAE04EC0-301F-11D3-BF4B-00C04F79EFBC}") = "Playground", "Playground\Playground.csproj", "{742C288A-71D6-440C-8824-D817B59ECD90}"
-EndProject
 Global
 	GlobalSection(SolutionConfigurationPlatforms) = preSolution
 		Debug|Any CPU = Debug|Any CPU
@@ -29,10 +27,6 @@ Global
 		{178E17DF-6622-49EC-B9D8-AA844654506C}.Debug|Any CPU.Build.0 = Debug|Any CPU
 		{178E17DF-6622-49EC-B9D8-AA844654506C}.Release|Any CPU.ActiveCfg = Release|Any CPU
 		{178E17DF-6622-49EC-B9D8-AA844654506C}.Release|Any CPU.Build.0 = Release|Any CPU
-		{742C288A-71D6-440C-8824-D817B59ECD90}.Debug|Any CPU.ActiveCfg = Debug|Any CPU
-		{742C288A-71D6-440C-8824-D817B59ECD90}.Debug|Any CPU.Build.0 = Debug|Any CPU
-		{742C288A-71D6-440C-8824-D817B59ECD90}.Release|Any CPU.ActiveCfg = Release|Any CPU
-		{742C288A-71D6-440C-8824-D817B59ECD90}.Release|Any CPU.Build.0 = Release|Any CPU
 	EndGlobalSection
 	GlobalSection(SolutionProperties) = preSolution
 		HideSolutionNode = FALSE
