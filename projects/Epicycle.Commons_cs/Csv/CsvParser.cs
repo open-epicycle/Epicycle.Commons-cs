@@ -25,7 +25,7 @@ namespace Epicycle.Commons.Csv
     {
         public static IEnumerable<IEnumerable<string>> Parse(string data)
         {
-            var linesData = data.Replace("\r", "").Split('\n');
+            var linesData = data.Replace("\r", "").Split('\n').Where(x => x.Trim() != "");
             return linesData.Select(x => ParseLine(x));
         }
 
