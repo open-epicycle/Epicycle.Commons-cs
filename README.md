@@ -1,4 +1,4 @@
-# Epicycle.Commons-cs 0.1.6.0 [NOT RELEASED]
+# Epicycle.Commons-cs 0.1.6.0
 Epicycle .NET Commons Library.
 
 ***Note***: *This library is in it's 0.X version, that means that it's still in active development and backward compatibility is not guaranteed!*
@@ -27,7 +27,7 @@ Copyright 2015 Epicycle (http://epicycle.org)
 ## Release Notes
 ### Version 0.1 
 
-* **Version 0.1.6** [NOT RELEASED]
+* **Version 0.1.6** [2015-01-13]
   * Adding a very simple CSV parsing framework
   * Adding StringUtils.ParseString<T>
 
