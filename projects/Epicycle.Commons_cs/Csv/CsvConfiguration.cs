@@ -56,6 +56,11 @@ namespace Epicycle.Commons.Csv
             return _columnsByName[name];
         }
 
+        public bool HasColumn(string name)
+        {
+            return _columnsByName.ContainsKey(name);
+        }
+
         public bool IsHeaderRow { get; set; }
 
         public sealed class Column
