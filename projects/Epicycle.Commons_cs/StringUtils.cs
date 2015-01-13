@@ -17,11 +17,20 @@
 // ]]]]
 
 using System.Collections.Generic;
+using System.ComponentModel;
 
 namespace Epicycle.Commons
 {
     public static class StringUtils
     {
+        public static T ParseString<T>(string s)
+        {
+            ArgAssert.NotNull(s, "s");
+
+            var converter = TypeDescriptor.GetConverter(typeof(T));
+            return (T)(converter.ConvertFromInvariantString(s));
+        }
+
         public static string EnsureMaxLength(this string s, int maxLength)
         {
             if(s.Length < maxLength)

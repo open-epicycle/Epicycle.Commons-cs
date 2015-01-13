@@ -15,6 +15,7 @@ Epicycle .NET Commons Library.
 * Unsafe buffers *(Epicycle.Commons.Unsafe)*
 * Various collection utilities *(Epicycle.Commons.Collections)*
 * Time related utilities *(Epicycle.Commons.Time)*
+* CSV parsing framework *(Epicycle.Commons.Csv)*
 * Various utilities and extensions (e.g. assertions, math, strings, formatting, threading, YAML)
 * Specific **.NET 4.5** classes emulation for older frameworks (**.NET 3.5** and **.NET 4.0**)
 * Supported frameworks: **.NET 3.5**, **.NET 4.0**, **.NET 4.5**
@@ -27,6 +28,8 @@ Copyright 2015 Epicycle (http://epicycle.org)
 ### Version 0.1 
 
 * **Version 0.1.6** [NOT RELEASED]
+  * Adding a very simple CSV parsing framework
+  * Adding StringUtils.ParseString<T>
 
 * **Version 0.1.5** [2015-01-12]
   * .NET 3.5 Compatibility:

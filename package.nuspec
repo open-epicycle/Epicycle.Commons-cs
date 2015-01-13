@@ -18,7 +18,7 @@
     <releaseNotes>https://github.com/open-epicycle/Epicycle.Commons-cs/blob/ver-$version$/README.md</releaseNotes>
     <copyright>Copyright 2015 Epicycle</copyright>
     <language />
-    <tags>epicycle lib library utils utilities misc</tags>
+    <tags>epicycle lib library utils utilities misc unsafe buffer filesystem file system reports reporting collection collections string yaml csv</tags>
 
     <dependencies>
       <dependency id="TaskParallelLibrary" version="1.0.2856.0" />
