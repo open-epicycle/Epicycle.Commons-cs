@@ -128,6 +128,56 @@ namespace Epicycle.Commons.Binary
             Assert.That(b0, Is.EqualTo(0x98));
         }
 
+        [Test]
+        public void SerializeUint_big_endian_works_properly()
+        {
+            var data = new byte[] { 1, 2, 3, 4, 5, 6 };
+
+            BinaryUtils.SerializeUint(0x99U, data, 1, 1, Endianity.Big);
+            Assert.That(data, Is.EqualTo(new byte[] { 1, 0x99, 3, 4, 5, 6 }));
+            BinaryUtils.SerializeUint(0x1234U, data, 1, 2, Endianity.Big);
+            Assert.That(data, Is.EqualTo(new byte[] { 1, 0x12, 0x34, 4, 5, 6 }));
+            BinaryUtils.SerializeUint(0x123456U, data, 1, 3, Endianity.Big);
+            Assert.That(data, Is.EqualTo(new byte[] { 1, 0x12, 0x34, 0x56, 5, 6 }));
+            BinaryUtils.SerializeUint(0x12345678U, data, 1, 4, Endianity.Big);
+            Assert.That(data, Is.EqualTo(new byte[] { 1, 0x12, 0x34, 0x56, 0x78, 6 }));
+
+            data = new byte[] { 1, 2, 3, 4, 5, 6 };
+            BinaryUtils.SerializeUint(0x34U, data, 1, 1, Endianity.Big);
+            Assert.That(data, Is.EqualTo(new byte[] { 1, 0x34, 3, 4, 5, 6 }));
+            BinaryUtils.SerializeUint(0xFEDCU, data, 1, 2, Endianity.Big);
+            Assert.That(data, Is.EqualTo(new byte[] { 1, 0xFE, 0xDC, 4, 5, 6 }));
+            BinaryUtils.SerializeUint(0xFEDCBAU, data, 1, 3, Endianity.Big);
+            Assert.That(data, Is.EqualTo(new byte[] { 1, 0xFE, 0xDC, 0xBA, 5, 6 }));
+            BinaryUtils.SerializeUint(0xFEDCBA98U, data, 1, 4, Endianity.Big);
+            Assert.That(data, Is.EqualTo(new byte[] { 1, 0xFE, 0xDC, 0xBA, 0x98, 6 }));
+        }
+
+        [Test]
+        public void SerializeUint_little_endian_works_properly()
+        {
+            var data = new byte[] { 1, 2, 3, 4, 5, 6 };
+
+            BinaryUtils.SerializeUint(0x99U, data, 1, 1, Endianity.Little);
+            Assert.That(data, Is.EqualTo(new byte[] { 1, 0x99, 3, 4, 5, 6 }));
+            BinaryUtils.SerializeUint(0x1234U, data, 1, 2, Endianity.Little);
+            Assert.That(data, Is.EqualTo(new byte[] { 1, 0x34, 0x12, 4, 5, 6 }));
+            BinaryUtils.SerializeUint(0x123456U, data, 1, 3, Endianity.Little);
+            Assert.That(data, Is.EqualTo(new byte[] { 1, 0x56, 0x34, 0x12, 5, 6 }));
+            BinaryUtils.SerializeUint(0x12345678U, data, 1, 4, Endianity.Little);
+            Assert.That(data, Is.EqualTo(new byte[] { 1, 0x78, 0x56, 0x34, 0x12, 6 }));
+
+            data = new byte[] { 1, 2, 3, 4, 5, 6 };
+            BinaryUtils.SerializeUint(0x34U, data, 1, 1, Endianity.Little);
+            Assert.That(data, Is.EqualTo(new byte[] { 1, 0x34, 3, 4, 5, 6 }));
+            BinaryUtils.SerializeUint(0xFEDCU, data, 1, 2, Endianity.Little);
+            Assert.That(data, Is.EqualTo(new byte[] { 1, 0xDC, 0xFE, 4, 5, 6 }));
+            BinaryUtils.SerializeUint(0xFEDCBAU, data, 1, 3, Endianity.Little);
+            Assert.That(data, Is.EqualTo(new byte[] { 1, 0xBA, 0xDC, 0xFE, 5, 6 }));
+            BinaryUtils.SerializeUint(0xFEDCBA98U, data, 1, 4, Endianity.Little);
+            Assert.That(data, Is.EqualTo(new byte[] { 1, 0x98, 0xBA, 0xDC, 0xFE, 6 }));
+        }
+
         #endregion
 
         #region SerializeInt
@@ -233,6 +283,57 @@ namespace Epicycle.Commons.Binary
             Assert.That(b2, Is.EqualTo(0xDC));
             Assert.That(b1, Is.EqualTo(0xBA));
             Assert.That(b0, Is.EqualTo(0x98));
+        }
+
+
+        [Test]
+        public void SerializeInt_big_endian_works_properly()
+        {
+            var data = new byte[] { 1, 2, 3, 4, 5, 6 };
+
+            BinaryUtils.SerializeInt(0x34, data, 1, 1, Endianity.Big);
+            Assert.That(data, Is.EqualTo(new byte[] { 1, 0x34, 3, 4, 5, 6 }));
+            BinaryUtils.SerializeInt(0x1234, data, 1, 2, Endianity.Big);
+            Assert.That(data, Is.EqualTo(new byte[] { 1, 0x12, 0x34, 4, 5, 6 }));
+            BinaryUtils.SerializeInt(0x123456, data, 1, 3, Endianity.Big);
+            Assert.That(data, Is.EqualTo(new byte[] { 1, 0x12, 0x34, 0x56, 5, 6 }));
+            BinaryUtils.SerializeInt(0x12345678, data, 1, 4, Endianity.Big);
+            Assert.That(data, Is.EqualTo(new byte[] { 1, 0x12, 0x34, 0x56, 0x78, 6 }));
+
+            data = new byte[] { 1, 2, 3, 4, 5, 6 };
+            BinaryUtils.SerializeInt(-2, data, 1, 1, Endianity.Big);
+            Assert.That(data, Is.EqualTo(new byte[] { 1, 0xFE, 3, 4, 5, 6 }));
+            BinaryUtils.SerializeInt(-0x124, data, 1, 2, Endianity.Big);
+            Assert.That(data, Is.EqualTo(new byte[] { 1, 0xFE, 0xDC, 4, 5, 6 }));
+            BinaryUtils.SerializeInt(-0x12346, data, 1, 3, Endianity.Big);
+            Assert.That(data, Is.EqualTo(new byte[] { 1, 0xFE, 0xDC, 0xBA, 5, 6 }));
+            BinaryUtils.SerializeInt(-0x1234568, data, 1, 4, Endianity.Big);
+            Assert.That(data, Is.EqualTo(new byte[] { 1, 0xFE, 0xDC, 0xBA, 0x98, 6 }));
+        }
+
+        [Test]
+        public void SerializeInt_little_endian_works_properly()
+        {
+            var data = new byte[] { 1, 2, 3, 4, 5, 6 };
+
+            BinaryUtils.SerializeInt(0x34, data, 1, 1, Endianity.Little);
+            Assert.That(data, Is.EqualTo(new byte[] { 1, 0x34, 3, 4, 5, 6 }));
+            BinaryUtils.SerializeInt(0x1234, data, 1, 2, Endianity.Little);
+            Assert.That(data, Is.EqualTo(new byte[] { 1, 0x34, 0x12, 4, 5, 6 }));
+            BinaryUtils.SerializeInt(0x123456, data, 1, 3, Endianity.Little);
+            Assert.That(data, Is.EqualTo(new byte[] { 1, 0x56, 0x34, 0x12, 5, 6 }));
+            BinaryUtils.SerializeInt(0x12345678, data, 1, 4, Endianity.Little);
+            Assert.That(data, Is.EqualTo(new byte[] { 1, 0x78, 0x56, 0x34, 0x12, 6 }));
+
+            data = new byte[] { 1, 2, 3, 4, 5, 6 };
+            BinaryUtils.SerializeInt(-2, data, 1, 1, Endianity.Little);
+            Assert.That(data, Is.EqualTo(new byte[] { 1, 0xFE, 3, 4, 5, 6 }));
+            BinaryUtils.SerializeInt(-0x124, data, 1, 2, Endianity.Little);
+            Assert.That(data, Is.EqualTo(new byte[] { 1, 0xDC, 0xFE, 4, 5, 6 }));
+            BinaryUtils.SerializeInt(-0x12346, data, 1, 3, Endianity.Little);
+            Assert.That(data, Is.EqualTo(new byte[] { 1, 0xBA, 0xDC, 0xFE, 5, 6 }));
+            BinaryUtils.SerializeInt(-0x1234568, data, 1, 4, Endianity.Little);
+            Assert.That(data, Is.EqualTo(new byte[] { 1, 0x98, 0xBA, 0xDC, 0xFE, 6 }));
         }
         
         #endregion
