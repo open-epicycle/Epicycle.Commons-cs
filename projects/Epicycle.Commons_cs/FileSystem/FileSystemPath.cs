@@ -92,7 +92,7 @@ namespace Epicycle.Commons.FileSystem
             return new FileSystemPath(pathString);
         }
 
-        #region String represintation
+        #region String representation
 
         /// <summary>
         /// A string represintation of the path. Note that it may not be the same as the string passed to the constructor
