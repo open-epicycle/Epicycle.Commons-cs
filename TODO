@@ -1,1 +1,15 @@
- - Some of the AsReadOnlyList should be ToReadOnlyList
+ * Epicycle.Commons.Binary:
+   * BinaryUtils
+     * Add Float32/64 Serialization/deserialization
+     * Add flip endianity to uints
+   * BinaryReaderUtils
+     * Add Float64 deserialization
+     * Get rid of the temp stream in ReadFloat32
+     * Add pascal buffer read
+     * Create string version to byte[] methods
+   * BinaryWriterUtils
+     * Add Float32/64 Serialization
+     * Add pascal buffer write
+     * Create string version to byte[] methods
+ * Epicycle.Commons.Collections:
+   * Some of the AsReadOnlyList should be ToReadOnlyList
