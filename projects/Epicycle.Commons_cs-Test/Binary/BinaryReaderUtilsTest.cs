@@ -16,12 +16,9 @@
 // For more information check https://github.com/open-epicycle/Epicycle.Commons-cs
 // ]]]]
 
-using System;
-using System.Collections.Generic;
-using System.Linq;
-using System.IO;
-using System.Threading.Tasks;
 using NUnit.Framework;
+using System;
+using System.IO;
 
 namespace Epicycle.Commons.Binary
 {
