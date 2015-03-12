@@ -60,6 +60,10 @@
   </ItemGroup>
   <ItemGroup>
     <Compile Include="ArgAssertTest.cs" />
+    <Compile Include="Binary\BinaryReaderUtilsTest.cs" />
+    <Compile Include="Binary\BinaryUtilsTest.cs" />
+    <Compile Include="Binary\BinaryWriterUtilsTest.cs" />
+    <Compile Include="Binary\StreamUtilsTest.cs" />
     <Compile Include="Collections\CollectionUtilsTest.cs" />
     <Compile Include="Collections\EmptyListTest.cs" />
     <Compile Include="Collections\EnumerationUtilsTest.cs" />

@@ -53,6 +53,11 @@
     <Compile Include="ArgAssert.cs" />
     <Compile Include="BasePeriodicThread.cs" />
     <Compile Include="BasicMath.cs" />
+    <Compile Include="Binary\BinaryReaderUtils.cs" />
+    <Compile Include="Binary\BinaryUtils.cs" />
+    <Compile Include="Binary\BinaryWriterUtils.cs" />
+    <Compile Include="Binary\Endianity.cs" />
+    <Compile Include="Binary\StreamUtils.cs" />
     <Compile Include="Collections\CollectionUtils.cs" />
     <Compile Include="Collections\EmptyList.cs" />
     <Compile Include="Collections\EnumerationUtils.cs" />

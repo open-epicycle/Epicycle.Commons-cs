@@ -13,6 +13,7 @@ Epicycle .NET Commons Library.
 * A simple framework for objects that are based on the file system *(Epicycle.Commons.FileSystemBasedObjects)*
 * Hierarchical reporting infrastructure *(Epicycle.Commons.Reporting)*
 * Unsafe buffers *(Epicycle.Commons.Unsafe)*
+* Binary & stream utilities *(Epicycle.Commons.Binary)*
 * Various collection utilities *(Epicycle.Commons.Collections)*
 * Time related utilities *(Epicycle.Commons.Time)*
 * CSV parsing framework *(Epicycle.Commons.Csv)*
@@ -27,7 +28,12 @@ Copyright 2015 Epicycle (http://epicycle.org)
 ## Release Notes
 ### Version 0.1 
 
-* **Version 0.1.6** [NOT RELEASED]
+* **Version 0.1.7** [NOT RELEASED]
+  * Creating Epicycle.Commons.Binary:
+    * BinaryUtils: Various serialization, deserialization and other binary utils.
+    * StreamUtils: Utilities and extension methods for System.IO.Stream
+    * BinaryReaderUtils: Utilities and extension methods for System.IO.BinaryReader
+    * BinaryWriterUtils: Utilities and extension methods for System.IO.BinaryWriter
 
 * **Version 0.1.6** [2015-01-13]
   * Adding a very simple CSV parsing framework
