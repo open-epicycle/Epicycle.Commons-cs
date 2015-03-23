@@ -37,6 +37,9 @@ Copyright 2015 Epicycle (http://epicycle.org)
   * Epicycle.Commons.Reporting
     * SimpleReport was renamed into SerializableReport and made public
     * SerializableReport: Fixing a bug with indentation
+	* Creating ReportingUtils:
+	  * It is now possible to report a System.Diagnostics.Stopwatch
+	  * INumericReport.Time was moved into ReportingUtils and renamed into TimeAndReport
 	* Unit tests
 
 * **Version 0.1.6** [2015-01-13]

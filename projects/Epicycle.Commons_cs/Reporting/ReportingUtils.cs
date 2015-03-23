@@ -16,13 +16,23 @@
 // For more information check https://github.com/open-epicycle/Epicycle.Commons-cs
 // ]]]]
 
+using System;
+using System.Diagnostics;
+
 namespace Epicycle.Commons.Reporting
 {
-    public interface INumericReport
+    public static class ReportingUtils
     {
-        void Report(string name, int value);
-        void Report(string name, long value);
-        void Report(string name, float value);
-        void Report(string name, double value);
+        public static void Report(this INumericReport @this, string name, Stopwatch stopwatch)
+        {
+            var dt_sec = ((double)stopwatch.ElapsedTicks) / Stopwatch.Frequency;
+
+            @this.Report(name, dt_sec);
+        }
+
+        public static IDisposable TimeAndReport(this INumericReport @this, string name)
+        {
+            return new ReportingStopwatch(@this, name);
+        }
     }
 }

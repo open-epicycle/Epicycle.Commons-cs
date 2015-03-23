@@ -103,11 +103,6 @@ namespace Epicycle.Commons.Reporting
             }
         }
 
-        public IDisposable Time(string name)
-        {
-            return new ReportingStopwatch(this, name);
-        }
-
         private object GetValue(string name)
         {
             if (_entries != null)

@@ -72,10 +72,7 @@ namespace Epicycle.Commons.Reporting
             ReportInner(name, value);
         }
 
-        public IDisposable Time(string name)
-        {
-            return new ReportingStopwatch(this, name);
-        }
+
 
         private void ReportInner(string name, object value)
         {

@@ -101,6 +101,7 @@
     <Compile Include="Reporting\IStatisticsReporter.cs" />
     <Compile Include="Reporting\PeriodicReport.cs" />
     <Compile Include="Reporting\ReportingStopwatch.cs" />
+    <Compile Include="Reporting\ReportingUtils.cs" />
     <Compile Include="Reporting\ReportsManager.cs" />
     <Compile Include="Reporting\SerializableReport.cs" />
     <Compile Include="Reporting\StatisticsReporter.cs" />
