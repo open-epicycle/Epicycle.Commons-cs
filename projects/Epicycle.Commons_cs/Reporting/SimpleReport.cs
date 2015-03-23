@@ -22,7 +22,7 @@ using System.Text;
 
 namespace Epicycle.Commons.Reporting
 {
-    internal sealed class SimpleReport : IReport
+    public sealed class SimpleReport : IReport
     {
         public static readonly string Indentation = "    ";
 
