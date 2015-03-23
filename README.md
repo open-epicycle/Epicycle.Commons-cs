@@ -29,6 +29,9 @@ Copyright 2015 Epicycle (http://epicycle.org)
 ### Version 0.1 
 
 * **Version 0.1.7** [NOT RELEASED]
+  * Epicycle.Commons
+    * Added StringUtils.Repeat
+    * Added StringUtils.EnsureNewLineIfNotEmpty
   * Creating Epicycle.Commons.Binary:
     * BinaryUtils: Various serialization, deserialization and other binary utils.
     * StreamUtils: Utilities and extension methods for System.IO.Stream
@@ -40,6 +43,7 @@ Copyright 2015 Epicycle (http://epicycle.org)
 	* Creating ReportingUtils:
 	  * It is now possible to report a System.Diagnostics.Stopwatch
 	  * INumericReport.Time was moved into ReportingUtils and renamed into TimeAndReport
+	  * WriteReport that writes a SerializableReport to a file
 	* Unit tests
 
 * **Version 0.1.6** [2015-01-13]
