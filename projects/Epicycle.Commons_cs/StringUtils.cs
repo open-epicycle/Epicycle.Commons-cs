@@ -67,6 +67,16 @@ namespace Epicycle.Commons
             return s.Substring(maxLength - 3) + "...";
         }
 
+        public static string EnsureNewLineIfNotEmpty(this string @this)
+        {
+            if(@this == null || @this == "")
+            {
+                return @this;
+            }
+
+            return (@this[@this.Length - 1] == '\n') ? @this : @this + "\n";
+        }
+
         public static IEnumerable<string> SimpleWordWrap(this string s, int maxCharsPerLine)
         {
             var normalizedString = s.Replace('\t', ' ').Replace("\r", "").Replace("\n", " ");

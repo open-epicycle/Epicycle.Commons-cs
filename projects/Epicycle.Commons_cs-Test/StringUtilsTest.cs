@@ -106,6 +106,34 @@ namespace Epicycle.Commons
 
         #endregion
 
+        #region EnsureNewLineIfNotEmpty
+
+        [Test]
+        public void EnsureNewLineIfNotEmpty_null_returns_null()
+        {
+            Assert.That(((string)null).EnsureNewLineIfNotEmpty(), Is.Null);
+        }
+
+        [Test]
+        public void EnsureNewLineIfNotEmpty_empty_string_returns_empty_string()
+        {
+            Assert.That("".EnsureNewLineIfNotEmpty(), Is.EqualTo(""));
+        }
+
+        [Test]
+        public void EnsureNewLineIfNotEmpty_newline_is_added_to_a_non_empty_string_that_doesnt_ends_with_one()
+        {
+            Assert.That("foo".EnsureNewLineIfNotEmpty(), Is.EqualTo("foo\n"));
+        }
+
+        [Test]
+        public void EnsureNewLineIfNotEmpty_no_newline_is_added_if_string_ends_with_one()
+        {
+            Assert.That("foo\n".EnsureNewLineIfNotEmpty(), Is.EqualTo("foo\n"));
+        }
+
+        #endregion
+
         [Test]
         public void SimpleWordWrap_empty_string_yields_empty_line()
         {
