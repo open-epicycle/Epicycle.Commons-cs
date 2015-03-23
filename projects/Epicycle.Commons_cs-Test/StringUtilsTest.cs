@@ -78,6 +78,34 @@ namespace Epicycle.Commons
             Assert.That(StringUtils.ParseString<bool>("FALSE"), Is.False);
         }
 
+        #region Repeat
+
+        [Test]
+        public void Repeat_empty_string_yield_empty_string()
+        {
+            Assert.That("".Repeat(123), Is.EqualTo(""));
+        }
+
+        [Test]
+        public void Repeat_zero_times_yield_empty_string()
+        {
+            Assert.That("moo".Repeat(0), Is.EqualTo(""));
+        }
+
+        [Test]
+        public void Repeat_one_time_yields_similar_string()
+        {
+            Assert.That("moo".Repeat(1), Is.EqualTo("moo"));
+        }
+
+        [Test]
+        public void Repeat_multiple_times_produces_repeated_string()
+        {
+            Assert.That("moo".Repeat(4), Is.EqualTo("moomoomoomoo"));
+        }
+
+        #endregion
+
         [Test]
         public void SimpleWordWrap_empty_string_yields_empty_line()
         {
