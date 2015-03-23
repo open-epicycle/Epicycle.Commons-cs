@@ -17,6 +17,7 @@
 // ]]]]
 
 using System;
+using System.Diagnostics;
 
 namespace Epicycle.Commons.Reporting
 {
@@ -24,14 +25,14 @@ namespace Epicycle.Commons.Reporting
     {
         private INumericReport _report;
         private string _name;
-        private System.Diagnostics.Stopwatch _stopwatch;
+        private Stopwatch _stopwatch;
 
         public ReportingStopwatch(INumericReport report, string name)
         {
             _report = report;
             _name = name;
 
-            _stopwatch = new System.Diagnostics.Stopwatch();
+            _stopwatch = new Stopwatch();
             _stopwatch.Start();
         }
 
@@ -39,7 +40,7 @@ namespace Epicycle.Commons.Reporting
         {
             _stopwatch.Stop();
 
-            var dt_sec = ((double)_stopwatch.ElapsedTicks) / System.Diagnostics.Stopwatch.Frequency;
+            var dt_sec = ((double)_stopwatch.ElapsedTicks) / Stopwatch.Frequency;
 
             _report.Report(_name, dt_sec);
         }
