@@ -39,10 +39,7 @@ namespace Epicycle.Commons.Reporting
         public void Dispose()
         {
             _stopwatch.Stop();
-
-            var dt_sec = ((double)_stopwatch.ElapsedTicks) / Stopwatch.Frequency;
-
-            _report.Report(_name, dt_sec);
+            _report.Report(_name, _stopwatch);
         }
     }
 }
