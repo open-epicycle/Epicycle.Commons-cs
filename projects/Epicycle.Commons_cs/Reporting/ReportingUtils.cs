@@ -18,6 +18,7 @@
 
 using System;
 using System.Diagnostics;
+using Epicycle.Commons.FileSystem;
 
 namespace Epicycle.Commons.Reporting
 {
@@ -33,6 +34,11 @@ namespace Epicycle.Commons.Reporting
         public static IDisposable TimeAndReport(this INumericReport @this, string name)
         {
             return new ReportingStopwatch(@this, name);
+        }
+
+        public static void WriteReport(this IFileSystem @this, FileSystemPath path, SerializableReport report, bool append = false)
+        {
+            @this.WriteTextFile(path, report.Serialize(0), append);
         }
     }
 }

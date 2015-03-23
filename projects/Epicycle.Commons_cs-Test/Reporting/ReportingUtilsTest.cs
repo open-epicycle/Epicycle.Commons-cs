@@ -19,6 +19,8 @@
 using NUnit.Framework;
 using System.Diagnostics;
 using System.Threading;
+using Epicycle.Commons.TestUtils.FileSystem;
+using Epicycle.Commons.FileSystem;
 
 namespace Epicycle.Commons.Reporting
 {
@@ -87,6 +89,23 @@ namespace Epicycle.Commons.Reporting
                 ReportedName = name;
                 ReportedValue = value;
             }
+        }
+
+        [Test]
+        public void WriteReport_writes_report_to_file()
+        {
+            var report = new SerializableReport();
+            report.Report("foo", "bar");
+            var expected = "foo: bar\n";
+
+            var path = new FileSystemPath("moo.report");
+
+            var fileSystemMock = IFileSystemTestUtils.CreateMock();
+            IFileSystemTestUtils.SetupWritableFile(fileSystemMock, path, expected);
+
+            fileSystemMock.Object.WriteReport(path, report, append: false);
+
+            IFileSystemTestUtils.AssertFileWritten(fileSystemMock, path, expected);
         }
     }
 }
