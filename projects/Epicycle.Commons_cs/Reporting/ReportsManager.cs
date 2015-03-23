@@ -26,12 +26,12 @@ namespace Epicycle.Commons.Reporting
     public sealed class ReportsManager : DirectoryBasedObject
     {
         private readonly object _lock = new object();
-        private readonly Dictionary<string, SimpleReport> _reports;
+        private readonly Dictionary<string, SerializableReport> _reports;
 
         public ReportsManager(IFileSystem fileSystem, FileSystemPath path)
             : base(fileSystem, path, true)
         {
-            _reports = new Dictionary<string, SimpleReport>();
+            _reports = new Dictionary<string, SerializableReport>();
         }
 
         public IReport GetReport(string id)
@@ -39,13 +39,13 @@ namespace Epicycle.Commons.Reporting
             return GetOrInitReport(id);
         }
 
-        private SimpleReport GetOrInitReport(string id)
+        private SerializableReport GetOrInitReport(string id)
         {
             lock (_lock)
             {
                 if (!_reports.ContainsKey(id))
                 {
-                    _reports[id] = new SimpleReport();
+                    _reports[id] = new SerializableReport();
                 }
 
                 return _reports[id];

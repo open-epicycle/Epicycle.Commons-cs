@@ -102,7 +102,7 @@
     <Compile Include="Reporting\PeriodicReport.cs" />
     <Compile Include="Reporting\ReportingStopwatch.cs" />
     <Compile Include="Reporting\ReportsManager.cs" />
-    <Compile Include="Reporting\SimpleReport.cs" />
+    <Compile Include="Reporting\SerializableReport.cs" />
     <Compile Include="Reporting\StatisticsReporter.cs" />
     <Compile Include="Singleton.cs" />
     <Compile Include="StringUtils.cs" />

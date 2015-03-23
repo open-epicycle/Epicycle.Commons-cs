@@ -22,20 +22,20 @@ using System.Text;
 
 namespace Epicycle.Commons.Reporting
 {
-    public sealed class SimpleReport : IReport
+    public sealed class SerializableReport : IReport
     {
         public static readonly string Indentation = "    ";
 
         private IList<KeyValuePair<string, object>> _entries;
 
-        public SimpleReport()
+        public SerializableReport()
         {
             _entries = null;
         }
 
         public IReport SubReport(string name)
         {
-            var subReport = new SimpleReport();
+            var subReport = new SerializableReport();
 
             ReportInner(name, subReport);
 
@@ -87,7 +87,7 @@ namespace Epicycle.Commons.Reporting
             _entries.Add(new KeyValuePair<string, object>(name, value));
         }
 
-        public string Serialize(int level)
+        public string Serialize(int level = 0)
         {
             if(_entries == null || _entries.Count == 0)
             {
@@ -105,9 +105,9 @@ namespace Epicycle.Commons.Reporting
                 var name = entry.Key;
                 var value = entry.Value;
 
-                if (value is SimpleReport)
+                if (value is SerializableReport)
                 {
-                    var subReporter = (SimpleReport)value;
+                    var subReporter = (SerializableReport)value;
 
                     result.Append(String.Format("{0}:\n", name));
                     result.Append(subReporter.Serialize(level + 1));

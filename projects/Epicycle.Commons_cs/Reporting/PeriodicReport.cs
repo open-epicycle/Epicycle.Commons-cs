@@ -65,7 +65,7 @@ namespace Epicycle.Commons.Reporting
         {
             lock (_lock)
             {
-                var report = new SimpleReport();
+                var report = new SerializableReport();
 
                 foreach(var reporter in _reporters)
                 {
@@ -75,8 +75,8 @@ namespace Epicycle.Commons.Reporting
                 _fileSystem.WriteTextFile(_reportFilePath, GenerateReportText(report), append: true);
             }
         }
-        
-        private string GenerateReportText(SimpleReport report)
+
+        private string GenerateReportText(SerializableReport report)
         {
             var result = new StringBuilder();
 

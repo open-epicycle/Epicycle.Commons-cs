@@ -14,7 +14,6 @@
  * Epicycle.Commons.Reporting:
    * PeriodicReport: Report(..) is ambiguous
    * An easy way to write/append SimpleReport to file
-   * IReport should support multiple entries with the same name and to keep the order
    * IStatisticsReporter: should have a consistant order (if it's not like this now)
    * Dummy reporters implementation
    * UTs
