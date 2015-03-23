@@ -34,6 +34,8 @@ Copyright 2015 Epicycle (http://epicycle.org)
     * StreamUtils: Utilities and extension methods for System.IO.Stream
     * BinaryReaderUtils: Utilities and extension methods for System.IO.BinaryReader
     * BinaryWriterUtils: Utilities and extension methods for System.IO.BinaryWriter
+  * Epicycle.Commons.Reporting
+    * SimpleReport: Fixing a bug with indentation
 
 * **Version 0.1.6** [2015-01-13]
   * Adding a very simple CSV parsing framework
