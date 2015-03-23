@@ -24,6 +24,8 @@ namespace Epicycle.Commons.Reporting
 {
     public sealed class SerializableReport : IReport
     {
+        private object _lock = new object();
+
         public static readonly string Indentation = "    ";
 
         private IList<KeyValuePair<string, object>> _entries;
@@ -72,19 +74,28 @@ namespace Epicycle.Commons.Reporting
             ReportInner(name, value);
         }
 
-
-
         private void ReportInner(string name, object value)
         {
-            if(_entries == null)
+            lock (_lock)
             {
-                _entries = new List<KeyValuePair<string, object>>();
-            }
+                if (_entries == null)
+                {
+                    _entries = new List<KeyValuePair<string, object>>();
+                }
 
-            _entries.Add(new KeyValuePair<string, object>(name, value));
+                _entries.Add(new KeyValuePair<string, object>(name, value));
+            }
         }
 
         public string Serialize(int level = 0)
+        {
+            lock (_lock)
+            {
+                return InnerSerialize(level);
+            }
+        }
+
+        private string InnerSerialize(int level)
         {
             if(_entries == null || _entries.Count == 0)
             {
