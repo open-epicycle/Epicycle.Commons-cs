@@ -81,7 +81,7 @@ namespace Epicycle.Commons.Reporting
             var result = new StringBuilder();
 
             result.AppendFormat("######## {0}\n", DateTime.UtcNow.ToString("yyyy-MM-dd HH:mm:ss"));
-            result.Append(report.Serialize(1));
+            result.Append(report.Serialize());
 
             return result.ToString();
         }

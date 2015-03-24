@@ -59,8 +59,7 @@ namespace Epicycle.Commons.Reporting
                 var report = GetOrInitReport(id);
                 var data = new StringBuilder();
                 data.AppendFormat("ID: {0}\n", id);
-                data.Append("DATA:\n");
-                data.Append(report.Serialize(1));
+                data.Append(report.Serialize());
 
                 var reportFilePath = Path.Join(string.Format("{0}.report", FileSystemPathUtils.SanitizePathString(id)));
 

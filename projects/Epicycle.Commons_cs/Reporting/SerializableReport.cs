@@ -87,7 +87,12 @@ namespace Epicycle.Commons.Reporting
             }
         }
 
-        public string Serialize(int level = 0)
+        public string Serialize()
+        {
+            return Serialize(level: 0);
+        }
+
+        private string Serialize(int level)
         {
             lock (_lock)
             {
@@ -97,18 +102,25 @@ namespace Epicycle.Commons.Reporting
 
         private string InnerSerialize(int level)
         {
-            if(_entries == null || _entries.Count == 0)
-            {
-                return "";
-            }
-
-            var prefix = Indentation.Repeat(level);
-
             var result = new StringBuilder();
 
-            foreach(var entry in _entries)
+            WriteEntries(result, level);
+
+            return result.ToString();
+        }
+
+        private void WriteEntries(StringBuilder result, int level)
+        {
+            if (_entries == null || _entries.Count == 0)
             {
-                result.Append(prefix);
+                return;
+            }
+
+            var linePrefix = Indentation.Repeat(level);
+
+            foreach (var entry in _entries)
+            {
+                result.Append(linePrefix);
 
                 var name = entry.Key;
                 var value = entry.Value;
@@ -125,8 +137,6 @@ namespace Epicycle.Commons.Reporting
                     WriteValue(result, name, value);
                 }
             }
-
-            return result.ToString();
         }
 
         private void WriteValue(StringBuilder result, string name, object value)

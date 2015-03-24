@@ -38,7 +38,7 @@ namespace Epicycle.Commons.Reporting
 
         public static void WriteReport(this IFileSystem @this, FileSystemPath path, SerializableReport report, bool append = false)
         {
-            @this.WriteTextFile(path, report.Serialize(0), append);
+            @this.WriteTextFile(path, report.Serialize(), append);
         }
     }
 }
