@@ -33,7 +33,10 @@ namespace Epicycle.Commons.Reporting
         public SerializableReport()
         {
             _entries = null;
+            Prefix = null;
         }
+
+        public string Prefix { get; set; }
 
         public IReport SubReport(string name)
         {
@@ -103,6 +106,12 @@ namespace Epicycle.Commons.Reporting
         private string InnerSerialize(int level)
         {
             var result = new StringBuilder();
+
+            var correctedPrefix = Prefix.EnsureNewLineIfNotEmpty();
+            if(correctedPrefix != null)
+            {
+                result.Append(correctedPrefix);
+            }
 
             WriteEntries(result, level);
 

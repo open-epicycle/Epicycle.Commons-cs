@@ -38,8 +38,10 @@ Copyright 2015 Epicycle (http://epicycle.org)
     * BinaryReaderUtils: Utilities and extension methods for System.IO.BinaryReader
     * BinaryWriterUtils: Utilities and extension methods for System.IO.BinaryWriter
   * Epicycle.Commons.Reporting
-    * SimpleReport was renamed into SerializableReport and made public
-    * SerializableReport: Fixing a bug with indentation
+    * SerializableReport:
+	  * SimpleReport was renamed into SerializableReport and made public
+	  * Fixing a bug with indentation
+	  * Can now have a prefix that will be serialized as well 
 	* Creating ReportingUtils:
 	  * It is now possible to report a System.Diagnostics.Stopwatch
 	  * INumericReport.Time was moved into ReportingUtils and renamed into TimeAndReport

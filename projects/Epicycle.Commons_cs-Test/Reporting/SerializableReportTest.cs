@@ -96,5 +96,14 @@ namespace Epicycle.Commons.Reporting
             _report.Report("foo", "baz");
             Assert.That(_report.Serialize(), Is.EqualTo("foo: bar\nmoo: 123\nfoo: baz\n"));
         }
+
+        [Test]
+        public void prefix_is_serialized_before_data()
+        {
+            _report.Report("moo", 123);
+            _report.Prefix = "BOOGA";
+
+            Assert.That(_report.Serialize(), Is.EqualTo("BOOGA\nmoo: 123\n"));
+        }
     }
 }
