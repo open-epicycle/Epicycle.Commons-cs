@@ -19,7 +19,6 @@
 using Epicycle.Commons.FileSystem;
 using Epicycle.Commons.FileSystemBasedObjects;
 using System.Collections.Generic;
-using System.Text;
 
 namespace Epicycle.Commons.Reporting
 {
@@ -45,7 +44,10 @@ namespace Epicycle.Commons.Reporting
             {
                 if (!_reports.ContainsKey(id))
                 {
-                    _reports[id] = new SerializableReport();
+                    var report = new SerializableReport();
+                    report.Prefix = string.Format("######## ID: {0}\n", id);
+
+                    _reports[id] = report;
                 }
 
                 return _reports[id];
@@ -56,14 +58,9 @@ namespace Epicycle.Commons.Reporting
         {
             lock (_lock)
             {
-                var report = GetOrInitReport(id);
-                var data = new StringBuilder();
-                data.AppendFormat("ID: {0}\n", id);
-                data.Append(report.Serialize());
-
                 var reportFilePath = Path.Join(string.Format("{0}.report", FileSystemPathUtils.SanitizePathString(id)));
 
-                FileSystem.WriteTextFile(reportFilePath, data.ToString());
+                FileSystem.WriteReport(reportFilePath, GetOrInitReport(id), append: false);
             }
         }
     }
