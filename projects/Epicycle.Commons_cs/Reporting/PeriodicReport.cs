@@ -19,7 +19,6 @@
 using Epicycle.Commons.FileSystem;
 using System;
 using System.Collections.Generic;
-using System.Text;
 
 namespace Epicycle.Commons.Reporting
 {
@@ -67,23 +66,15 @@ namespace Epicycle.Commons.Reporting
             {
                 var report = new SerializableReport();
 
+                report.Prefix = string.Format("######## {0}", DateTime.UtcNow.ToString("yyyy-MM-dd HH:mm:ss"));
+
                 foreach(var reporter in _reporters)
                 {
                     reporter(report);
                 }
 
-                _fileSystem.WriteTextFile(_reportFilePath, GenerateReportText(report), append: true);
+                _fileSystem.WriteReport(_reportFilePath, report, append: true);
             }
-        }
-
-        private string GenerateReportText(SerializableReport report)
-        {
-            var result = new StringBuilder();
-
-            result.AppendFormat("######## {0}\n", DateTime.UtcNow.ToString("yyyy-MM-dd HH:mm:ss"));
-            result.Append(report.Serialize());
-
-            return result.ToString();
         }
     }
 }
