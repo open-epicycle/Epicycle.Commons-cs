@@ -49,6 +49,7 @@ Copyright 2015 Epicycle (http://epicycle.org)
 	* Unit tests
   * Epicycle.Commons.Time:
     * Creating IDateTimeProvider together with two implementations: SystemDateTimeProvider and ManualDateTimeProvider
+	* TimeFormating was moved to Epicycle.Commons.Time
 
 * **Version 0.1.6** [2015-01-13]
   * Adding a very simple CSV parsing framework

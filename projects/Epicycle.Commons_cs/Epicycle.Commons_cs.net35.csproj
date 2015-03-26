@@ -112,8 +112,8 @@
     <Compile Include="Time\ManualDateTimeProvider.cs" />
     <Compile Include="Time\SystemClock.cs" />
     <Compile Include="Time\SystemDateTimeProvider.cs" />
+    <Compile Include="Time\TimeFormatting.cs" />
     <Compile Include="Time\TimeUtils.cs" />
-    <Compile Include="TimeFormatting.cs" />
     <Compile Include="Unsafe\PinnedByteBuffer.cs" />
     <Compile Include="Unsafe\PinnedFloatBuffer.cs" />
     <Compile Include="Unsafe\PinnedObject.cs" />
