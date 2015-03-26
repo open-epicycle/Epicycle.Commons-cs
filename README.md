@@ -52,6 +52,7 @@ Copyright 2015 Epicycle (http://epicycle.org)
     * Adding more utilities to TimeUtils
     * Creating IDateTimeProvider together with two implementations: SystemDateTimeProvider and ManualDateTimeProvider
 	* TimeFormating was moved to Epicycle.Commons.Time
+    * Creating DateTimeFormatting with flexible ISO 8601 formatting capabilities
 	* Some unit tests
 
 * **Version 0.1.6** [2015-01-13]

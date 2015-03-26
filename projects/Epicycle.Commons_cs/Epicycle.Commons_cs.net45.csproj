@@ -104,6 +104,7 @@
     <Compile Include="Reporting\StatisticsReporter.cs" />
     <Compile Include="Singleton.cs" />
     <Compile Include="StringUtils.cs" />
+    <Compile Include="Time\DateTimeFormatting.cs" />
     <Compile Include="Time\DateTimeUtcAndLocal.cs" />
     <Compile Include="Time\IClock.cs" />
     <Compile Include="Time\IDateTimeProvider.cs" />

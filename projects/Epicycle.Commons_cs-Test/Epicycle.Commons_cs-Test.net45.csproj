@@ -82,6 +82,7 @@
     <Compile Include="Reporting\ReportingUtilsTest.cs" />
     <Compile Include="Reporting\SerializableReportTest.cs" />
     <Compile Include="StringUtilsTest.cs" />
+    <Compile Include="Time\DateTimeFormattingTest.cs" />
     <Compile Include="Time\TimeUtilsTest.cs" />
     <Compile Include="YamlUtilsTest.cs" />
     <Compile Include="_System\Numerics\ComplexTest.cs" />
