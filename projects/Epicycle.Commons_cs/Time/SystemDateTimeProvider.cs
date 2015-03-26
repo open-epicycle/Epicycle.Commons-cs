@@ -16,21 +16,14 @@
 // For more information check https://github.com/open-epicycle/Epicycle.Commons-cs
 // ]]]]
 
-using System;
-
 namespace Epicycle.Commons.Time
 {
     // TODO: Test
     public sealed class SystemDateTimeProvider : IDateTimeProvider
     {
-        public DateTime CurrentDateTimeUtc
+        public DateTimeUtcAndLocal CurrentDateTime
         {
-            get { return DateTime.UtcNow; }
-        }
-
-        public DateTime CurrentDateTimeLocal
-        {
-            get { return DateTime.Now; }
+            get { return TimeUtils.NowUtcAndLocal(); }
         }
     }
 }

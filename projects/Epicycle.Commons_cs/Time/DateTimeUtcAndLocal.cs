@@ -16,10 +16,29 @@
 // For more information check https://github.com/open-epicycle/Epicycle.Commons-cs
 // ]]]]
 
+using System;
+
 namespace Epicycle.Commons.Time
 {
-    public interface IDateTimeProvider
+    public sealed class DateTimeUtcAndLocal
     {
-        DateTimeUtcAndLocal CurrentDateTime { get; }
+        private readonly DateTime _utc;
+        private readonly DateTime _local;
+
+        public DateTimeUtcAndLocal(DateTime utc, DateTime local)
+        {
+            _utc = utc;
+            _local = local;
+        }
+
+        public DateTime Utc
+        {
+            get { return _utc; }
+        }
+
+        public DateTime Local
+        {
+            get { return _local; }
+        }
     }
 }

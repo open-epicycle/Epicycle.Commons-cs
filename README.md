@@ -48,8 +48,11 @@ Copyright 2015 Epicycle (http://epicycle.org)
 	  * WriteReport that writes a SerializableReport to a file
 	* Unit tests
   * Epicycle.Commons.Time:
+    * Creating DateTimeUtcAndLocal that can store both the UTC and Local time of a point in time.
+    * Adding more utilities to TimeUtils
     * Creating IDateTimeProvider together with two implementations: SystemDateTimeProvider and ManualDateTimeProvider
 	* TimeFormating was moved to Epicycle.Commons.Time
+	* Some unit tests
 
 * **Version 0.1.6** [2015-01-13]
   * Adding a very simple CSV parsing framework

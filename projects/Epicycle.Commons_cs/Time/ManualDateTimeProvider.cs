@@ -16,8 +16,6 @@
 // For more information check https://github.com/open-epicycle/Epicycle.Commons-cs
 // ]]]]
 
-using System;
-
 namespace Epicycle.Commons.Time
 {
     // TODO: Test
@@ -25,12 +23,9 @@ namespace Epicycle.Commons.Time
     {
         public ManualDateTimeProvider()
         {
-            CurrentDateTimeUtc = DateTime.MinValue;
-            CurrentDateTimeLocal = DateTime.MinValue;
+            CurrentDateTime = TimeUtils.UnixEpochStartUtc.ToUtcAndLocal();
         }
 
-        public DateTime CurrentDateTimeUtc { get; set; }
-
-        public DateTime CurrentDateTimeLocal { get; set; }
+        public DateTimeUtcAndLocal CurrentDateTime { get; set; }
     }
 }
