@@ -47,6 +47,8 @@ Copyright 2015 Epicycle (http://epicycle.org)
 	  * INumericReport.Time was moved into ReportingUtils and renamed into TimeAndReport
 	  * WriteReport that writes a SerializableReport to a file
 	* Unit tests
+  * Epicycle.Commons.Time:
+    * Creating IDateTimeProvider together with two implementations: SystemDateTimeProvider and ManualDateTimeProvider
 
 * **Version 0.1.6** [2015-01-13]
   * Adding a very simple CSV parsing framework

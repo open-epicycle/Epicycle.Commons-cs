@@ -105,7 +105,10 @@
     <Compile Include="Singleton.cs" />
     <Compile Include="StringUtils.cs" />
     <Compile Include="Time\IClock.cs" />
+    <Compile Include="Time\IDateTimeProvider.cs" />
+    <Compile Include="Time\ManualDateTimeProvider.cs" />
     <Compile Include="Time\SystemClock.cs" />
+    <Compile Include="Time\SystemDateTimeProvider.cs" />
     <Compile Include="Time\TimeUtils.cs" />
     <Compile Include="TimeFormatting.cs" />
     <Compile Include="Unsafe\PinnedByteBuffer.cs" />
