@@ -58,7 +58,7 @@ namespace Epicycle.Commons.Reporting
             }
         }
 
-        public void Report()
+        public void ReportToFile()
         {
             lock (_lock)
             {

@@ -42,7 +42,7 @@ namespace Epicycle.Commons.Reporting
         
         protected override void Iteration()
         {
-            _periodicReportFile.Report();
+            _periodicReportFile.ReportToFile();
         }
     }
 }

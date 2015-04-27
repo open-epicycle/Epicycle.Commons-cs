@@ -58,7 +58,7 @@ namespace Epicycle.Commons.Reporting
         [Test]
         public void Report_no_reporters_only_writes_header()
         {
-            _periodicReportFile.Report();
+            _periodicReportFile.ReportToFile();
             ValidateReporting("");
         }
 
@@ -67,7 +67,7 @@ namespace Epicycle.Commons.Reporting
         {
             _periodicReportFile.RegisterReporter(TestReporter1);
 
-            _periodicReportFile.Report();
+            _periodicReportFile.ReportToFile();
             ValidateReporting("foo: bar\n");
         }
 
@@ -77,7 +77,7 @@ namespace Epicycle.Commons.Reporting
             _periodicReportFile.RegisterReporter(TestReporter1);
             _periodicReportFile.RegisterReporter(TestReporter2);
 
-            _periodicReportFile.Report();
+            _periodicReportFile.ReportToFile();
             ValidateReporting("foo: bar\nbaz: 123\n");
         }
 
