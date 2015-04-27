@@ -36,34 +36,34 @@ namespace Epicycle.Commons.TestUtils.FileSystem
             return new Mock<IFileSystem>(MockBehavior.Strict);
         }
 
-        public static void SetupExistance(Mock<IFileSystem> fileSystemMock, FileSystemPath path, PathExistance existance)
+        public static void SetupExistance(this Mock<IFileSystem> @this, FileSystemPath path, PathExistance existance)
         {
-            fileSystemMock.Setup(m => m.Exists(path)).Returns(existance != PathExistance.DoesntExist);
-            fileSystemMock.Setup(m => m.IsFile(path)).Returns(existance == PathExistance.File);
-            fileSystemMock.Setup(m => m.IsDirectory(path)).Returns(existance == PathExistance.Directory);
+            @this.Setup(m => m.Exists(path)).Returns(existance != PathExistance.DoesntExist);
+            @this.Setup(m => m.IsFile(path)).Returns(existance == PathExistance.File);
+            @this.Setup(m => m.IsDirectory(path)).Returns(existance == PathExistance.Directory);
         }
 
-        public static void SetupListDir(Mock<IFileSystem> fileSystemMock, FileSystemPath path, params string[] listResult)
+        public static void SetupListDir(this Mock<IFileSystem> @this, FileSystemPath path, params string[] listResult)
         {
-            SetupExistance(fileSystemMock, path, IFileSystemTestUtils.PathExistance.Directory);
-            fileSystemMock.Setup(m => m.ListDirectory(path)).Returns(listResult.Select(subPath => new FileSystemPath(subPath)));
+            SetupExistance(@this, path, IFileSystemTestUtils.PathExistance.Directory);
+            @this.Setup(m => m.ListDirectory(path)).Returns(listResult.Select(subPath => new FileSystemPath(subPath)));
         }
 
-        public static void SetupTextFile(Mock<IFileSystem> fileSystemMock, FileSystemPath path, string data)
+        public static void SetupTextFile(this Mock<IFileSystem> @this, FileSystemPath path, string data)
         {
-            SetupExistance(fileSystemMock, path, PathExistance.File);
-            fileSystemMock.Setup(m => m.ReadTextFile(path, null)).Returns(data);
+            SetupExistance(@this, path, PathExistance.File);
+            @this.Setup(m => m.ReadTextFile(path, null)).Returns(data);
         }
 
-        public static void SetupWritableFile(Mock<IFileSystem> fileSystemMock, FileSystemPath path, string expected, bool exists=false)
+        public static void SetupWritableFile(this Mock<IFileSystem> @this, FileSystemPath path, string expected, bool exists = false)
         {
-            SetupExistance(fileSystemMock, path, exists ? PathExistance.File : PathExistance.DoesntExist);
-            fileSystemMock.Setup(m => m.WriteTextFile(path, It.IsAny<string>(), null, false)).Callback(() => SetupTextFile(fileSystemMock, path, expected)).Verifiable();
+            SetupExistance(@this, path, exists ? PathExistance.File : PathExistance.DoesntExist);
+            @this.Setup(m => m.WriteTextFile(path, It.IsAny<string>(), null, It.IsAny<bool>())).Callback(() => SetupTextFile(@this, path, expected)).Verifiable();
         }
 
-        public static void AssertFileWritten(Mock<IFileSystem> fileSystemMock, FileSystemPath path, string expectedData)
+        public static void AssertFileWritten(this Mock<IFileSystem> @this, FileSystemPath path, string expectedData, bool expectedAppend = false)
         {
-            fileSystemMock.Verify(m => m.WriteTextFile(path, expectedData, null, false));
+            @this.Verify(m => m.WriteTextFile(path, expectedData, null, expectedAppend));
         }
     }
 }
