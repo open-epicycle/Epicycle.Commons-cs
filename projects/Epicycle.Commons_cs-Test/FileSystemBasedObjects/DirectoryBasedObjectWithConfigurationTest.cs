@@ -34,7 +34,7 @@ namespace Epicycle.Commons.FileSystemBasedObjects
         [SetUp]
         public void SetUp()
         {
-            _mockFileSystem = IFileSystemTestUtils.CreateMock();
+            _mockFileSystem = FileSystemTestUtils.CreateMock();
             _configurationName = "config.yaml";
             _path = new FileSystemPath(@"foo\bar");
             _configurationPath = _path.Join(_configurationName);
@@ -45,35 +45,35 @@ namespace Epicycle.Commons.FileSystemBasedObjects
         [Test]
         public void IsPathToSuchObject_not_existing_path_returns_false()
         {
-            SetupExistance(IFileSystemTestUtils.PathExistance.Directory);
+            SetupExistance(FileSystemTestUtils.PathExistance.Directory);
             AssertIsPathToSuchObject(false);
         }
 
         [Test]
         public void IsPathToSuchObject_path_to_file_returns_false()
         {
-            SetupExistance(IFileSystemTestUtils.PathExistance.File);
+            SetupExistance(FileSystemTestUtils.PathExistance.File);
             AssertIsPathToSuchObject(false);
         }
 
         [Test]
         public void IsPathToSuchObject_path_to_directory_config_path_doesnt_exist_returns_false()
         {
-            SetupExistance(IFileSystemTestUtils.PathExistance.Directory);
+            SetupExistance(FileSystemTestUtils.PathExistance.Directory);
             AssertIsPathToSuchObject(false);
         }
 
         [Test]
         public void IsPathToSuchObject_path_to_directory_config_path_to_file_returns_true()
         {
-            SetupExistance(IFileSystemTestUtils.PathExistance.Directory, IFileSystemTestUtils.PathExistance.File);
+            SetupExistance(FileSystemTestUtils.PathExistance.Directory, FileSystemTestUtils.PathExistance.File);
             AssertIsPathToSuchObject(true);
         }
 
         [Test]
         public void IsPathToSuchObject_path_to_directory_config_path_to_directory_returns_false()
         {
-            SetupExistance(IFileSystemTestUtils.PathExistance.Directory, IFileSystemTestUtils.PathExistance.Directory);
+            SetupExistance(FileSystemTestUtils.PathExistance.Directory, FileSystemTestUtils.PathExistance.Directory);
             AssertIsPathToSuchObject(false);
         }
 
@@ -90,7 +90,7 @@ namespace Epicycle.Commons.FileSystemBasedObjects
         [ExpectedException(typeof(FileSystemPathDoesNotExistException))]
         public void Ctor_no_autoinit_path_doesnt_exist_throws_FileSystemPathDoesNotExistException()
         {
-            SetupExistance(IFileSystemTestUtils.PathExistance.DoesntExist);
+            SetupExistance(FileSystemTestUtils.PathExistance.DoesntExist);
             CreatTestObject(false);
         }
         
@@ -98,7 +98,7 @@ namespace Epicycle.Commons.FileSystemBasedObjects
         [ExpectedException(typeof(DirectoryExpectedException))]
         public void Ctor_no_autoinit_path_to_file_throws_DirectoryExpectedException()
         {
-            SetupExistance(IFileSystemTestUtils.PathExistance.File);
+            SetupExistance(FileSystemTestUtils.PathExistance.File);
             CreatTestObject(false);
         }
 
@@ -106,7 +106,7 @@ namespace Epicycle.Commons.FileSystemBasedObjects
         [ExpectedException(typeof(FileSystemPathDoesNotExistException))]
         public void Ctor_no_autoinit_path_to_directory_config_path_doesnt_exist_throws_FileSystemPathDoesNotExistException()
         {
-            SetupExistance(IFileSystemTestUtils.PathExistance.Directory);
+            SetupExistance(FileSystemTestUtils.PathExistance.Directory);
             CreatTestObject(false);
         }
 
@@ -121,7 +121,7 @@ namespace Epicycle.Commons.FileSystemBasedObjects
         [ExpectedException(typeof(FileExpectedException))]
         public void Ctor_no_autoinit_path_to_directory_config_path_points_to_directory_throws_FileExpectedException()
         {
-            SetupExistance(IFileSystemTestUtils.PathExistance.Directory, IFileSystemTestUtils.PathExistance.Directory);
+            SetupExistance(FileSystemTestUtils.PathExistance.Directory, FileSystemTestUtils.PathExistance.Directory);
             CreatTestObject(false);
         }
 
@@ -139,7 +139,7 @@ namespace Epicycle.Commons.FileSystemBasedObjects
         [ExpectedException(typeof(DirectoryExpectedException))]
         public void Ctor_autoinit_path_to_file_throws_DirectoryExpectedException()
         {
-            SetupExistance(IFileSystemTestUtils.PathExistance.File);
+            SetupExistance(FileSystemTestUtils.PathExistance.File);
             CreatTestObject(true);
         }
 
@@ -160,7 +160,7 @@ namespace Epicycle.Commons.FileSystemBasedObjects
         [ExpectedException(typeof(FileExpectedException))]
         public void Ctor_autoinit_path_to_directory_config_path_points_to_directory_throws_FileExpectedException()
         {
-            SetupExistance(IFileSystemTestUtils.PathExistance.Directory, IFileSystemTestUtils.PathExistance.Directory);
+            SetupExistance(FileSystemTestUtils.PathExistance.Directory, FileSystemTestUtils.PathExistance.Directory);
             CreatTestObject(true);
         }
 
@@ -168,14 +168,14 @@ namespace Epicycle.Commons.FileSystemBasedObjects
         {
             var expectedData = "Foo: Moo\r\n";
 
-            SetupExistance(directoryExists ? IFileSystemTestUtils.PathExistance.Directory : IFileSystemTestUtils.PathExistance.DoesntExist);
+            SetupExistance(directoryExists ? FileSystemTestUtils.PathExistance.Directory : FileSystemTestUtils.PathExistance.DoesntExist);
             
             if (!directoryExists)
             {
                 _mockFileSystem.Setup(m => m.CreateDirectoryRecursively(_path)).Verifiable();
             }
 
-            IFileSystemTestUtils.SetupWritableFile(_mockFileSystem, _configurationPath, expectedData);
+            _mockFileSystem.SetupWritableFile(_configurationPath, expectedData);
 
             CreatTestObject(true);
 
@@ -184,7 +184,7 @@ namespace Epicycle.Commons.FileSystemBasedObjects
                 _mockFileSystem.Verify(m => m.CreateDirectoryRecursively(_path));
             }
 
-            IFileSystemTestUtils.AssertFileWritten(_mockFileSystem, _configurationPath, expectedData);
+            _mockFileSystem.AssertFileWritten(_configurationPath, expectedData);
         }
 
         #endregion
@@ -240,7 +240,7 @@ namespace Epicycle.Commons.FileSystemBasedObjects
 
             if (expectWrite)
             {
-                IFileSystemTestUtils.SetupWritableFile(_mockFileSystem, _configurationPath, expectedData);
+                _mockFileSystem.SetupWritableFile(_configurationPath, expectedData);
             }
 
             testObject.GetConfiguration().Foo = "Booga";
@@ -252,27 +252,27 @@ namespace Epicycle.Commons.FileSystemBasedObjects
 
             if (expectWrite)
             {
-                IFileSystemTestUtils.AssertFileWritten(_mockFileSystem, _configurationPath, expectedData);
+                _mockFileSystem.AssertFileWritten(_configurationPath, expectedData);
             }
         }
 
         #endregion
 
-        private void SetupExistance(IFileSystemTestUtils.PathExistance pathExistance, IFileSystemTestUtils.PathExistance configFileExistance=IFileSystemTestUtils.PathExistance.DoesntExist)
+        private void SetupExistance(FileSystemTestUtils.PathExistance pathExistance, FileSystemTestUtils.PathExistance configFileExistance=FileSystemTestUtils.PathExistance.DoesntExist)
         {
-            IFileSystemTestUtils.SetupExistance(_mockFileSystem, _path, pathExistance);
-            IFileSystemTestUtils.SetupExistance(_mockFileSystem, _configurationPath, configFileExistance);
+            _mockFileSystem.SetupExistance(_path, pathExistance);
+            _mockFileSystem.SetupExistance(_configurationPath, configFileExistance);
         }
 
         private void SetupConfig(string configData)
         {
-            SetupExistance(IFileSystemTestUtils.PathExistance.Directory, IFileSystemTestUtils.PathExistance.File);
-            IFileSystemTestUtils.SetupTextFile(_mockFileSystem, _configurationPath, configData);
+            SetupExistance(FileSystemTestUtils.PathExistance.Directory, FileSystemTestUtils.PathExistance.File);
+            _mockFileSystem.SetupTextFile(_configurationPath, configData);
         }
 
         private TestDirectoryBasedObjectWithConfiguration SetupObject()
         {
-            SetupExistance(IFileSystemTestUtils.PathExistance.Directory);
+            SetupExistance(FileSystemTestUtils.PathExistance.Directory);
             SetupConfig("Foo: Bar");
             return CreatTestObject(false);
         }

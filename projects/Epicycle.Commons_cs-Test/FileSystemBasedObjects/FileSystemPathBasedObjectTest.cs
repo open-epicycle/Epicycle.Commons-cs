@@ -33,7 +33,7 @@ namespace Epicycle.Commons.FileSystemBasedObjects
         [SetUp]
         public void SetUp()
         {
-            _mockFileSystem = IFileSystemTestUtils.CreateMock();
+            _mockFileSystem = FileSystemTestUtils.CreateMock();
             _path = new FileSystemPath(@"foo\bar");
             _testObject = new TestFileSystemPathBasedObjectTest(_mockFileSystem.Object, _path);
         }

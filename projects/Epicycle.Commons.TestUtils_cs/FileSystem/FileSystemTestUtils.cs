@@ -22,7 +22,7 @@ using System.Linq;
 
 namespace Epicycle.Commons.TestUtils.FileSystem
 {
-    public static class IFileSystemTestUtils
+    public static class FileSystemTestUtils
     {
         public enum PathExistance
         {
@@ -45,20 +45,20 @@ namespace Epicycle.Commons.TestUtils.FileSystem
 
         public static void SetupListDir(this Mock<IFileSystem> @this, FileSystemPath path, params string[] listResult)
         {
-            SetupExistance(@this, path, IFileSystemTestUtils.PathExistance.Directory);
+            @this.SetupExistance(path, FileSystemTestUtils.PathExistance.Directory);
             @this.Setup(m => m.ListDirectory(path)).Returns(listResult.Select(subPath => new FileSystemPath(subPath)));
         }
 
         public static void SetupTextFile(this Mock<IFileSystem> @this, FileSystemPath path, string data)
         {
-            SetupExistance(@this, path, PathExistance.File);
+            @this.SetupExistance(path, PathExistance.File);
             @this.Setup(m => m.ReadTextFile(path, null)).Returns(data);
         }
 
         public static void SetupWritableFile(this Mock<IFileSystem> @this, FileSystemPath path, string expected, bool exists = false)
         {
-            SetupExistance(@this, path, exists ? PathExistance.File : PathExistance.DoesntExist);
-            @this.Setup(m => m.WriteTextFile(path, It.IsAny<string>(), null, It.IsAny<bool>())).Callback(() => SetupTextFile(@this, path, expected)).Verifiable();
+            @this.SetupExistance(path, exists ? PathExistance.File : PathExistance.DoesntExist);
+            @this.Setup(m => m.WriteTextFile(path, It.IsAny<string>(), null, It.IsAny<bool>())).Callback(() => @this.SetupTextFile(path, expected)).Verifiable();
         }
 
         public static void AssertFileWritten(this Mock<IFileSystem> @this, FileSystemPath path, string expectedData, bool expectedAppend = false)

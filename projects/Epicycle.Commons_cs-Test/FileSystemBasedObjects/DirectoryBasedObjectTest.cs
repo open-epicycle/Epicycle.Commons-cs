@@ -32,14 +32,14 @@ namespace Epicycle.Commons.FileSystemBasedObjects
         [SetUp]
         public void SetUp()
         {
-            _mockFileSystem = IFileSystemTestUtils.CreateMock();
+            _mockFileSystem = FileSystemTestUtils.CreateMock();
             _path = new FileSystemPath(@"foo\bar");
         }
 
         [Test]
         public void Ctor_with_autocreate_not_existing_path_creates_empty_directory()
         {
-            IFileSystemTestUtils.SetupExistance(_mockFileSystem, _path, IFileSystemTestUtils.PathExistance.DoesntExist);
+            _mockFileSystem.SetupExistance(_path, FileSystemTestUtils.PathExistance.DoesntExist);
             _mockFileSystem.Setup(m => m.CreateDirectoryRecursively(_path)).Verifiable();
 
             CreateTestObject(true);
@@ -51,14 +51,14 @@ namespace Epicycle.Commons.FileSystemBasedObjects
         [ExpectedException(typeof(DirectoryExpectedException))]
         public void Ctor_with_autocreate_path_to_file_throws_DirectoryExpectedException()
         {
-            IFileSystemTestUtils.SetupExistance(_mockFileSystem, _path, IFileSystemTestUtils.PathExistance.File);
+            _mockFileSystem.SetupExistance(_path, FileSystemTestUtils.PathExistance.File);
             CreateTestObject(true);
         }
 
         [Test]
         public void Ctor_with_autocreate_path_to_directory_does_nothing()
         {
-            IFileSystemTestUtils.SetupExistance(_mockFileSystem, _path, IFileSystemTestUtils.PathExistance.Directory);
+            _mockFileSystem.SetupExistance(_path, FileSystemTestUtils.PathExistance.Directory);
             CreateTestObject(true);
         }
 
@@ -66,7 +66,7 @@ namespace Epicycle.Commons.FileSystemBasedObjects
         [ExpectedException(typeof(FileSystemPathDoesNotExistException))]
         public void Ctor_with_no_autocreate_not_existing_path_throws_FileSystemPathDoesNotExistException()
         {
-            IFileSystemTestUtils.SetupExistance(_mockFileSystem, _path, IFileSystemTestUtils.PathExistance.DoesntExist);
+            _mockFileSystem.SetupExistance(_path, FileSystemTestUtils.PathExistance.DoesntExist);
             CreateTestObject(false);
         }
 
@@ -74,14 +74,14 @@ namespace Epicycle.Commons.FileSystemBasedObjects
         [ExpectedException(typeof(DirectoryExpectedException))]
         public void Ctor_with_no_autocreate_path_to_file_throws_DirectoryExpectedException()
         {
-            IFileSystemTestUtils.SetupExistance(_mockFileSystem, _path, IFileSystemTestUtils.PathExistance.File);
+            _mockFileSystem.SetupExistance(_path, FileSystemTestUtils.PathExistance.File);
             CreateTestObject(false);
         }
 
         [Test]
         public void Ctor_with_no_autocreate_path_to_directory_does_nothing()
         {
-            IFileSystemTestUtils.SetupExistance(_mockFileSystem, _path, IFileSystemTestUtils.PathExistance.Directory);
+            _mockFileSystem.SetupExistance(_path, FileSystemTestUtils.PathExistance.Directory);
             CreateTestObject(false);
         }
 

@@ -42,7 +42,7 @@ namespace Epicycle.Commons.Reporting
             _dateTimeProvider = new ManualDateTimeProvider();
             _dateTimeProvider.CurrentDateTime = new DateTime(2012, 12, 12, 13, 45, 32, 123, DateTimeKind.Utc).ToUtcAndLocal();
 
-            _fileSystemMock = IFileSystemTestUtils.CreateMock();
+            _fileSystemMock = FileSystemTestUtils.CreateMock();
             _reportFilePath = new FileSystemPath("/foo/bar");
 
             _periodicReportFile = new PeriodicReportFile(_dateTimeProvider, _fileSystemMock.Object, _reportFilePath);

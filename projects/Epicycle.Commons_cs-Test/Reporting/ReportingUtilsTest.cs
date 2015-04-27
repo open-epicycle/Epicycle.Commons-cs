@@ -100,12 +100,12 @@ namespace Epicycle.Commons.Reporting
 
             var path = new FileSystemPath("moo.report");
 
-            var fileSystemMock = IFileSystemTestUtils.CreateMock();
-            IFileSystemTestUtils.SetupWritableFile(fileSystemMock, path, expected);
+            var fileSystemMock = FileSystemTestUtils.CreateMock();
+            fileSystemMock.SetupWritableFile(path, expected);
 
             fileSystemMock.Object.WriteReport(path, report, append: false);
 
-            IFileSystemTestUtils.AssertFileWritten(fileSystemMock, path, expected);
+            fileSystemMock.AssertFileWritten(path, expected);
         }
     }
 }
