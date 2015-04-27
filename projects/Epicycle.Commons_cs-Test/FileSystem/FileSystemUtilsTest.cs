@@ -25,7 +25,7 @@ using System.Linq;
 namespace Epicycle.Commons.FileSystem
 {
     [TestFixture]
-    public class IFileSystemExtensionsTest
+    public class FileSystemUtilsTest
     {
         private FileSystemPath _testPath;
 

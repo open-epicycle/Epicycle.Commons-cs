@@ -83,8 +83,8 @@
     <Compile Include="FileSystem\FileSystemPathException.cs" />
     <Compile Include="FileSystem\FileSystemPathExtensions.cs" />
     <Compile Include="FileSystem\FileSystemPathUtils.cs" />
+    <Compile Include="FileSystem\FileSystemUtils.cs" />
     <Compile Include="FileSystem\IFileSystem.cs" />
-    <Compile Include="FileSystem\IFileSystemExtensions.cs" />
     <Compile Include="FileSystem\StandardFileSystem.cs" />
     <Compile Include="FileSystemBasedObjects\DirectoryBasedObject.cs" />
     <Compile Include="FileSystemBasedObjects\DirectoryBasedObjectWithConfiguration.cs" />

@@ -70,7 +70,7 @@
     <Compile Include="FileSystem\CommonFileSystemTest.cs" />
     <Compile Include="FileSystem\FileSystemPathExtensionsTest.cs" />
     <Compile Include="FileSystem\FileSystemPathTest.cs" />
-    <Compile Include="FileSystem\IFileSystemExtensionsTest.cs" />
+    <Compile Include="FileSystem\FileSystemUtilsTest.cs" />
     <Compile Include="FileSystemBasedObjects\DirectoryBasedObjectTest.cs" />
     <Compile Include="FileSystemBasedObjects\DirectoryBasedObjectWithConfigurationTest.cs" />
     <Compile Include="FileSystemBasedObjects\FileBasedObjectTest.cs" />

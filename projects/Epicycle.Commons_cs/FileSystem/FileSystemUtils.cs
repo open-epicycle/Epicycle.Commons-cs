@@ -26,7 +26,7 @@ namespace Epicycle.Commons.FileSystem
     /// <summary>
     /// Various utilities for IFileSystem objects.
     /// </summary>
-    public static class IFileSystemExtensions
+    public static class FileSystemUtils
     {
         #region Path assertions
 
@@ -138,20 +138,20 @@ namespace Epicycle.Commons.FileSystem
         /// the path points to a directory, nothing will happen. If it points to a different object, an exception is
         /// thrown.
         /// </summary>
-        /// <param name="fileSystem">The extended object</param>
+        /// <param name="this">The extended object</param>
         /// <param name="path">The path to the directory to create.</param>
         /// <returns>True if there was a need to create the directories</returns>
         /// <exception cref="DirectoryExpectedException">Thrown if the path points to a directory.</exception>
-        public static bool EnsureDirectory(this IFileSystem fileSystem, FileSystemPath path)
+        public static bool EnsureDirectory(this IFileSystem @this, FileSystemPath path)
         {
-            if (fileSystem.Exists(path))
+            if (@this.Exists(path))
             {
-                fileSystem.AssertDirectory(path);
+                @this.AssertDirectory(path);
                 return false;
             }
             else
             {
-                fileSystem.CreateDirectoryRecursively(path);
+                @this.CreateDirectoryRecursively(path);
                 return true;
             }
         }
@@ -159,14 +159,14 @@ namespace Epicycle.Commons.FileSystem
         /// <summary>
         /// Non-recursive list of the given directory (both files and directories). The resulting paths will be lexicographically sorted.
         /// </summary>
-        /// <param name="fileSystem">The extended object</param>
+        /// <param name="this">The extended object</param>
         /// <param name="directoryPath">The path of the directory to list. Must point to a directory.</param>
         /// <returns>Sorted content of the directory.</returns>
         /// <exception cref="FileSystemPathDoesNotExistException">Thrown if the path does not exists.</exception>
         /// <exception cref="DirectoryExpectedException">Thrown if the path does not point to a directory.</exception>
-        public static IEnumerable<FileSystemPath> ListDirectorySorted(this IFileSystem fileSystem, FileSystemPath directoryPath)
+        public static IEnumerable<FileSystemPath> ListDirectorySorted(this IFileSystem @this, FileSystemPath directoryPath)
         {
-            var directoryContent = fileSystem.ListDirectory(directoryPath).ToList();
+            var directoryContent = @this.ListDirectory(directoryPath).ToList();
             directoryContent.Sort();
 
             return directoryContent;
@@ -175,67 +175,67 @@ namespace Epicycle.Commons.FileSystem
         /// <summary>
         /// Non-recursive list of the sub-directories in the given directory. The resulting paths will be lexicographically sorted.
         /// </summary>
-        /// <param name="fileSystem">The extended object</param>
+        /// <param name="this">The extended object</param>
         /// <param name="directoryPath">The path of the directory to list. Must point to a directory.</param>
         /// <returns>Sorted sub-directories in the directory.</returns>
         /// <exception cref="FileSystemPathDoesNotExistException">Thrown if the path does not exists.</exception>
         /// <exception cref="DirectoryExpectedException">Thrown if the path does not point to a directory.</exception>
-        public static IEnumerable<FileSystemPath> ListSubdirectoriesSorted(this IFileSystem fileSystem, FileSystemPath directoryPath)
+        public static IEnumerable<FileSystemPath> ListSubdirectoriesSorted(this IFileSystem @this, FileSystemPath directoryPath)
         {
-            return fileSystem.ListDirectorySorted(directoryPath).Where(path => fileSystem.IsDirectory(path));
+            return @this.ListDirectorySorted(directoryPath).Where(path => @this.IsDirectory(path));
         }
 
         /// <summary>
         /// Non-recursive list of the given directory (both files and directories) with a specific extension. The resulting paths will be lexicographically sorted.
         /// </summary>
-        /// <param name="fileSystem">The extended object</param>
+        /// <param name="this">The extended object</param>
         /// <param name="directoryPath">The path of the directory to list. Must point to a directory.</param>
         /// <param name="extensions">The allowed extensions</param>
         /// <returns>Sorted and filtered content of the directory.</returns>
         /// <exception cref="FileSystemPathDoesNotExistException">Thrown if the path does not exists.</exception>
         /// <exception cref="DirectoryExpectedException">Thrown if the path does not point to a directory.</exception>
-        public static IEnumerable<FileSystemPath> ListDirectoryFilterByExtensionSorted(this IFileSystem fileSystem, FileSystemPath directoryPath, params string[] extensions)
+        public static IEnumerable<FileSystemPath> ListDirectoryFilterByExtensionSorted(this IFileSystem @this, FileSystemPath directoryPath, params string[] extensions)
         {
-            return fileSystem.ListDirectorySorted(directoryPath).Where(path => path.IsExtension(extensions));
+            return @this.ListDirectorySorted(directoryPath).Where(path => path.IsExtension(extensions));
         }
 
         /// <summary>
         /// Reads an entire textual file using the default encoding (UTF-8).
         /// Note: The line endings are not converted.
         /// </summary>
-        /// <param name="fileSystem">The extended object</param>
+        /// <param name="this">The extended object</param>
         /// <param name="path">The path of the file to read. Must exist and point to a file.</param>
         /// <returns>A string that contains the file content.</returns>
         /// <exception cref="FileSystemPathDoesNotExistException">Thrown if the path does not exists.</exception>
         /// <exception cref="FileExpectedException">Thrown if the path does not point to a file.</exception>
-        public static string ReadTextFile(this IFileSystem fileSystem, FileSystemPath path)
+        public static string ReadTextFile(this IFileSystem @this, FileSystemPath path)
         {
-            return fileSystem.ReadTextFile(path, null);
+            return @this.ReadTextFile(path, null);
         }
 
         /// <summary>
         /// Writes an entire binary file. If the file already exists it will be overwritten.
         /// </summary>
-        /// <param name="fileSystem">The extended object</param>
+        /// <param name="this">The extended object</param>
         /// <param name="path">The path to the file to write. If exists, it must point to a file.</param>
         /// <param name="data">The data to write.</param>
         /// <exception cref="FileExpectedException">Thrown if the path does not point to a file.</exception>
-        public static void WriteBinaryFile(this IFileSystem fileSystem, FileSystemPath path, byte[] data)
+        public static void WriteBinaryFile(this IFileSystem @this, FileSystemPath path, byte[] data)
         {
-            fileSystem.WriteBinaryFile(path, data, false);
+            @this.WriteBinaryFile(path, data, false);
         }
 
         /// <summary>
         /// Writes textual data into a file using the defult encoding (UTF-8).
         /// </summary>
-        /// <param name="fileSystem">The extended object</param>
+        /// <param name="this">The extended object</param>
         /// <param name="path">The path to the file to write. If exists, it must point to a file.</param>
         /// <param name="data">The data to write.</param>
         /// <param name="append">If false the file will be created or overwritten. If false the data will be appended to the end.</param>
         /// <exception cref="FileExpectedException">Thrown if the path does not point to a file.</exception>
-        public static void WriteTextFile(this IFileSystem fileSystem, FileSystemPath path, string data, bool append = false)
+        public static void WriteTextFile(this IFileSystem @this, FileSystemPath path, string data, bool append = false)
         {
-            fileSystem.WriteTextFile(path, data, null, append);
+            @this.WriteTextFile(path, data, null, append);
         }
     }
 }
