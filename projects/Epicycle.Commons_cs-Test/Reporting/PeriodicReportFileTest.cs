@@ -34,8 +34,6 @@ namespace Epicycle.Commons.Reporting
 
         private PeriodicReportFile _periodicReportFile;
 
-        private DateTime _dateTime;
-
         [SetUp]
         public void SetUp()
         {
