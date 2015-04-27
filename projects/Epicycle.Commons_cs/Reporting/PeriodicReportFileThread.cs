@@ -24,15 +24,13 @@ namespace Epicycle.Commons.Reporting
 
     public sealed class PeriodicReportFileThread : BasePeriodicThread
     {
-        private readonly object _lock = new object();
-
-        PeriodicReportFile _periodicReportFile;
-
-        public delegate void ReporterDelegate(IReport report);
+        private readonly PeriodicReportFile _periodicReportFile;
 
         public PeriodicReportFileThread(PeriodicReportFile periodicReportFile, double period_sec)
             : base(BasicMath.Round(period_sec * 1000), 100)
         {
+            ArgAssert.NotNull(periodicReportFile, "periodicReportFile");
+
             Thread.Priority = ThreadPriority.Lowest;
             _periodicReportFile = periodicReportFile;
         }
