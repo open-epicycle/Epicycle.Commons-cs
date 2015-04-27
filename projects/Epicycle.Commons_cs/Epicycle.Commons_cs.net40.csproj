@@ -96,7 +96,8 @@
     <Compile Include="Reporting\INumericReport.cs" />
     <Compile Include="Reporting\IReport.cs" />
     <Compile Include="Reporting\IStatisticsReporter.cs" />
-    <Compile Include="Reporting\PeriodicReport.cs" />
+    <Compile Include="Reporting\PeriodicReportFile.cs" />
+    <Compile Include="Reporting\PeriodicReportFileThread.cs" />
     <Compile Include="Reporting\ReportingStopwatch.cs" />
     <Compile Include="Reporting\ReportingUtils.cs" />
     <Compile Include="Reporting\ReportsManager.cs" />

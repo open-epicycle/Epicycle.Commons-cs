@@ -17,34 +17,37 @@
 // ]]]]
 
 using Epicycle.Commons.FileSystem;
-using System;
+using Epicycle.Commons.Time;
 using System.Collections.Generic;
 
 namespace Epicycle.Commons.Reporting
 {
-    public sealed class PeriodicReport : BasePeriodicThread
+    public sealed class PeriodicReportFile
     {
         private readonly object _lock = new object();
 
-        public readonly IFileSystem _fileSystem;
-        public readonly FileSystemPath _reportFilePath;
-        public readonly IList<ReporterDelegate> _reporters;
+        private readonly IDateTimeProvider _dateTimeProvider;
+        private readonly IFileSystem _fileSystem;
+        private readonly FileSystemPath _reportFilePath;
+        private readonly IList<ReporterDelegate> _reporters;
 
         public delegate void ReporterDelegate(IReport report);
 
-        public PeriodicReport(IFileSystem fileSystem, FileSystemPath reportFilePath, double period_sec)
-            : base(BasicMath.Round(period_sec * 1000), 0)
+        public PeriodicReportFile(IDateTimeProvider dateTimeProvider, IFileSystem fileSystem, FileSystemPath reportFilePath)
         {
-            Thread.Priority = System.Threading.ThreadPriority.Lowest;
+            ArgAssert.NotNull(dateTimeProvider, "dateTimeProvider");
+            ArgAssert.NotNull(fileSystem, "fileSystem");
+            ArgAssert.NotNull(reportFilePath, "reportFilePath");
 
+            _dateTimeProvider = dateTimeProvider;
             _fileSystem = fileSystem;
             _reportFilePath = reportFilePath;
             _reporters = new List<ReporterDelegate>();
         }
 
-        public new void Start()
+        public FileSystemPath ReportFilePath
         {
-            base.Start();
+            get { return _reportFilePath; }
         }
 
         public void RegisterReporter(ReporterDelegate reporter)
@@ -55,20 +58,16 @@ namespace Epicycle.Commons.Reporting
             }
         }
 
-        protected override void Iteration()
-        {
-            Report();
-        }
-
         public void Report()
         {
             lock (_lock)
             {
                 var report = new SerializableReport();
 
-                report.Prefix = string.Format("######## {0}", DateTime.UtcNow.ToString("yyyy-MM-dd HH:mm:ss"));
+                var timestamp = _dateTimeProvider.CurrentDateTime.ToStringISO8601(DateTimeFormatting.UtcAndLocalTemplate.UtcAndLocal);
+                report.Prefix = string.Format("######## {0}", timestamp);
 
-                foreach(var reporter in _reporters)
+                foreach (var reporter in _reporters)
                 {
                     reporter(report);
                 }
