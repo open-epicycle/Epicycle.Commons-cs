@@ -29,7 +29,7 @@ namespace Epicycle.Commons.Reporting
         private readonly IDateTimeProvider _dateTimeProvider;
         private readonly IFileSystem _fileSystem;
         private readonly FileSystemPath _reportFilePath;
-        private readonly IList<ReporterDelegate> _reporters;
+        private readonly List<ReporterDelegate> _reporters;
 
         public delegate void ReporterDelegate(IReport report);
 
@@ -67,10 +67,7 @@ namespace Epicycle.Commons.Reporting
                 var timestamp = _dateTimeProvider.CurrentDateTime.ToStringISO8601(DateTimeFormatting.UtcAndLocalTemplate.UtcAndLocal);
                 report.Prefix = string.Format("######## {0}", timestamp);
 
-                foreach (var reporter in _reporters)
-                {
-                    reporter(report);
-                }
+                _reporters.ForEach(reporter => reporter(report));
 
                 _fileSystem.WriteReport(_reportFilePath, report, append: true);
             }
