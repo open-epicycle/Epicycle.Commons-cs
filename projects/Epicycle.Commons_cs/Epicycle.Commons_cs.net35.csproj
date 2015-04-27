@@ -112,6 +112,7 @@
     <Compile Include="Time\DateTimeUtcAndLocal.cs" />
     <Compile Include="Time\IClock.cs" />
     <Compile Include="Time\IDateTimeProvider.cs" />
+    <Compile Include="Time\ManualClock.cs" />
     <Compile Include="Time\ManualDateTimeProvider.cs" />
     <Compile Include="Time\SystemClock.cs" />
     <Compile Include="Time\SystemDateTimeProvider.cs" />
