@@ -80,6 +80,7 @@
     <Compile Include="HysteresisTest.cs" />
     <Compile Include="Properties\AssemblyInfo.cs" />
     <Compile Include="Reporting\PeriodicReportFileTest.cs" />
+    <Compile Include="Reporting\ReportingStopwatchTest.cs" />
     <Compile Include="Reporting\ReportingUtilsTest.cs" />
     <Compile Include="Reporting\SerializableReportTest.cs" />
     <Compile Include="StringUtilsTest.cs" />
