@@ -31,6 +31,8 @@ Copyright 2015 Epicycle (http://epicycle.org)
 * **Version 0.1.8.0** [NOT RELEASED]
   * Epicycle.Commons
     * Fixing a nasty bug in BasePeriodicThread that made it go into busy loop
+    * Adding IUpdatable
+
 * **Version 0.1.7.0** [2015-07-13]
   * Epicycle.Commons
     * Added StringUtils.Repeat

@@ -96,6 +96,7 @@
     <Compile Include="FileSystemBasedObjects\FileSystemPathBasedObject.cs" />
     <Compile Include="FileSystemBasedObjects\MultiFile.cs" />
     <Compile Include="Hysteresis.cs" />
+    <Compile Include="IUpdatable.cs" />
     <Compile Include="InternalException.cs" />
     <Compile Include="PeriodicThread.cs" />
     <Compile Include="Properties\AssemblyInfo.cs" />
