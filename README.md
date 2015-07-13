@@ -46,7 +46,8 @@ Copyright 2015 Epicycle (http://epicycle.org)
 	  * It is now possible to report a System.Diagnostics.Stopwatch
 	  * INumericReport.Time was moved into ReportingUtils and renamed into TimeAndReport
 	  * WriteReport that writes a SerializableReport to a file
-	* Unit tests
+    * Creating dummy implementation for IReport and IStatisticsReporter: DummyReport & DummyStatisticsReporter
+	* Better unit test coverage
   * Epicycle.Commons.Time:
     * Creating DateTimeUtcAndLocal that can store both the UTC and Local time of a point in time.
     * Adding more utilities to TimeUtils
