@@ -29,9 +29,14 @@ Copyright 2015 Epicycle (http://epicycle.org)
 ### Version 0.1 
 
 * **Version 0.1.8.0** [NOT RELEASED]
+  * System.Diagnostics
+    * Adding Restart() extension method to Stopwatch in .NET 3.5
   * Epicycle.Commons
-    * Fixing a nasty bug in BasePeriodicThread that made it go into busy loop
     * Adding IUpdatable
+  * Epicycle.Commons.Threading
+    * Moving all thread related stuff to Epicycle.Commons.Threading
+    * Creating more convenient constructors for BasePeriodicThread and PeriodicThread
+    * Fixing a nasty bug in BasePeriodicThread that made it go into busy loop
 
 * **Version 0.1.7.0** [2015-07-13]
   * Epicycle.Commons
