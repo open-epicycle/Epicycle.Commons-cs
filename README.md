@@ -56,6 +56,7 @@ Copyright 2015 Epicycle (http://epicycle.org)
     * Creating DateTimeFormatting with flexible ISO 8601 formatting capabilities
 	* Some unit tests
   * Epicycle.Commons.Collections:
+    * Adding IFixedCollection, IFixedReadOnlyList and IFixedList for fixed size collections
     * CollectionUtils: AsReadOnlyList<T>(this IEnumerable<T>) was renamed to ToReadOnlyList
 
 * **Version 0.1.6** [2015-01-13]

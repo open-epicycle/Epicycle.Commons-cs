@@ -14,5 +14,3 @@
  * Epicycle.Commons.Reporting:
    * StatisticsReporter: testing TODOs
    * Test ReportsManager
- * Epicycle.Commons.Collections:
-   * Create something like IBuffer/IFixedList for array-like mutable random access collection (no inserts/deletes)
