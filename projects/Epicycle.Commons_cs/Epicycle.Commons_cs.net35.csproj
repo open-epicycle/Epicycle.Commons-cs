@@ -65,6 +65,9 @@
     <Compile Include="Collections\EmptyList.cs" />
     <Compile Include="Collections\EnumerationUtils.cs" />
     <Compile Include="Collections\FiniteFunctionGraph.cs" />
+    <Compile Include="Collections\IFixedCollection.cs" />
+    <Compile Include="Collections\IFixedList.cs" />
+    <Compile Include="Collections\IFixedReadOnlyList.cs" />
     <Compile Include="Collections\InjectionEnumerator.cs" />
     <Compile Include="Collections\ReadOnlyListWrapper.cs" />
     <Compile Include="Csv\CsvConfiguration.cs" />

@@ -26,7 +26,7 @@ namespace Epicycle.Commons.Collections
 
     public static class CollectionUtils
     {
-        public static IReadOnlyList<T> AsReadOnlyList<T>(this IEnumerable<T> @this)
+        public static IReadOnlyList<T> ToReadOnlyList<T>(this IEnumerable<T> @this)
         {
             ArgAssert.NotNull(@this, "this");
 

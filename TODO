@@ -14,7 +14,3 @@
  * Epicycle.Commons.Reporting:
    * StatisticsReporter: testing TODOs
    * Test ReportsManager
- * Epicycle.Commons.Collections:
-   * Some of the AsReadOnlyList should be ToReadOnlyList
-   * Check collection (IEnumerable?) for uniqueness
-   * Create something like IBuffer/IFixedList for array-like mutable random access collection (no inserts/deletes)
