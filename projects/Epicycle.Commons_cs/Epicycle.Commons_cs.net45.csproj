@@ -93,6 +93,7 @@
     <Compile Include="InternalException.cs" />
     <Compile Include="PeriodicThread.cs" />
     <Compile Include="Properties\AssemblyInfo.cs" />
+    <Compile Include="Reporting\DummyReport.cs" />
     <Compile Include="Reporting\INumericReport.cs" />
     <Compile Include="Reporting\IReport.cs" />
     <Compile Include="Reporting\IStatisticsReporter.cs" />
