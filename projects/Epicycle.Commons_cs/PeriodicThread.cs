@@ -26,16 +26,12 @@ namespace Epicycle.Commons
             : base(frequency_hz, tightness)
         {
             _updatable = updatable;
-
-            Start();
         }
 
         public PeriodicThread(IUpdatable updatable, int delay_msec, int minDelay_msec)
             : base(delay_msec, minDelay_msec)
         {
             _updatable = updatable;
-
-            Start();
         }
 
         protected override void Iteration()
