@@ -91,13 +91,11 @@ namespace Epicycle.Commons.Threading
         private void ThreadLoop()
         {
             // TODO: Take into account that actual sleep time might be greater
-            // TODO: Create stopwatch Reset extension method for old .NET
             var stopwatch = new Stopwatch();
 
             while (!_isStopped)
             {
-                stopwatch.Reset();
-                stopwatch.Start();
+                stopwatch.Restart();
                 Iteration();
                 stopwatch.Stop();
 
