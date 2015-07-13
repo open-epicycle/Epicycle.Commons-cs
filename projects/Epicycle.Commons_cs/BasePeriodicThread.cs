@@ -24,17 +24,17 @@ namespace Epicycle.Commons
 {
     public abstract class BasePeriodicThread
     {
-        private readonly int _delay;
-        private readonly int _minDelay;
+        private readonly int _delay_msec;
+        private readonly int _minDelay_msec;
 
         private bool _isStopped;
 
         private Thread _thread;
 
-        public BasePeriodicThread(int delay, int minDelay)
+        public BasePeriodicThread(int delay_msec, int minDelay_msec)
         {
-            _delay = delay;
-            _minDelay = minDelay;
+            _delay_msec = delay_msec;
+            _minDelay_msec = minDelay_msec;
 
             _isStopped = false;
 
@@ -70,7 +70,7 @@ namespace Epicycle.Commons
                 Iteration();
                 stopwatch.Stop();
 
-                int sleepTime = Math.Max(_minDelay, Math.Min(_delay, _delay - (int)stopwatch.ElapsedMilliseconds));
+                int sleepTime = Math.Max(_minDelay_msec, Math.Min(_delay_msec, _delay_msec - (int)stopwatch.ElapsedMilliseconds));
 
                 try
                 {

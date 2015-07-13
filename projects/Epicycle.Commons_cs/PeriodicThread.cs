@@ -20,7 +20,8 @@ namespace Epicycle.Commons
 {
     public sealed class PeriodicThread : BasePeriodicThread
     {
-        public PeriodicThread(IUpdatable updatable, int delay, int minDelay) : base(delay, minDelay)
+        public PeriodicThread(IUpdatable updatable, int delay_msec, int minDelay_msec)
+            : base(delay_msec, minDelay_msec)
         {
             _updatable = updatable;
 
