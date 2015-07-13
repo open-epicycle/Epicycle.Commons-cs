@@ -24,12 +24,43 @@ namespace Epicycle.Commons
 {
     public abstract class BasePeriodicThread
     {
+        public const PeriodicThreadTightness DefaultTightness = PeriodicThreadTightness.Medium;
+
         private readonly int _delay_msec;
         private readonly int _minDelay_msec;
 
         private bool _isStopped;
 
         private Thread _thread;
+
+        public BasePeriodicThread(double frequency_hz, PeriodicThreadTightness tightness = DefaultTightness) :
+            this(
+                BasicMath.Round(FreqToMsec(frequency_hz)),
+                BasicMath.Round(CalculateMinDelay(frequency_hz, tightness))) { }
+        
+        private static double FreqToMsec(double frequency_hz)
+        {
+            return 1000.0 / frequency_hz;
+        }
+
+        private static double CalculateMinDelay(double frequency_hz, PeriodicThreadTightness tightness)
+        {
+            var delay_msec = FreqToMsec(frequency_hz);
+
+            switch (tightness)
+            {
+                case PeriodicThreadTightness.Busy:
+                    return 0;
+                case PeriodicThreadTightness.High:
+                    return delay_msec * 0.25;
+                case PeriodicThreadTightness.Medium:
+                    return delay_msec * 0.5;
+                case PeriodicThreadTightness.Low:
+                    return delay_msec * 0.75;
+                default:
+                    throw new ArgumentException("Unsupported PeriodicThreadTightness");
+            }
+        }
 
         public BasePeriodicThread(int delay_msec, int minDelay_msec)
         {

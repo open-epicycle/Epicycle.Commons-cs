@@ -18,29 +18,11 @@
 
 namespace Epicycle.Commons
 {
-    public sealed class PeriodicThread : BasePeriodicThread
+    public enum PeriodicThreadTightness
     {
-        private readonly IUpdatable _updatable;
-
-        public PeriodicThread(IUpdatable updatable, double frequency_hz, PeriodicThreadTightness tightness = DefaultTightness)
-            : base(frequency_hz, tightness)
-        {
-            _updatable = updatable;
-
-            Start();
-        }
-
-        public PeriodicThread(IUpdatable updatable, int delay_msec, int minDelay_msec)
-            : base(delay_msec, minDelay_msec)
-        {
-            _updatable = updatable;
-
-            Start();
-        }
-
-        protected override void Iteration()
-        {
-            _updatable.Update();
-        }
+        Busy,
+        High,
+        Medium,
+        Low,
     }
 }
