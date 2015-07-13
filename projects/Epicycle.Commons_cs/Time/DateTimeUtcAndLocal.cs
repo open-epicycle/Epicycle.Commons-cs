@@ -17,29 +17,28 @@
 // ]]]]
 
 using System;
-using System.Diagnostics;
 
-namespace Epicycle.Commons.Reporting
+namespace Epicycle.Commons.Time
 {
-    public sealed class ReportingStopwatch : IDisposable
+    public sealed class DateTimeUtcAndLocal
     {
-        private INumericReport _report;
-        private string _name;
-        private Stopwatch _stopwatch;
+        private readonly DateTime _utc;
+        private readonly DateTime _local;
 
-        public ReportingStopwatch(INumericReport report, string name)
+        public DateTimeUtcAndLocal(DateTime utc, DateTime local)
         {
-            _report = report;
-            _name = name;
-
-            _stopwatch = new Stopwatch();
-            _stopwatch.Start();
+            _utc = utc;
+            _local = local;
         }
 
-        public void Dispose()
+        public DateTime Utc
         {
-            _stopwatch.Stop();
-            _report.Report(_name, _stopwatch);
+            get { return _utc; }
+        }
+
+        public DateTime Local
+        {
+            get { return _local; }
         }
     }
 }

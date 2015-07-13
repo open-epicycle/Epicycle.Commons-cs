@@ -60,9 +60,10 @@
   </ItemGroup>
   <ItemGroup>
     <Compile Include="ComplexTestUtils.cs" />
-    <Compile Include="FileSystem\IFileSystemTestUtils.cs" />
+    <Compile Include="FileSystem\FileSystemTestUtils.cs" />
     <Compile Include="NumericTestUtils.cs" />
     <Compile Include="Properties\AssemblyInfo.cs" />
+    <Compile Include="Reporting\ReportMock.cs" />
   </ItemGroup>
   <ItemGroup>
     <None Include="packages.config" />

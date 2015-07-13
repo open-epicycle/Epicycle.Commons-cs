@@ -16,30 +16,39 @@
 // For more information check https://github.com/open-epicycle/Epicycle.Commons-cs
 // ]]]]
 
-using System;
-using System.Diagnostics;
+using Moq;
+using NUnit.Framework;
+using System.Threading;
 
 namespace Epicycle.Commons.Reporting
 {
-    public sealed class ReportingStopwatch : IDisposable
+    [TestFixture]
+    public class ReportingStopwatchTest
     {
-        private INumericReport _report;
+        private ReportingStopwatch _reportingStopwatch;
+
+        private Mock<INumericReport> _reportMock;
         private string _name;
-        private Stopwatch _stopwatch;
 
-        public ReportingStopwatch(INumericReport report, string name)
+        [SetUp]
+        public void SetUp()
         {
-            _report = report;
-            _name = name;
+            _name = "foo";
 
-            _stopwatch = new Stopwatch();
-            _stopwatch.Start();
+            _reportMock = new Mock<INumericReport>(MockBehavior.Strict);
+            _reportMock.Setup(m => m.Report(_name, It.IsAny<double>())).Verifiable();
         }
 
-        public void Dispose()
+        [Test]
+        public void test_timing()
         {
-            _stopwatch.Stop();
-            _report.Report(_name, _stopwatch);
+            _reportingStopwatch = new ReportingStopwatch(_reportMock.Object, _name);
+
+            Thread.Sleep(100);
+
+            _reportingStopwatch.Dispose();
+
+            _reportMock.Verify(m => m.Report(_name, It.Is<double>(time => (time > 0.09 && time < 1.0))));
         }
     }
 }

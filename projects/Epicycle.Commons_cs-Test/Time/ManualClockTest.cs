@@ -16,30 +16,43 @@
 // For more information check https://github.com/open-epicycle/Epicycle.Commons-cs
 // ]]]]
 
-using System;
-using System.Diagnostics;
+using NUnit.Framework;
 
-namespace Epicycle.Commons.Reporting
+namespace Epicycle.Commons.Time
 {
-    public sealed class ReportingStopwatch : IDisposable
+    [TestFixture]
+    public class ManualClockTest
     {
-        private INumericReport _report;
-        private string _name;
-        private Stopwatch _stopwatch;
+        private ManualClock _clock;
 
-        public ReportingStopwatch(INumericReport report, string name)
+        [SetUp]
+        public void SetUp()
         {
-            _report = report;
-            _name = name;
-
-            _stopwatch = new Stopwatch();
-            _stopwatch.Start();
+            _clock = new ManualClock();
         }
 
-        public void Dispose()
+        [Test]
+        public void Time_is_zero_upon_creation()
         {
-            _stopwatch.Stop();
-            _report.Report(_name, _stopwatch);
+            Assert.That(_clock.Time, Is.EqualTo(0.0));
+            
+        }
+
+        [Test]
+        public void Setting_and_getting_time_is_correct()
+        {
+            _clock.Time = 10;
+
+            Assert.That(_clock.Time, Is.EqualTo(10));
+        }
+
+        [Test]
+        public void Advance_advances_time_by_the_given_amount()
+        {
+            _clock.Time = 10;
+            _clock.Advance(15);
+
+            Assert.That(_clock.Time, Is.EqualTo(25));
         }
     }
 }

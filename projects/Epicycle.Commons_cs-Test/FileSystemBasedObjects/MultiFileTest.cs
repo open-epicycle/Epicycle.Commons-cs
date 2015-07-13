@@ -33,7 +33,7 @@ namespace Epicycle.Commons.FileSystemBasedObjects
         [SetUp]
         public void SetUp()
         {
-            _mockFileSystem = IFileSystemTestUtils.CreateMock();
+            _mockFileSystem = FileSystemTestUtils.CreateMock();
             _path = new FileSystemPath(@"foo\bar");
         }
 
@@ -51,7 +51,7 @@ namespace Epicycle.Commons.FileSystemBasedObjects
 
             var mainFile = _path.Join("Foo.boo");
 
-            IFileSystemTestUtils.SetupExistance(_mockFileSystem, mainFile, IFileSystemTestUtils.PathExistance.File);
+            _mockFileSystem.SetupExistance(mainFile, FileSystemTestUtils.PathExistance.File);
             ValidateMultiFile(new MultiFile(_mockFileSystem.Object, mainFile));
         }
 
@@ -59,7 +59,7 @@ namespace Epicycle.Commons.FileSystemBasedObjects
         {
             string[] files = { "foo.moo", "Foo.boo", "foo-xyz.goo", "bar.moo" };
 
-            IFileSystemTestUtils.SetupListDir(_mockFileSystem, _path, files);
+            _mockFileSystem.SetupListDir(_path, files);
         }
 
         private void ValidateMultiFile(MultiFile multiFile)

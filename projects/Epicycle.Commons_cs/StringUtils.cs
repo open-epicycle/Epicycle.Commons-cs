@@ -18,6 +18,7 @@
 
 using System.Collections.Generic;
 using System.ComponentModel;
+using System.Text;
 
 namespace Epicycle.Commons
 {
@@ -31,6 +32,31 @@ namespace Epicycle.Commons
             return (T)(converter.ConvertFromInvariantString(s));
         }
 
+        public static string Repeat(this string @this, int times)
+        {
+            ArgAssert.NotNull(@this, "this");
+            ArgAssert.AtLeast(times, "times", 0);
+
+            if(@this == "" || times == 0)
+            {
+                return "";
+            }
+
+            if(times == 1)
+            {
+                return @this;
+            }
+
+            var result = new StringBuilder(@this.Length * times);
+
+            for (var i = 0; i < times; i++)
+            {
+                result.Append(@this);
+            }
+
+            return result.ToString();
+        }
+
         public static string EnsureMaxLength(this string s, int maxLength)
         {
             if(s.Length < maxLength)
@@ -39,6 +65,16 @@ namespace Epicycle.Commons
             }
 
             return s.Substring(maxLength - 3) + "...";
+        }
+
+        public static string EnsureNewLineIfNotEmpty(this string @this)
+        {
+            if(@this == null || @this == "")
+            {
+                return @this;
+            }
+
+            return (@this[@this.Length - 1] == '\n') ? @this : @this + "\n";
         }
 
         public static IEnumerable<string> SimpleWordWrap(this string s, int maxCharsPerLine)

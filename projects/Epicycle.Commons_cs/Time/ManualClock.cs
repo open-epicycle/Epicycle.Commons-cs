@@ -16,30 +16,20 @@
 // For more information check https://github.com/open-epicycle/Epicycle.Commons-cs
 // ]]]]
 
-using System;
-using System.Diagnostics;
-
-namespace Epicycle.Commons.Reporting
+namespace Epicycle.Commons.Time
 {
-    public sealed class ReportingStopwatch : IDisposable
+    public sealed class ManualClock : IClock
     {
-        private INumericReport _report;
-        private string _name;
-        private Stopwatch _stopwatch;
-
-        public ReportingStopwatch(INumericReport report, string name)
+        public ManualClock()
         {
-            _report = report;
-            _name = name;
-
-            _stopwatch = new Stopwatch();
-            _stopwatch.Start();
+            Time = 0;
         }
 
-        public void Dispose()
+        public double Time { get; set; }
+
+        public void Advance(double dt)
         {
-            _stopwatch.Stop();
-            _report.Report(_name, _stopwatch);
+            Time += dt;
         }
     }
 }

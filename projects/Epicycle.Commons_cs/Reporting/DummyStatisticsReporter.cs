@@ -16,30 +16,31 @@
 // For more information check https://github.com/open-epicycle/Epicycle.Commons-cs
 // ]]]]
 
-using System;
-using System.Diagnostics;
-
 namespace Epicycle.Commons.Reporting
 {
-    public sealed class ReportingStopwatch : IDisposable
+    public sealed class DummyStatisticsReporter : IStatisticsReporter
     {
-        private INumericReport _report;
-        private string _name;
-        private Stopwatch _stopwatch;
+        public static readonly DummyStatisticsReporter Instance = new DummyStatisticsReporter();
 
-        public ReportingStopwatch(INumericReport report, string name)
+        private DummyStatisticsReporter() { }
+
+        public IStatisticsReporter CreateSubReporter(string name)
         {
-            _report = report;
-            _name = name;
-
-            _stopwatch = new Stopwatch();
-            _stopwatch.Start();
+            return Instance;
         }
 
-        public void Dispose()
-        {
-            _stopwatch.Stop();
-            _report.Report(_name, _stopwatch);
-        }
+        public void ReportEvent(string name) { }
+
+        public void ReportEvent(string name, int amount) { }
+
+        public void DumpToReport(IReport report) { }
+
+        public void Report(string name, int value) { }
+
+        public void Report(string name, long value) { }
+
+        public void Report(string name, float value) { }
+
+        public void Report(string name, double value) { }
     }
 }

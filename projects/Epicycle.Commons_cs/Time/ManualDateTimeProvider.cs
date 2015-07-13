@@ -16,30 +16,16 @@
 // For more information check https://github.com/open-epicycle/Epicycle.Commons-cs
 // ]]]]
 
-using System;
-using System.Diagnostics;
-
-namespace Epicycle.Commons.Reporting
+namespace Epicycle.Commons.Time
 {
-    public sealed class ReportingStopwatch : IDisposable
+    // TODO: Test
+    public class ManualDateTimeProvider : IDateTimeProvider
     {
-        private INumericReport _report;
-        private string _name;
-        private Stopwatch _stopwatch;
-
-        public ReportingStopwatch(INumericReport report, string name)
+        public ManualDateTimeProvider()
         {
-            _report = report;
-            _name = name;
-
-            _stopwatch = new Stopwatch();
-            _stopwatch.Start();
+            CurrentDateTime = TimeUtils.UnixEpochStartUtc.ToUtcAndLocal();
         }
 
-        public void Dispose()
-        {
-            _stopwatch.Stop();
-            _report.Report(_name, _stopwatch);
-        }
+        public DateTimeUtcAndLocal CurrentDateTime { get; set; }
     }
 }

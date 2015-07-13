@@ -65,7 +65,7 @@ namespace Epicycle.Commons
         public void ReadYamlOrDefault_no_file_returns_default()
         {
             var fileSystemMock = SetupFileSystemMock();
-            IFileSystemTestUtils.SetupExistance(fileSystemMock, _testPath, IFileSystemTestUtils.PathExistance.DoesntExist);
+            fileSystemMock.SetupExistance(_testPath, FileSystemTestUtils.PathExistance.DoesntExist);
 
             AssertDefaultTestObject(fileSystemMock.Object.ReadYamlOrDefault<TestObject>(_testPath));
         }
@@ -74,7 +74,7 @@ namespace Epicycle.Commons
         public void ReadYamlOrDefault_file_with_no_data_returns_default()
         {
             var fileSystemMock = SetupFileSystemMock();
-            IFileSystemTestUtils.SetupExistance(fileSystemMock, _testPath, IFileSystemTestUtils.PathExistance.File);
+            fileSystemMock.SetupExistance(_testPath, FileSystemTestUtils.PathExistance.File);
             fileSystemMock.Setup(m => m.ReadTextFile(_testPath, null)).Returns("");
 
             AssertDefaultTestObject(fileSystemMock.Object.ReadYamlOrDefault<TestObject>(_testPath));
@@ -114,9 +114,9 @@ namespace Epicycle.Commons
 
         private Mock<IFileSystem> SetupFileSystemMock()
         {
-            var fileSystemMock = IFileSystemTestUtils.CreateMock();
+            var fileSystemMock = FileSystemTestUtils.CreateMock();
 
-            IFileSystemTestUtils.SetupExistance(fileSystemMock, _testPath, IFileSystemTestUtils.PathExistance.File);
+            fileSystemMock.SetupExistance(_testPath, FileSystemTestUtils.PathExistance.File);
 
             return fileSystemMock;
         }

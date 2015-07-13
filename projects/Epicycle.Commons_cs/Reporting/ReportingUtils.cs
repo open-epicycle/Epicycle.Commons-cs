@@ -18,28 +18,27 @@
 
 using System;
 using System.Diagnostics;
+using Epicycle.Commons.FileSystem;
 
 namespace Epicycle.Commons.Reporting
 {
-    public sealed class ReportingStopwatch : IDisposable
+    public static class ReportingUtils
     {
-        private INumericReport _report;
-        private string _name;
-        private Stopwatch _stopwatch;
-
-        public ReportingStopwatch(INumericReport report, string name)
+        public static void Report(this INumericReport @this, string name, Stopwatch stopwatch)
         {
-            _report = report;
-            _name = name;
+            var dt_sec = ((double)stopwatch.ElapsedTicks) / Stopwatch.Frequency;
 
-            _stopwatch = new Stopwatch();
-            _stopwatch.Start();
+            @this.Report(name, dt_sec);
         }
 
-        public void Dispose()
+        public static IDisposable TimeAndReport(this INumericReport @this, string name)
         {
-            _stopwatch.Stop();
-            _report.Report(_name, _stopwatch);
+            return new ReportingStopwatch(@this, name);
+        }
+
+        public static void WriteReport(this IFileSystem @this, FileSystemPath path, SerializableReport report, bool append = false)
+        {
+            @this.WriteTextFile(path, report.Serialize(), append);
         }
     }
 }

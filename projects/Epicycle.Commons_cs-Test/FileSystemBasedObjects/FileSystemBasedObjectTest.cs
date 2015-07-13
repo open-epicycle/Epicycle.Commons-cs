@@ -28,7 +28,7 @@ namespace Epicycle.Commons.FileSystemBasedObjects
         [Test]
         public void FileSystem_returns_the_filesystem_from_constructor()
         {
-            var mockFileSystem = IFileSystemTestUtils.CreateMock();
+            var mockFileSystem = FileSystemTestUtils.CreateMock();
 
             var testObject = new TestFileSystemBasedObject(mockFileSystem.Object);
 

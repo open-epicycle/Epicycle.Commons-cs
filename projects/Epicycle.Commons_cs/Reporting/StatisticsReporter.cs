@@ -23,16 +23,20 @@ namespace Epicycle.Commons.Reporting
 {
     using System;
 
+    // TODO: Test all Report(...)
+    // TODO: Test ReportEvent when dt is 0
     public sealed class StatisticsReporter : IStatisticsReporter
     {
         private object _lock = new object();
 
         private readonly IClock _clock;
         private double _lastReportTime;
-        private IList<KeyValuePair<string, object>> _entries;
+        private List<KeyValuePair<string, IReporter>> _entries;
 
         public StatisticsReporter(IClock clock)
         {
+            ArgAssert.NotNull(clock, "clock");
+
             _clock = clock;
 
             _entries = null;
@@ -44,7 +48,7 @@ namespace Epicycle.Commons.Reporting
         {
             var subReporter = new StatisticsReporter(_clock);
 
-            AddInner(name, subReporter);
+            AddInner(name, new SubReporter(subReporter, name));
 
             return subReporter;
         }
@@ -58,8 +62,7 @@ namespace Epicycle.Commons.Reporting
         {
             lock(_lock)
             {
-                var obj = GetValue(name);
-                var eventReporter = (obj != null) ? (EventReporter)obj : (EventReporter)null;
+                var eventReporter = GetValue(name) as EventReporter;
 
                 if (eventReporter == null)
                 {
@@ -90,8 +93,7 @@ namespace Epicycle.Commons.Reporting
         {
             lock (_lock)
             {
-                var obj = GetValue(name);
-                var eventReporter = (obj != null) ? (ParameterReporter)obj : (ParameterReporter)null;
+                var eventReporter = GetValue(name) as ParameterReporter;
 
                 if (eventReporter == null)
                 {
@@ -103,12 +105,7 @@ namespace Epicycle.Commons.Reporting
             }
         }
 
-        public IDisposable Time(string name)
-        {
-            return new ReportingStopwatch(this, name);
-        }
-
-        private object GetValue(string name)
+        private IReporter GetValue(string name)
         {
             if (_entries != null)
             {
@@ -124,17 +121,17 @@ namespace Epicycle.Commons.Reporting
             return null;
         }
 
-        private void AddInner(string name, object value)
+        private void AddInner(string name, IReporter value)
         {
             if (_entries == null)
             {
-                _entries = new List<KeyValuePair<string, object>>();
+                _entries = new List<KeyValuePair<string, IReporter>>();
             }
 
-            _entries.Add(new KeyValuePair<string, object>(name, value));
+            _entries.Add(new KeyValuePair<string, IReporter>(name, value));
         }
 
-        public void Report(IReport report)
+        public void DumpToReport(IReport report)
         {
             lock (_lock)
             {
@@ -142,37 +139,33 @@ namespace Epicycle.Commons.Reporting
                 var dt = time - _lastReportTime;
                 _lastReportTime = time;
 
-                if (_entries == null)
+                if (_entries != null)
                 {
-                    return;
-                }
-
-                foreach (var entry in _entries)
-                {
-                    var name = entry.Key;
-                    var obj = entry.Value;
-
-                    if (obj is IReporter)
-                    {
-                        var reporter = (IReporter) obj;
-
-                        reporter.Report(report, dt);
-                    }
-                    else if (obj is StatisticsReporter)
-                    {
-                        var subReporter = (StatisticsReporter)obj;
-
-                        subReporter.Report(report.SubReport(name));
-                    }
+                    _entries.ForEach(entry => entry.Value.DumpToReport(report, dt));
                 }
             }
         }
 
-        // TODO: Wrap the sub report with an inner object and use polymorphism
-
         private interface IReporter
         {
-            void Report(IReport report, double dt_sec);
+            void DumpToReport(IReport report, double dt_sec);
+        }
+
+        private sealed class SubReporter : IReporter
+        {
+            private readonly StatisticsReporter _statisticsReporter;
+            private readonly string _name;
+
+            public SubReporter(StatisticsReporter statisticsReporter, string name)
+            {
+                _statisticsReporter = statisticsReporter;
+                _name = name;
+            }
+
+            public void DumpToReport(IReport report, double dt_sec)
+            {
+                _statisticsReporter.DumpToReport(report.SubReport(_name));
+            }
         }
 
         private sealed class EventReporter : IReporter
@@ -193,7 +186,7 @@ namespace Epicycle.Commons.Reporting
                 Count += amount;
             }
 
-            public void Report(IReport report, double dt_sec)
+            public void DumpToReport(IReport report, double dt_sec)
             {
                 var count = Count;
                 Count = 0;
@@ -250,7 +243,7 @@ namespace Epicycle.Commons.Reporting
                 }
             }
 
-            public void Report(IReport report, double dt_sec)
+            public void DumpToReport(IReport report, double dt_sec)
             {
                 var count = _count;
                 var sum = _sum;

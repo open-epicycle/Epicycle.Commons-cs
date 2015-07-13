@@ -25,6 +25,6 @@ namespace Epicycle.Commons.Reporting
         void ReportEvent(string name);
         void ReportEvent(string name, int amount);
 
-        void Report(IReport report);
+        void DumpToReport(IReport report);
     }
 }

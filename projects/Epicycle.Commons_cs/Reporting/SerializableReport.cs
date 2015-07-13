@@ -18,25 +18,29 @@
 
 using System;
 using System.Collections.Generic;
-using System.Linq;
 using System.Text;
 
 namespace Epicycle.Commons.Reporting
 {
-    internal sealed class SimpleReport : IReport
+    public sealed class SerializableReport : IReport
     {
+        private object _lock = new object();
+
         public static readonly string Indentation = "    ";
 
         private IList<KeyValuePair<string, object>> _entries;
 
-        public SimpleReport()
+        public SerializableReport()
         {
             _entries = null;
+            Prefix = null;
         }
+
+        public string Prefix { get; set; }
 
         public IReport SubReport(string name)
         {
-            var subReport = new SimpleReport();
+            var subReport = new SerializableReport();
 
             ReportInner(name, subReport);
 
@@ -73,42 +77,66 @@ namespace Epicycle.Commons.Reporting
             ReportInner(name, value);
         }
 
-        public IDisposable Time(string name)
-        {
-            return new ReportingStopwatch(this, name);
-        }
-
         private void ReportInner(string name, object value)
         {
-            if(_entries == null)
+            lock (_lock)
             {
-                _entries = new List<KeyValuePair<string, object>>();
-            }
+                if (_entries == null)
+                {
+                    _entries = new List<KeyValuePair<string, object>>();
+                }
 
-            _entries.Add(new KeyValuePair<string, object>(name, value));
+                _entries.Add(new KeyValuePair<string, object>(name, value));
+            }
         }
 
-        public string Serialize(int level)
+        public string Serialize()
         {
-            if(_entries == null || _entries.Count == 0)
+            return Serialize(level: 0);
+        }
+
+        private string Serialize(int level)
+        {
+            lock (_lock)
             {
-                return "";
+                return InnerSerialize(level);
             }
+        }
 
-            var prefix = String.Concat(Enumerable.Repeat(Indentation, level));
-
+        private string InnerSerialize(int level)
+        {
             var result = new StringBuilder();
 
-            foreach(var entry in _entries)
+            var correctedPrefix = Prefix.EnsureNewLineIfNotEmpty();
+            if(correctedPrefix != null)
             {
-                result.Append(prefix);
+                result.Append(correctedPrefix);
+            }
+
+            WriteEntries(result, level);
+
+            return result.ToString();
+        }
+
+        private void WriteEntries(StringBuilder result, int level)
+        {
+            if (_entries == null || _entries.Count == 0)
+            {
+                return;
+            }
+
+            var linePrefix = Indentation.Repeat(level);
+
+            foreach (var entry in _entries)
+            {
+                result.Append(linePrefix);
 
                 var name = entry.Key;
                 var value = entry.Value;
 
-                if (value is SimpleReport)
+                if (value is SerializableReport)
                 {
-                    var subReporter = (SimpleReport)value;
+                    var subReporter = (SerializableReport)value;
 
                     result.Append(String.Format("{0}:\n", name));
                     result.Append(subReporter.Serialize(level + 1));
@@ -118,8 +146,6 @@ namespace Epicycle.Commons.Reporting
                     WriteValue(result, name, value);
                 }
             }
-
-            return result.ToString();
         }
 
         private void WriteValue(StringBuilder result, string name, object value)

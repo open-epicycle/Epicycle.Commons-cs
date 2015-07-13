@@ -19,19 +19,19 @@
 using Epicycle.Commons.FileSystem;
 using Epicycle.Commons.FileSystemBasedObjects;
 using System.Collections.Generic;
-using System.Text;
 
 namespace Epicycle.Commons.Reporting
 {
+    // TODO: Test
     public sealed class ReportsManager : DirectoryBasedObject
     {
         private readonly object _lock = new object();
-        private readonly Dictionary<string, SimpleReport> _reports;
+        private readonly Dictionary<string, SerializableReport> _reports;
 
         public ReportsManager(IFileSystem fileSystem, FileSystemPath path)
             : base(fileSystem, path, true)
         {
-            _reports = new Dictionary<string, SimpleReport>();
+            _reports = new Dictionary<string, SerializableReport>();
         }
 
         public IReport GetReport(string id)
@@ -39,13 +39,16 @@ namespace Epicycle.Commons.Reporting
             return GetOrInitReport(id);
         }
 
-        private SimpleReport GetOrInitReport(string id)
+        private SerializableReport GetOrInitReport(string id)
         {
             lock (_lock)
             {
                 if (!_reports.ContainsKey(id))
                 {
-                    _reports[id] = new SimpleReport();
+                    var report = new SerializableReport();
+                    report.Prefix = string.Format("######## ID: {0}\n", id);
+
+                    _reports[id] = report;
                 }
 
                 return _reports[id];
@@ -56,15 +59,9 @@ namespace Epicycle.Commons.Reporting
         {
             lock (_lock)
             {
-                var report = GetOrInitReport(id);
-                var data = new StringBuilder();
-                data.AppendFormat("ID: {0}\n", id);
-                data.Append("DATA:\n");
-                data.Append(report.Serialize(1));
-
                 var reportFilePath = Path.Join(string.Format("{0}.report", FileSystemPathUtils.SanitizePathString(id)));
 
-                FileSystem.WriteTextFile(reportFilePath, data.ToString());
+                FileSystem.WriteReport(reportFilePath, GetOrInitReport(id), append: false);
             }
         }
     }

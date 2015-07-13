@@ -16,8 +16,6 @@
 // For more information check https://github.com/open-epicycle/Epicycle.Commons-cs
 // ]]]]
 
-using System;
-
 namespace Epicycle.Commons.Reporting
 {
     public interface INumericReport
@@ -26,6 +24,5 @@ namespace Epicycle.Commons.Reporting
         void Report(string name, long value);
         void Report(string name, float value);
         void Report(string name, double value);
-        IDisposable Time(string name);
     }
 }

@@ -18,7 +18,7 @@
 
 using System;
 
-namespace Epicycle.Commons
+namespace Epicycle.Commons.Time
 {
     public static class TimeFormatting
     {

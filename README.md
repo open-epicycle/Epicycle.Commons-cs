@@ -29,11 +29,32 @@ Copyright 2015 Epicycle (http://epicycle.org)
 ### Version 0.1 
 
 * **Version 0.1.7** [NOT RELEASED]
+  * Epicycle.Commons
+    * Added StringUtils.Repeat
+    * Added StringUtils.EnsureNewLineIfNotEmpty
   * Creating Epicycle.Commons.Binary:
     * BinaryUtils: Various serialization, deserialization and other binary utils.
     * StreamUtils: Utilities and extension methods for System.IO.Stream
     * BinaryReaderUtils: Utilities and extension methods for System.IO.BinaryReader
     * BinaryWriterUtils: Utilities and extension methods for System.IO.BinaryWriter
+  * Epicycle.Commons.Reporting
+    * SerializableReport:
+	  * SimpleReport was renamed into SerializableReport and made public
+	  * Fixing a bug with indentation
+	  * Can now have a prefix that will be serialized as well 
+	* Creating ReportingUtils:
+	  * It is now possible to report a System.Diagnostics.Stopwatch
+	  * INumericReport.Time was moved into ReportingUtils and renamed into TimeAndReport
+	  * WriteReport that writes a SerializableReport to a file
+    * Creating dummy implementation for IReport and IStatisticsReporter: DummyReport & DummyStatisticsReporter
+	* Better unit test coverage
+  * Epicycle.Commons.Time:
+    * Creating DateTimeUtcAndLocal that can store both the UTC and Local time of a point in time.
+    * Adding more utilities to TimeUtils
+    * Creating IDateTimeProvider together with two implementations: SystemDateTimeProvider and ManualDateTimeProvider
+	* TimeFormating was moved to Epicycle.Commons.Time
+    * Creating DateTimeFormatting with flexible ISO 8601 formatting capabilities
+	* Some unit tests
 
 * **Version 0.1.6** [2015-01-13]
   * Adding a very simple CSV parsing framework

@@ -22,9 +22,52 @@ namespace Epicycle.Commons.Time
 {
     public static class TimeUtils
     {
-        public static double GetMillisecondsSinceUnixEpoch(DateTime time)
+        public static readonly DateTime UnixEpochStartUtc = new DateTime(1970, 1, 1).ReinterpretAsUtc();
+
+        public static long MillisecondsSinceUnixEpochUtc(this DateTime @this)
         {
-            return time.Subtract(new DateTime(1970, 1, 1)).TotalMilliseconds;
+            return (long)@this.ToUniversalTime().Subtract(UnixEpochStartUtc).TotalMilliseconds;
+        }
+
+        public static long SecondsSinceUnixEpochUtc(this DateTime @this)
+        {
+            return (long)@this.ToUniversalTime().Subtract(UnixEpochStartUtc).TotalSeconds;
+        }
+
+        public static DateTimeUtcAndLocal NowUtcAndLocal()
+        {
+            // TODO: Test
+            return DateTime.UtcNow.ToUtcAndLocal();
+        }
+
+        public static DateTime ReinterpretAsUnspecified(this DateTime @this)
+        {
+            return @this.Kind == DateTimeKind.Unspecified ? @this : DateTime.SpecifyKind(@this, DateTimeKind.Unspecified);
+        }
+
+        public static DateTime ReinterpretAsUtc(this DateTime @this)
+        {
+            return @this.Kind == DateTimeKind.Utc ? @this : DateTime.SpecifyKind(@this, DateTimeKind.Utc);
+        }
+
+        public static DateTime ReinterpretAsLocal(this DateTime @this)
+        {
+            return @this.Kind == DateTimeKind.Local ? @this : DateTime.SpecifyKind(@this, DateTimeKind.Local);
+        }
+
+        public static DateTimeUtcAndLocal ToUtcAndLocal(this DateTime @this)
+        {
+            switch(@this.Kind)
+            {
+                case DateTimeKind.Utc:
+                    return new DateTimeUtcAndLocal(@this, @this.ToLocalTime());
+                case DateTimeKind.Local:
+                    return new DateTimeUtcAndLocal(@this.ToUniversalTime(), @this);
+                case DateTimeKind.Unspecified:
+                    throw new ArgumentException("Dates of an unspecified kind are not supported!");
+                default:
+                    throw new ArgumentException("Unsupported DateTimeKind");
+            }
         }
     }
 }
