@@ -16,27 +16,13 @@
 // For more information check https://github.com/open-epicycle/Epicycle.Commons-cs
 // ]]]]
 
-namespace Epicycle.Commons
+namespace Epicycle.Commons.Threading
 {
-    public sealed class PeriodicThread : BasePeriodicThread
+    public enum PeriodicThreadTightness
     {
-        public interface IUpdatable
-        {
-            void Update();
-        }
-
-        public PeriodicThread(IUpdatable updatable, int delay, int minDelay) : base(delay, minDelay)
-        {
-            _updatable = updatable;
-
-            Start();
-        }
-
-        private readonly IUpdatable _updatable;
-
-        protected override void Iteration()
-        {
-            _updatable.Update();
-        }
+        Busy,
+        High,
+        Medium,
+        Low,
     }
 }

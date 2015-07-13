@@ -16,29 +16,19 @@
 // For more information check https://github.com/open-epicycle/Epicycle.Commons-cs
 // ]]]]
 
-using Epicycle.Commons.Threading;
-using System.Threading;
-
-namespace Epicycle.Commons.Reporting
+namespace System.Diagnostics
 {
-    // TODO: Test
-
-    public sealed class PeriodicReportFileThread : BasePeriodicThread
+    public static class StopwatchUtils
     {
-        private readonly PeriodicReportFile _periodicReportFile;
 
-        public PeriodicReportFileThread(PeriodicReportFile periodicReportFile, double period_sec)
-            : base(1.0 / period_sec, PeriodicThreadTightness.Low)
+#if NET35
+        public static void Restart(this Stopwatch @this)
         {
-            ArgAssert.NotNull(periodicReportFile, "periodicReportFile");
+            @this.Stop();
+            @this.Reset();
+            @this.Start();
+        }
+#endif
 
-            Thread.Priority = ThreadPriority.Lowest;
-            _periodicReportFile = periodicReportFile;
-        }
-        
-        protected override void Iteration()
-        {
-            _periodicReportFile.ReportToFile();
-        }
     }
 }

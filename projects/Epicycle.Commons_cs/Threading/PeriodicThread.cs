@@ -16,29 +16,27 @@
 // For more information check https://github.com/open-epicycle/Epicycle.Commons-cs
 // ]]]]
 
-using Epicycle.Commons.Threading;
-using System.Threading;
-
-namespace Epicycle.Commons.Reporting
+namespace Epicycle.Commons.Threading
 {
-    // TODO: Test
-
-    public sealed class PeriodicReportFileThread : BasePeriodicThread
+    public sealed class PeriodicThread : BasePeriodicThread
     {
-        private readonly PeriodicReportFile _periodicReportFile;
+        private readonly IUpdatable _updatable;
 
-        public PeriodicReportFileThread(PeriodicReportFile periodicReportFile, double period_sec)
-            : base(1.0 / period_sec, PeriodicThreadTightness.Low)
+        public PeriodicThread(IUpdatable updatable, double frequency_hz, PeriodicThreadTightness tightness = DefaultTightness)
+            : base(frequency_hz, tightness)
         {
-            ArgAssert.NotNull(periodicReportFile, "periodicReportFile");
-
-            Thread.Priority = ThreadPriority.Lowest;
-            _periodicReportFile = periodicReportFile;
+            _updatable = updatable;
         }
-        
+
+        public PeriodicThread(IUpdatable updatable, int delay_msec, int minDelay_msec)
+            : base(delay_msec, minDelay_msec)
+        {
+            _updatable = updatable;
+        }
+
         protected override void Iteration()
         {
-            _periodicReportFile.ReportToFile();
+            _updatable.Update();
         }
     }
 }
