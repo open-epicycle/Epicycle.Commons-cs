@@ -12,10 +12,11 @@
      * Add pascal buffer write
      * Create string version to byte[] methods
  * Epicycle.Commons.Reporting:
-   * PeriodicReport: Report(..) is ambiguous
-   * An easy way to write/append SimpleReport to file
-   * IStatisticsReporter: should have a consistant order (if it's not like this now)
-   * Dummy reporters implementation
-   * UTs
+   * StatisticsReporter: testing TODOs
+   * Test ReportsManager
+ * Epicycle.Commons.Time:
+   * Manual clock
  * Epicycle.Commons.Collections:
    * Some of the AsReadOnlyList should be ToReadOnlyList
+   * Check collection (IEnumerable?) for uniqueness
+   * Create something like IBuffer/IFixedList for array-like mutable random access collection (no inserts/deletes)
