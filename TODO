@@ -14,8 +14,6 @@
  * Epicycle.Commons.Reporting:
    * StatisticsReporter: testing TODOs
    * Test ReportsManager
- * Epicycle.Commons.Time:
-   * Manual clock
  * Epicycle.Commons.Collections:
    * Some of the AsReadOnlyList should be ToReadOnlyList
    * Check collection (IEnumerable?) for uniqueness
