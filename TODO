@@ -1,6 +1,3 @@
- * System.Diagnostics
-   * Stopwatch
-     * Add Restart for older platforms
  * Epicycle.Commons:
    * BasePeriodicThread:
      * Take into account that actual sleep time might be greater 
