@@ -1,4 +1,4 @@
- * Epicycle.Commons:
+ * Epicycle.Commons.Threading:
    * BasePeriodicThread:
      * Take into account that actual sleep time might be greater 
  * Epicycle.Commons.Binary:
