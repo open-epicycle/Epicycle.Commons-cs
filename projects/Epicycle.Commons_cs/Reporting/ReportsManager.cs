@@ -22,6 +22,7 @@ using System.Collections.Generic;
 
 namespace Epicycle.Commons.Reporting
 {
+    // TODO: Test
     public sealed class ReportsManager : DirectoryBasedObject
     {
         private readonly object _lock = new object();
