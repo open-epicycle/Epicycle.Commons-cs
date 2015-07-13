@@ -16,6 +16,7 @@
 // For more information check https://github.com/open-epicycle/Epicycle.Commons-cs
 // ]]]]
 
+using Epicycle.Commons.Threading;
 using System.Threading;
 
 namespace Epicycle.Commons.Reporting
@@ -27,17 +28,12 @@ namespace Epicycle.Commons.Reporting
         private readonly PeriodicReportFile _periodicReportFile;
 
         public PeriodicReportFileThread(PeriodicReportFile periodicReportFile, double period_sec)
-            : base(BasicMath.Round(period_sec * 1000), 100)
+            : base(1.0 / period_sec, PeriodicThreadTightness.Low)
         {
             ArgAssert.NotNull(periodicReportFile, "periodicReportFile");
 
             Thread.Priority = ThreadPriority.Lowest;
             _periodicReportFile = periodicReportFile;
-        }
-
-        public new void Start()
-        {
-            base.Start();
         }
         
         protected override void Iteration()
