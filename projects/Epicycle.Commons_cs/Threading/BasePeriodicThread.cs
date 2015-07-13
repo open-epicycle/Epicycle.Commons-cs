@@ -20,7 +20,7 @@ using System;
 using System.Diagnostics;
 using System.Threading;
 
-namespace Epicycle.Commons
+namespace Epicycle.Commons.Threading
 {
     public abstract class BasePeriodicThread
     {

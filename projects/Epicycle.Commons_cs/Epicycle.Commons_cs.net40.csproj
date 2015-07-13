@@ -51,7 +51,6 @@
   </ItemGroup>
   <ItemGroup>
     <Compile Include="ArgAssert.cs" />
-    <Compile Include="BasePeriodicThread.cs" />
     <Compile Include="BasicMath.cs" />
     <Compile Include="Binary\BinaryReaderUtils.cs" />
     <Compile Include="Binary\BinaryUtils.cs" />
@@ -95,8 +94,6 @@
     <Compile Include="Hysteresis.cs" />
     <Compile Include="IUpdatable.cs" />
     <Compile Include="InternalException.cs" />
-    <Compile Include="PeriodicThread.cs" />
-    <Compile Include="PeriodicThreadTightness.cs" />
     <Compile Include="Properties\AssemblyInfo.cs" />
     <Compile Include="Reporting\DummyReport.cs" />
     <Compile Include="Reporting\DummyStatisticsReporter.cs" />
@@ -112,6 +109,9 @@
     <Compile Include="Reporting\StatisticsReporter.cs" />
     <Compile Include="Singleton.cs" />
     <Compile Include="StringUtils.cs" />
+    <Compile Include="Threading\BasePeriodicThread.cs" />
+    <Compile Include="Threading\PeriodicThread.cs" />
+    <Compile Include="Threading\PeriodicThreadTightness.cs" />
     <Compile Include="Time\DateTimeFormatting.cs" />
     <Compile Include="Time\DateTimeUtcAndLocal.cs" />
     <Compile Include="Time\IClock.cs" />
