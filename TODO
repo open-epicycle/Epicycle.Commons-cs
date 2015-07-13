@@ -15,5 +15,4 @@
    * StatisticsReporter: testing TODOs
    * Test ReportsManager
  * Epicycle.Commons.Collections:
-   * Check collection (IEnumerable?) for uniqueness
    * Create something like IBuffer/IFixedList for array-like mutable random access collection (no inserts/deletes)
