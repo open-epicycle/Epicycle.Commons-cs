@@ -28,9 +28,9 @@ Copyright 2015 Epicycle (http://epicycle.org)
 ## Release Notes
 ### Version 0.1 
 
-* **Version 0.1.8** [NOT RELEASED]
+* **Version 0.1.8.0** [NOT RELEASED]
 
-* **Version 0.1.7**
+* **Version 0.1.7.0** [2015-07-13]
   * Epicycle.Commons
     * Added StringUtils.Repeat
     * Added StringUtils.EnsureNewLineIfNotEmpty
@@ -61,11 +61,11 @@ Copyright 2015 Epicycle (http://epicycle.org)
     * Adding IFixedCollection, IFixedReadOnlyList and IFixedList for fixed size collections
     * CollectionUtils: AsReadOnlyList<T>(this IEnumerable<T>) was renamed to ToReadOnlyList
 
-* **Version 0.1.6** [2015-01-13]
+* **Version 0.1.6.0** [2015-01-13]
   * Adding a very simple CSV parsing framework
   * Adding StringUtils.ParseString<T>
 
-* **Version 0.1.5** [2015-01-12]
+* **Version 0.1.5.0** [2015-01-12]
   * .NET 3.5 Compatibility:
     * Adding dependency on TaskParallelLibrary
     * Almost full implementation of System.Tuple
@@ -75,22 +75,22 @@ Copyright 2015 Epicycle (http://epicycle.org)
     * Better input validation
 	* Better test coverage
 
-* **Version 0.1.4** [2015-01-08]
+* **Version 0.1.4.0** [2015-01-08]
   * The emulated System.Collections.ObjectModel.ReadOnlyCollection was replaced by a much thinner ReadOnlyListWrapper
   * FileSystemPath: explicit conversion from string
   * Bringing warnings to zero
 
-* **Version 0.1.3** [2015-01-07]
+* **Version 0.1.3.0** [2015-01-07]
   * Fixing the build for .NET 3.5 and .NET 4.0
   * Creating a dedicated project (Epicycle.Commons.TestUtils_cs) for UT utilities
   * Adding emulated System.Collections.ObjectModel.ReadOnlyCollection for .NET 3.5 and .NET 4.0
   * Adding AsReadOnlyList to CollectionUtils
 
-* **Version 0.1.2** [2015-01-07]
+* **Version 0.1.2.0** [2015-01-07]
   * Upgrading libraries
 
-* **Version 0.1.1** [2015-01-06]
+* **Version 0.1.1.0** [2015-01-06]
   * Adding NuGet dependencies
 
-* **Version 0.1.0** [2015-01-06]
+* **Version 0.1.0.0** [2015-01-06]
   * Initial upload
